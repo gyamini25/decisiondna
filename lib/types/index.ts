@@ -334,3 +334,86 @@ export interface Person {
   influence: number; // 0..1
   validationRate: number; // 0..1 — how often their predictions proved right
 }
+
+// ---------------------------------------------------------------------------
+// Work IQ — month of organizational signal (emails, meetings, chats, docs)
+// ---------------------------------------------------------------------------
+
+export interface WorkEmail {
+  id: string;
+  from: string;
+  to: string[];
+  subject: string;
+  excerpt: string;
+  topic: string;
+  date: string;
+  importance: "high" | "normal";
+  decisionSignal: boolean;
+}
+
+export interface WorkChat {
+  id: string;
+  channel: string;
+  from: string;
+  text: string;
+  topic: string;
+  date: string;
+}
+
+export interface WorkDocument {
+  id: string;
+  title: string;
+  kind: string;
+  topic: string;
+  author: string;
+  date: string;
+  source: string;
+}
+
+export interface DecisionLogEntry {
+  id: string;
+  title: string;
+  owner: string;
+  topic: string;
+  date: string;
+  status: ApprovalStatus;
+  confidence: number;
+  risk: "High" | "Medium" | "Low";
+}
+
+export interface WorkPersonProfile {
+  id: string;
+  name: string;
+  role: string;
+  dept: string;
+  meetings: number;
+  emails: number;
+  chats: number;
+  decisions: number;
+  influence: number; // 0..1 from activity
+  validationRate: number; // 0..1 from corpus who-was-right
+  topConnections: string[];
+}
+
+export interface Relationship {
+  a: string;
+  b: string;
+  strength: number;
+}
+
+export interface WorkMemory {
+  counts: {
+    people: number;
+    meetings: number;
+    emails: number;
+    chats: number;
+    documents: number;
+    decisions: number;
+  };
+  people: WorkPersonProfile[];
+  relationships: Relationship[];
+  topics: { topic: string; count: number }[];
+  activity: { date: string; meetings: number; emails: number; chats: number }[];
+  recentDecisions: DecisionLogEntry[];
+  decisionSignals: number; // emails flagged as decision-relevant
+}

@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:azure": "node scripts/test-azure.mjs",
-    "recompute-signals": "node scripts/recompute-signals.mjs"
+    "recompute-signals": "node scripts/recompute-signals.mjs",
+    "seed:workiq": "node scripts/seed-workiq.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

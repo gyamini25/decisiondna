@@ -1,0 +1,466 @@
+[
+  {
+    "id": "chat-1",
+    "channel": "#finance",
+    "from": "Laura Mitchell",
+    "text": "we should loop in Tom Becker on Support Coverage",
+    "topic": "Support Coverage",
+    "date": "2026-05-15T09:00:00.000Z"
+  },
+  {
+    "id": "chat-2",
+    "channel": "#product",
+    "from": "Laura Mitchell",
+    "text": "we should loop in Michael Lee on Pricing",
+    "topic": "Pricing",
+    "date": "2026-05-15T09:00:00.000Z"
+  },
+  {
+    "id": "chat-3",
+    "channel": "#product",
+    "from": "Laura Mitchell",
+    "text": "Hiring decision is going to approval today",
+    "topic": "Hiring",
+    "date": "2026-05-16T09:00:00.000Z"
+  },
+  {
+    "id": "chat-4",
+    "channel": "#general",
+    "from": "Ravi Patel",
+    "text": "heads up: Marketing Spend outcome looks positive",
+    "topic": "Marketing Spend",
+    "date": "2026-05-16T09:00:00.000Z"
+  },
+  {
+    "id": "chat-5",
+    "channel": "#general",
+    "from": "Tom Becker",
+    "text": "we should loop in Daniel Reyes on Support Coverage",
+    "topic": "Support Coverage",
+    "date": "2026-05-17T09:00:00.000Z"
+  },
+  {
+    "id": "chat-6",
+    "channel": "#general",
+    "from": "Priya Nair",
+    "text": "heads up: Vendor Management outcome looks concerning",
+    "topic": "Vendor Management",
+    "date": "2026-05-17T09:00:00.000Z"
+  },
+  {
+    "id": "chat-7",
+    "channel": "#finance",
+    "from": "Ravi Patel",
+    "text": "+1 on the Process Change pilot idea",
+    "topic": "Process Change",
+    "date": "2026-05-18T09:00:00.000Z"
+  },
+  {
+    "id": "chat-8",
+    "channel": "#finance",
+    "from": "Daniel Reyes",
+    "text": "we should loop in Michael Lee on Vendor Management",
+    "topic": "Vendor Management",
+    "date": "2026-05-19T09:00:00.000Z"
+  },
+  {
+    "id": "chat-9",
+    "channel": "#support-ops",
+    "from": "Sarah Johnson",
+    "text": "anyone have the latest numbers on Cost Optimization?",
+    "topic": "Cost Optimization",
+    "date": "2026-05-20T09:00:00.000Z"
+  },
+  {
+    "id": "chat-10",
+    "channel": "#support-ops",
+    "from": "Laura Mitchell",
+    "text": "anyone have the latest numbers on Support Coverage?",
+    "topic": "Support Coverage",
+    "date": "2026-05-20T09:00:00.000Z"
+  },
+  {
+    "id": "chat-11",
+    "channel": "#finance",
+    "from": "Sarah Johnson",
+    "text": "+1 on the Team Restructure pilot idea",
+    "topic": "Team Restructure",
+    "date": "2026-05-21T09:00:00.000Z"
+  },
+  {
+    "id": "chat-12",
+    "channel": "#finance",
+    "from": "Daniel Reyes",
+    "text": "heads up: Process Change outcome looks positive",
+    "topic": "Process Change",
+    "date": "2026-05-21T09:00:00.000Z"
+  },
+  {
+    "id": "chat-13",
+    "channel": "#support-ops",
+    "from": "Jane Smith",
+    "text": "can we revisit the Process Change risks tomorrow?",
+    "topic": "Process Change",
+    "date": "2026-05-21T09:00:00.000Z"
+  },
+  {
+    "id": "chat-14",
+    "channel": "#leadership",
+    "from": "Sarah Johnson",
+    "text": "Pricing decision is going to approval today",
+    "topic": "Pricing",
+    "date": "2026-05-22T09:00:00.000Z"
+  },
+  {
+    "id": "chat-15",
+    "channel": "#general",
+    "from": "Ravi Patel",
+    "text": "Automation decision is going to approval today",
+    "topic": "Automation",
+    "date": "2026-05-22T09:00:00.000Z"
+  },
+  {
+    "id": "chat-16",
+    "channel": "#product",
+    "from": "Daniel Reyes",
+    "text": "can we revisit the Hiring risks tomorrow?",
+    "topic": "Hiring",
+    "date": "2026-05-23T09:00:00.000Z"
+  },
+  {
+    "id": "chat-17",
+    "channel": "#leadership",
+    "from": "Michael Lee",
+    "text": "+1 on the Infrastructure pilot idea",
+    "topic": "Infrastructure",
+    "date": "2026-05-23T09:00:00.000Z"
+  },
+  {
+    "id": "chat-18",
+    "channel": "#support-ops",
+    "from": "Ravi Patel",
+    "text": "we should loop in Daniel Reyes on Cost Optimization",
+    "topic": "Cost Optimization",
+    "date": "2026-05-24T09:00:00.000Z"
+  },
+  {
+    "id": "chat-19",
+    "channel": "#general",
+    "from": "Ravi Patel",
+    "text": "Marketing Spend decision is going to approval today",
+    "topic": "Marketing Spend",
+    "date": "2026-05-25T09:00:00.000Z"
+  },
+  {
+    "id": "chat-20",
+    "channel": "#leadership",
+    "from": "Priya Nair",
+    "text": "Pricing decision is going to approval today",
+    "topic": "Pricing",
+    "date": "2026-05-26T09:00:00.000Z"
+  },
+  {
+    "id": "chat-21",
+    "channel": "#leadership",
+    "from": "Carlos Mendes",
+    "text": "anyone have the latest numbers on Cost Optimization?",
+    "topic": "Cost Optimization",
+    "date": "2026-05-26T09:00:00.000Z"
+  },
+  {
+    "id": "chat-22",
+    "channel": "#support-ops",
+    "from": "Ravi Patel",
+    "text": "can we revisit the Pricing risks tomorrow?",
+    "topic": "Pricing",
+    "date": "2026-05-26T09:00:00.000Z"
+  },
+  {
+    "id": "chat-23",
+    "channel": "#leadership",
+    "from": "Jane Smith",
+    "text": "heads up: Team Restructure outcome looks positive",
+    "topic": "Team Restructure",
+    "date": "2026-05-27T09:00:00.000Z"
+  },
+  {
+    "id": "chat-24",
+    "channel": "#finance",
+    "from": "Sarah Johnson",
+    "text": "can we revisit the Support Coverage risks tomorrow?",
+    "topic": "Support Coverage",
+    "date": "2026-05-28T09:00:00.000Z"
+  },
+  {
+    "id": "chat-25",
+    "channel": "#leadership",
+    "from": "Priya Nair",
+    "text": "can we revisit the Vendor Management risks tomorrow?",
+    "topic": "Vendor Management",
+    "date": "2026-05-29T09:00:00.000Z"
+  },
+  {
+    "id": "chat-26",
+    "channel": "#general",
+    "from": "Laura Mitchell",
+    "text": "heads up: Marketing Spend outcome looks concerning",
+    "topic": "Marketing Spend",
+    "date": "2026-05-30T09:00:00.000Z"
+  },
+  {
+    "id": "chat-27",
+    "channel": "#support-ops",
+    "from": "Sarah Johnson",
+    "text": "we should loop in Ravi Patel on Marketing Spend",
+    "topic": "Marketing Spend",
+    "date": "2026-05-31T09:00:00.000Z"
+  },
+  {
+    "id": "chat-28",
+    "channel": "#finance",
+    "from": "Jane Smith",
+    "text": "we should loop in Daniel Reyes on Support Coverage",
+    "topic": "Support Coverage",
+    "date": "2026-05-31T09:00:00.000Z"
+  },
+  {
+    "id": "chat-29",
+    "channel": "#support-ops",
+    "from": "Ravi Patel",
+    "text": "Pricing decision is going to approval today",
+    "topic": "Pricing",
+    "date": "2026-06-01T09:00:00.000Z"
+  },
+  {
+    "id": "chat-30",
+    "channel": "#finance",
+    "from": "Aisha Khan",
+    "text": "heads up: Infrastructure outcome looks positive",
+    "topic": "Infrastructure",
+    "date": "2026-06-02T09:00:00.000Z"
+  },
+  {
+    "id": "chat-31",
+    "channel": "#support-ops",
+    "from": "Sarah Johnson",
+    "text": "heads up: Marketing Spend outcome looks concerning",
+    "topic": "Marketing Spend",
+    "date": "2026-06-02T09:00:00.000Z"
+  },
+  {
+    "id": "chat-32",
+    "channel": "#leadership",
+    "from": "Laura Mitchell",
+    "text": "we should loop in Ravi Patel on Cost Optimization",
+    "topic": "Cost Optimization",
+    "date": "2026-06-03T09:00:00.000Z"
+  },
+  {
+    "id": "chat-33",
+    "channel": "#support-ops",
+    "from": "Laura Mitchell",
+    "text": "Support Coverage decision is going to approval today",
+    "topic": "Support Coverage",
+    "date": "2026-06-04T09:00:00.000Z"
+  },
+  {
+    "id": "chat-34",
+    "channel": "#general",
+    "from": "Laura Mitchell",
+    "text": "can we revisit the Support Coverage risks tomorrow?",
+    "topic": "Support Coverage",
+    "date": "2026-06-04T09:00:00.000Z"
+  },
+  {
+    "id": "chat-35",
+    "channel": "#general",
+    "from": "Priya Nair",
+    "text": "we should loop in Jane Smith on Automation",
+    "topic": "Automation",
+    "date": "2026-06-04T09:00:00.000Z"
+  },
+  {
+    "id": "chat-36",
+    "channel": "#leadership",
+    "from": "Laura Mitchell",
+    "text": "we should loop in Michael Lee on Team Restructure",
+    "topic": "Team Restructure",
+    "date": "2026-06-05T09:00:00.000Z"
+  },
+  {
+    "id": "chat-37",
+    "channel": "#leadership",
+    "from": "Tom Becker",
+    "text": "Automation decision is going to approval today",
+    "topic": "Automation",
+    "date": "2026-06-05T09:00:00.000Z"
+  },
+  {
+    "id": "chat-38",
+    "channel": "#general",
+    "from": "Priya Nair",
+    "text": "can we revisit the Support Coverage risks tomorrow?",
+    "topic": "Support Coverage",
+    "date": "2026-06-06T09:00:00.000Z"
+  },
+  {
+    "id": "chat-39",
+    "channel": "#support-ops",
+    "from": "Priya Nair",
+    "text": "anyone have the latest numbers on Team Restructure?",
+    "topic": "Team Restructure",
+    "date": "2026-06-06T09:00:00.000Z"
+  },
+  {
+    "id": "chat-40",
+    "channel": "#leadership",
+    "from": "Aisha Khan",
+    "text": "can we revisit the Hiring risks tomorrow?",
+    "topic": "Hiring",
+    "date": "2026-06-07T09:00:00.000Z"
+  },
+  {
+    "id": "chat-41",
+    "channel": "#support-ops",
+    "from": "Michael Lee",
+    "text": "can we revisit the Pricing risks tomorrow?",
+    "topic": "Pricing",
+    "date": "2026-06-07T09:00:00.000Z"
+  },
+  {
+    "id": "chat-42",
+    "channel": "#general",
+    "from": "Laura Mitchell",
+    "text": "Support Coverage decision is going to approval today",
+    "topic": "Support Coverage",
+    "date": "2026-06-07T09:00:00.000Z"
+  },
+  {
+    "id": "chat-43",
+    "channel": "#general",
+    "from": "Daniel Reyes",
+    "text": "anyone have the latest numbers on Vendor Management?",
+    "topic": "Vendor Management",
+    "date": "2026-06-08T09:00:00.000Z"
+  },
+  {
+    "id": "chat-44",
+    "channel": "#product",
+    "from": "Aisha Khan",
+    "text": "can we revisit the Vendor Management risks tomorrow?",
+    "topic": "Vendor Management",
+    "date": "2026-06-08T09:00:00.000Z"
+  },
+  {
+    "id": "chat-45",
+    "channel": "#general",
+    "from": "Carlos Mendes",
+    "text": "anyone have the latest numbers on Team Restructure?",
+    "topic": "Team Restructure",
+    "date": "2026-06-08T09:00:00.000Z"
+  },
+  {
+    "id": "chat-46",
+    "channel": "#finance",
+    "from": "Ravi Patel",
+    "text": "we should loop in Jane Smith on Marketing Spend",
+    "topic": "Marketing Spend",
+    "date": "2026-06-09T09:00:00.000Z"
+  },
+  {
+    "id": "chat-47",
+    "channel": "#product",
+    "from": "Laura Mitchell",
+    "text": "can we revisit the Automation risks tomorrow?",
+    "topic": "Automation",
+    "date": "2026-06-09T09:00:00.000Z"
+  },
+  {
+    "id": "chat-48",
+    "channel": "#support-ops",
+    "from": "Jane Smith",
+    "text": "Marketing Spend decision is going to approval today",
+    "topic": "Marketing Spend",
+    "date": "2026-06-10T09:00:00.000Z"
+  },
+  {
+    "id": "chat-49",
+    "channel": "#general",
+    "from": "Michael Lee",
+    "text": "heads up: Vendor Management outcome looks mixed",
+    "topic": "Vendor Management",
+    "date": "2026-06-10T09:00:00.000Z"
+  },
+  {
+    "id": "chat-50",
+    "channel": "#general",
+    "from": "Tom Becker",
+    "text": "can we revisit the Process Change risks tomorrow?",
+    "topic": "Process Change",
+    "date": "2026-06-11T09:00:00.000Z"
+  },
+  {
+    "id": "chat-51",
+    "channel": "#finance",
+    "from": "Ravi Patel",
+    "text": "Team Restructure decision is going to approval today",
+    "topic": "Team Restructure",
+    "date": "2026-06-12T09:00:00.000Z"
+  },
+  {
+    "id": "chat-52",
+    "channel": "#leadership",
+    "from": "Sarah Johnson",
+    "text": "anyone have the latest numbers on Cost Optimization?",
+    "topic": "Cost Optimization",
+    "date": "2026-06-12T09:00:00.000Z"
+  },
+  {
+    "id": "chat-53",
+    "channel": "#product",
+    "from": "Jane Smith",
+    "text": "anyone have the latest numbers on Team Restructure?",
+    "topic": "Team Restructure",
+    "date": "2026-06-13T09:00:00.000Z"
+  },
+  {
+    "id": "chat-54",
+    "channel": "#product",
+    "from": "Priya Nair",
+    "text": "Infrastructure decision is going to approval today",
+    "topic": "Infrastructure",
+    "date": "2026-06-13T09:00:00.000Z"
+  },
+  {
+    "id": "chat-55",
+    "channel": "#general",
+    "from": "Jane Smith",
+    "text": "can we revisit the Vendor Management risks tomorrow?",
+    "topic": "Vendor Management",
+    "date": "2026-06-13T09:00:00.000Z"
+  },
+  {
+    "id": "chat-56",
+    "channel": "#support-ops",
+    "from": "Aisha Khan",
+    "text": "we should loop in Ravi Patel on Process Change",
+    "topic": "Process Change",
+    "date": "2026-06-14T09:00:00.000Z"
+  },
+  {
+    "id": "chat-57",
+    "channel": "#product",
+    "from": "Aisha Khan",
+    "text": "we should loop in Carlos Mendes on Pricing",
+    "topic": "Pricing",
+    "date": "2026-06-14T09:00:00.000Z"
+  },
+  {
+    "id": "chat-58",
+    "channel": "#support-ops",
+    "from": "Daniel Reyes",
+    "text": "can we revisit the Process Change risks tomorrow?",
+    "topic": "Process Change",
+    "date": "2026-06-14T09:00:00.000Z"
+  }
+]

@@ -89,6 +89,8 @@ export function MemoryGraph({ data }: { data: GraphData }) {
   );
   const [active, setActive] = useState<Positioned | null>(null);
   const [filter, setFilter] = useState<string>("all");
+  const [range, setRange] = useState<string>("12m");
+  const [zoom, setZoom] = useState(1);
 
   const visible = (t: string) => filter === "all" || filter === t;
   const connected = new Set<string>();
@@ -102,22 +104,35 @@ export function MemoryGraph({ data }: { data: GraphData }) {
   return (
     <div className="flex gap-4">
       <div className="flex-1">
-        <div className="mb-3 flex gap-1.5">
-          {["all", "decision", "stakeholder", "risk", "outcome"].map((t) => (
-            <button
-              key={t}
-              onClick={() => setFilter(t)}
-              className={`rounded-full border px-3 py-1 text-xs capitalize ${
-                filter === t
-                  ? "border-brand-600 bg-brand-50 text-brand-700"
-                  : "border-line bg-surface text-ink-soft hover:bg-surface-2"
-              }`}
-            >
-              {t === "all" ? "Show all" : t + "s"}
-            </button>
-          ))}
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <select
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            className="rounded-md border border-line bg-surface px-2.5 py-1 text-xs text-ink outline-none focus:border-brand-400"
+          >
+            <option value="all">All Entities</option>
+            <option value="decision">Decisions</option>
+            <option value="stakeholder">Stakeholders</option>
+            <option value="risk">Risks</option>
+            <option value="outcome">Outcomes</option>
+          </select>
+          <select
+            value={range}
+            onChange={(e) => setRange(e.target.value)}
+            className="rounded-md border border-line bg-surface px-2.5 py-1 text-xs text-ink outline-none focus:border-brand-400"
+          >
+            <option value="3m">Last 3 Months</option>
+            <option value="12m">Last 12 Months</option>
+            <option value="all">All Time</option>
+          </select>
+          <div className="ml-auto flex items-center gap-1">
+            <button onClick={() => setZoom((z) => Math.max(0.6, z - 0.2))} className="h-7 w-7 rounded-md border border-line text-ink-soft hover:bg-surface-2">−</button>
+            <button onClick={() => setZoom(1)} className="rounded-md border border-line px-2 py-1 text-[11px] text-ink-soft hover:bg-surface-2">Reset</button>
+            <button onClick={() => setZoom((z) => Math.min(2, z + 0.2))} className="h-7 w-7 rounded-md border border-line text-ink-soft hover:bg-surface-2">+</button>
+          </div>
         </div>
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full rounded-xl border border-line bg-surface">
+          <g transform={`translate(${W / 2},${H / 2}) scale(${zoom}) translate(${-W / 2},${-H / 2})`}>
           {data.edges.map((e, i) => {
             const s = posById.get(e.source);
             const t = posById.get(e.target);
@@ -130,7 +145,7 @@ export function MemoryGraph({ data }: { data: GraphData }) {
                 y1={s.y}
                 x2={t.x}
                 y2={t.y}
-                stroke={dim ? "#eef0f5" : "#cbd2e0"}
+                stroke={dim ? "#1a2138" : "#2a344f"}
                 strokeWidth={Math.min(3, e.weight)}
               />
             );
@@ -147,13 +162,13 @@ export function MemoryGraph({ data }: { data: GraphData }) {
                 className="cursor-pointer"
                 opacity={dim ? 0.25 : 1}
               >
-                <circle r={r} fill={TYPE_COLOR[p.type]} stroke="#fff" strokeWidth={2} />
+                <circle r={r} fill={TYPE_COLOR[p.type]} stroke="#111728" strokeWidth={2} />
                 {(p.type === "decision" || active?.id === p.id) && (
                   <text
                     x={r + 4}
                     y={4}
                     fontSize={10}
-                    fill="#11151f"
+                    fill="#c7cde0"
                     className="select-none"
                   >
                     {p.label.length > 24 ? p.label.slice(0, 24) + "…" : p.label}
@@ -162,6 +177,7 @@ export function MemoryGraph({ data }: { data: GraphData }) {
               </g>
             );
           })}
+          </g>
         </svg>
       </div>
 

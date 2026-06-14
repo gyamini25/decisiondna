@@ -1,0 +1,788 @@
+[
+  {
+    "id": "email-1",
+    "from": "Priya Nair",
+    "to": [
+      "Aisha Khan"
+    ],
+    "subject": "Cost Optimization cost analysis attached",
+    "excerpt": "Numbers for the Cost Optimization decision are in the attached model.",
+    "topic": "Cost Optimization",
+    "date": "2026-05-15T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-2",
+    "from": "Tom Becker",
+    "to": [
+      "Laura Mitchell",
+      "Michael Lee"
+    ],
+    "subject": "Vendor Management — outcome review",
+    "excerpt": "Reviewing how the Vendor Management decision played out vs expectations.",
+    "topic": "Vendor Management",
+    "date": "2026-05-16T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-3",
+    "from": "Sarah Johnson",
+    "to": [
+      "Priya Nair",
+      "Laura Mitchell"
+    ],
+    "subject": "FYI: Vendor Management update",
+    "excerpt": "Quick status update on Vendor Management, no action needed.",
+    "topic": "Vendor Management",
+    "date": "2026-05-17T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-4",
+    "from": "Laura Mitchell",
+    "to": [
+      "Ravi Patel"
+    ],
+    "subject": "Question about Process Change",
+    "excerpt": "Can you clarify the timeline on Process Change?",
+    "topic": "Process Change",
+    "date": "2026-05-18T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-5",
+    "from": "Tom Becker",
+    "to": [
+      "Jane Smith",
+      "Carlos Mendes"
+    ],
+    "subject": "Pricing — outcome review",
+    "excerpt": "Reviewing how the Pricing decision played out vs expectations.",
+    "topic": "Pricing",
+    "date": "2026-05-18T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-6",
+    "from": "Laura Mitchell",
+    "to": [
+      "Jane Smith",
+      "Aisha Khan"
+    ],
+    "subject": "Re: Team Restructure rollout plan",
+    "excerpt": "Proposing a phased rollout for Team Restructure with a pilot first.",
+    "topic": "Team Restructure",
+    "date": "2026-05-18T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-7",
+    "from": "Jane Smith",
+    "to": [
+      "Laura Mitchell"
+    ],
+    "subject": "Re: Team Restructure rollout plan",
+    "excerpt": "Proposing a phased rollout for Team Restructure with a pilot first.",
+    "topic": "Team Restructure",
+    "date": "2026-05-19T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-8",
+    "from": "Michael Lee",
+    "to": [
+      "Jane Smith"
+    ],
+    "subject": "Re: Marketing Spend proposal — concerns",
+    "excerpt": "Flagging a few risks before we commit on Marketing Spend. We saw issues last time.",
+    "topic": "Marketing Spend",
+    "date": "2026-05-19T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-9",
+    "from": "Aisha Khan",
+    "to": [
+      "Ravi Patel"
+    ],
+    "subject": "Infrastructure — outcome review",
+    "excerpt": "Reviewing how the Infrastructure decision played out vs expectations.",
+    "topic": "Infrastructure",
+    "date": "2026-05-19T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-10",
+    "from": "Priya Nair",
+    "to": [
+      "Laura Mitchell"
+    ],
+    "subject": "Re: Automation rollout plan",
+    "excerpt": "Proposing a phased rollout for Automation with a pilot first.",
+    "topic": "Automation",
+    "date": "2026-05-20T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-11",
+    "from": "Ravi Patel",
+    "to": [
+      "Jane Smith",
+      "Sarah Johnson",
+      "Tom Becker"
+    ],
+    "subject": "Automation cost analysis attached",
+    "excerpt": "Numbers for the Automation decision are in the attached model.",
+    "topic": "Automation",
+    "date": "2026-05-20T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-12",
+    "from": "Jane Smith",
+    "to": [
+      "Sarah Johnson"
+    ],
+    "subject": "Process Change cost analysis attached",
+    "excerpt": "Numbers for the Process Change decision are in the attached model.",
+    "topic": "Process Change",
+    "date": "2026-05-21T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-13",
+    "from": "Tom Becker",
+    "to": [
+      "Laura Mitchell",
+      "Ravi Patel",
+      "Priya Nair"
+    ],
+    "subject": "FYI: Automation update",
+    "excerpt": "Quick status update on Automation, no action needed.",
+    "topic": "Automation",
+    "date": "2026-05-21T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-14",
+    "from": "Sarah Johnson",
+    "to": [
+      "Carlos Mendes"
+    ],
+    "subject": "FYI: Vendor Management update",
+    "excerpt": "Quick status update on Vendor Management, no action needed.",
+    "topic": "Vendor Management",
+    "date": "2026-05-22T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-15",
+    "from": "Aisha Khan",
+    "to": [
+      "Daniel Reyes",
+      "Jane Smith",
+      "Laura Mitchell"
+    ],
+    "subject": "Re: Marketing Spend rollout plan",
+    "excerpt": "Proposing a phased rollout for Marketing Spend with a pilot first.",
+    "topic": "Marketing Spend",
+    "date": "2026-05-22T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-16",
+    "from": "Aisha Khan",
+    "to": [
+      "Daniel Reyes"
+    ],
+    "subject": "FYI: Support Coverage update",
+    "excerpt": "Quick status update on Support Coverage, no action needed.",
+    "topic": "Support Coverage",
+    "date": "2026-05-23T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-17",
+    "from": "Ravi Patel",
+    "to": [
+      "Daniel Reyes"
+    ],
+    "subject": "Re: Marketing Spend proposal — concerns",
+    "excerpt": "Flagging a few risks before we commit on Marketing Spend. We saw issues last time.",
+    "topic": "Marketing Spend",
+    "date": "2026-05-23T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-18",
+    "from": "Priya Nair",
+    "to": [
+      "Michael Lee",
+      "Sarah Johnson",
+      "Daniel Reyes"
+    ],
+    "subject": "Team Restructure — outcome review",
+    "excerpt": "Reviewing how the Team Restructure decision played out vs expectations.",
+    "topic": "Team Restructure",
+    "date": "2026-05-24T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-19",
+    "from": "Sarah Johnson",
+    "to": [
+      "Aisha Khan"
+    ],
+    "subject": "Process Change — outcome review",
+    "excerpt": "Reviewing how the Process Change decision played out vs expectations.",
+    "topic": "Process Change",
+    "date": "2026-05-25T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-20",
+    "from": "Priya Nair",
+    "to": [
+      "Aisha Khan",
+      "Tom Becker"
+    ],
+    "subject": "Re: Hiring rollout plan",
+    "excerpt": "Proposing a phased rollout for Hiring with a pilot first.",
+    "topic": "Hiring",
+    "date": "2026-05-25T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-21",
+    "from": "Sarah Johnson",
+    "to": [
+      "Jane Smith",
+      "Tom Becker"
+    ],
+    "subject": "Re: Support Coverage rollout plan",
+    "excerpt": "Proposing a phased rollout for Support Coverage with a pilot first.",
+    "topic": "Support Coverage",
+    "date": "2026-05-26T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-22",
+    "from": "Aisha Khan",
+    "to": [
+      "Michael Lee"
+    ],
+    "subject": "Team Restructure — outcome review",
+    "excerpt": "Reviewing how the Team Restructure decision played out vs expectations.",
+    "topic": "Team Restructure",
+    "date": "2026-05-27T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-23",
+    "from": "Aisha Khan",
+    "to": [
+      "Daniel Reyes"
+    ],
+    "subject": "Question about Support Coverage",
+    "excerpt": "Can you clarify the timeline on Support Coverage?",
+    "topic": "Support Coverage",
+    "date": "2026-05-27T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-24",
+    "from": "Carlos Mendes",
+    "to": [
+      "Tom Becker"
+    ],
+    "subject": "Re: Infrastructure rollout plan",
+    "excerpt": "Proposing a phased rollout for Infrastructure with a pilot first.",
+    "topic": "Infrastructure",
+    "date": "2026-05-28T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-25",
+    "from": "Carlos Mendes",
+    "to": [
+      "Tom Becker",
+      "Priya Nair"
+    ],
+    "subject": "Re: Process Change rollout plan",
+    "excerpt": "Proposing a phased rollout for Process Change with a pilot first.",
+    "topic": "Process Change",
+    "date": "2026-05-28T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-26",
+    "from": "Jane Smith",
+    "to": [
+      "Carlos Mendes"
+    ],
+    "subject": "Process Change — outcome review",
+    "excerpt": "Reviewing how the Process Change decision played out vs expectations.",
+    "topic": "Process Change",
+    "date": "2026-05-29T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-27",
+    "from": "Laura Mitchell",
+    "to": [
+      "Carlos Mendes"
+    ],
+    "subject": "Vendor Management — outcome review",
+    "excerpt": "Reviewing how the Vendor Management decision played out vs expectations.",
+    "topic": "Vendor Management",
+    "date": "2026-05-29T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-28",
+    "from": "Priya Nair",
+    "to": [
+      "Michael Lee"
+    ],
+    "subject": "Support Coverage cost analysis attached",
+    "excerpt": "Numbers for the Support Coverage decision are in the attached model.",
+    "topic": "Support Coverage",
+    "date": "2026-05-29T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-29",
+    "from": "Ravi Patel",
+    "to": [
+      "Jane Smith",
+      "Sarah Johnson"
+    ],
+    "subject": "Re: Marketing Spend proposal — concerns",
+    "excerpt": "Flagging a few risks before we commit on Marketing Spend. We saw issues last time.",
+    "topic": "Marketing Spend",
+    "date": "2026-05-30T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-30",
+    "from": "Priya Nair",
+    "to": [
+      "Tom Becker",
+      "Daniel Reyes",
+      "Carlos Mendes"
+    ],
+    "subject": "FYI: Cost Optimization update",
+    "excerpt": "Quick status update on Cost Optimization, no action needed.",
+    "topic": "Cost Optimization",
+    "date": "2026-05-30T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-31",
+    "from": "Carlos Mendes",
+    "to": [
+      "Tom Becker",
+      "Priya Nair"
+    ],
+    "subject": "Automation — outcome review",
+    "excerpt": "Reviewing how the Automation decision played out vs expectations.",
+    "topic": "Automation",
+    "date": "2026-05-30T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-32",
+    "from": "Daniel Reyes",
+    "to": [
+      "Aisha Khan"
+    ],
+    "subject": "Re: Process Change proposal — concerns",
+    "excerpt": "Flagging a few risks before we commit on Process Change. We saw issues last time.",
+    "topic": "Process Change",
+    "date": "2026-05-31T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-33",
+    "from": "Sarah Johnson",
+    "to": [
+      "Michael Lee",
+      "Tom Becker",
+      "Priya Nair"
+    ],
+    "subject": "FYI: Infrastructure update",
+    "excerpt": "Quick status update on Infrastructure, no action needed.",
+    "topic": "Infrastructure",
+    "date": "2026-06-01T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-34",
+    "from": "Laura Mitchell",
+    "to": [
+      "Priya Nair",
+      "Tom Becker",
+      "Aisha Khan"
+    ],
+    "subject": "Infrastructure cost analysis attached",
+    "excerpt": "Numbers for the Infrastructure decision are in the attached model.",
+    "topic": "Infrastructure",
+    "date": "2026-06-02T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-35",
+    "from": "Sarah Johnson",
+    "to": [
+      "Michael Lee"
+    ],
+    "subject": "Cost Optimization — outcome review",
+    "excerpt": "Reviewing how the Cost Optimization decision played out vs expectations.",
+    "topic": "Cost Optimization",
+    "date": "2026-06-02T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-36",
+    "from": "Tom Becker",
+    "to": [
+      "Michael Lee",
+      "Sarah Johnson"
+    ],
+    "subject": "FYI: Vendor Management update",
+    "excerpt": "Quick status update on Vendor Management, no action needed.",
+    "topic": "Vendor Management",
+    "date": "2026-06-03T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-37",
+    "from": "Tom Becker",
+    "to": [
+      "Jane Smith",
+      "Michael Lee",
+      "Priya Nair"
+    ],
+    "subject": "Re: Automation proposal — concerns",
+    "excerpt": "Flagging a few risks before we commit on Automation. We saw issues last time.",
+    "topic": "Automation",
+    "date": "2026-06-04T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-38",
+    "from": "Priya Nair",
+    "to": [
+      "Ravi Patel",
+      "Carlos Mendes",
+      "Jane Smith"
+    ],
+    "subject": "Automation cost analysis attached",
+    "excerpt": "Numbers for the Automation decision are in the attached model.",
+    "topic": "Automation",
+    "date": "2026-06-05T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-39",
+    "from": "Daniel Reyes",
+    "to": [
+      "Aisha Khan",
+      "Jane Smith"
+    ],
+    "subject": "Re: Process Change proposal — concerns",
+    "excerpt": "Flagging a few risks before we commit on Process Change. We saw issues last time.",
+    "topic": "Process Change",
+    "date": "2026-06-05T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-40",
+    "from": "Priya Nair",
+    "to": [
+      "Ravi Patel",
+      "Laura Mitchell"
+    ],
+    "subject": "FYI: Team Restructure update",
+    "excerpt": "Quick status update on Team Restructure, no action needed.",
+    "topic": "Team Restructure",
+    "date": "2026-06-06T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-41",
+    "from": "Carlos Mendes",
+    "to": [
+      "Priya Nair"
+    ],
+    "subject": "Re: Pricing proposal — concerns",
+    "excerpt": "Flagging a few risks before we commit on Pricing. We saw issues last time.",
+    "topic": "Pricing",
+    "date": "2026-06-07T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-42",
+    "from": "Daniel Reyes",
+    "to": [
+      "Aisha Khan",
+      "Michael Lee",
+      "Ravi Patel"
+    ],
+    "subject": "FYI: Automation update",
+    "excerpt": "Quick status update on Automation, no action needed.",
+    "topic": "Automation",
+    "date": "2026-06-07T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-43",
+    "from": "Priya Nair",
+    "to": [
+      "Michael Lee"
+    ],
+    "subject": "Question about Hiring",
+    "excerpt": "Can you clarify the timeline on Hiring?",
+    "topic": "Hiring",
+    "date": "2026-06-08T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-44",
+    "from": "Jane Smith",
+    "to": [
+      "Aisha Khan",
+      "Tom Becker"
+    ],
+    "subject": "Hiring cost analysis attached",
+    "excerpt": "Numbers for the Hiring decision are in the attached model.",
+    "topic": "Hiring",
+    "date": "2026-06-08T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-45",
+    "from": "Laura Mitchell",
+    "to": [
+      "Aisha Khan"
+    ],
+    "subject": "Re: Automation proposal — concerns",
+    "excerpt": "Flagging a few risks before we commit on Automation. We saw issues last time.",
+    "topic": "Automation",
+    "date": "2026-06-08T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-46",
+    "from": "Michael Lee",
+    "to": [
+      "Ravi Patel",
+      "Carlos Mendes",
+      "Aisha Khan"
+    ],
+    "subject": "Pricing cost analysis attached",
+    "excerpt": "Numbers for the Pricing decision are in the attached model.",
+    "topic": "Pricing",
+    "date": "2026-06-09T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-47",
+    "from": "Laura Mitchell",
+    "to": [
+      "Daniel Reyes",
+      "Priya Nair",
+      "Carlos Mendes"
+    ],
+    "subject": "Question about Marketing Spend",
+    "excerpt": "Can you clarify the timeline on Marketing Spend?",
+    "topic": "Marketing Spend",
+    "date": "2026-06-09T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-48",
+    "from": "Laura Mitchell",
+    "to": [
+      "Michael Lee"
+    ],
+    "subject": "Vendor Management — outcome review",
+    "excerpt": "Reviewing how the Vendor Management decision played out vs expectations.",
+    "topic": "Vendor Management",
+    "date": "2026-06-09T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-49",
+    "from": "Daniel Reyes",
+    "to": [
+      "Priya Nair",
+      "Ravi Patel"
+    ],
+    "subject": "Re: Marketing Spend rollout plan",
+    "excerpt": "Proposing a phased rollout for Marketing Spend with a pilot first.",
+    "topic": "Marketing Spend",
+    "date": "2026-06-10T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-50",
+    "from": "Michael Lee",
+    "to": [
+      "Daniel Reyes"
+    ],
+    "subject": "Re: Marketing Spend proposal — concerns",
+    "excerpt": "Flagging a few risks before we commit on Marketing Spend. We saw issues last time.",
+    "topic": "Marketing Spend",
+    "date": "2026-06-10T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-51",
+    "from": "Michael Lee",
+    "to": [
+      "Carlos Mendes",
+      "Tom Becker"
+    ],
+    "subject": "Re: Infrastructure rollout plan",
+    "excerpt": "Proposing a phased rollout for Infrastructure with a pilot first.",
+    "topic": "Infrastructure",
+    "date": "2026-06-10T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-52",
+    "from": "Ravi Patel",
+    "to": [
+      "Aisha Khan",
+      "Priya Nair",
+      "Tom Becker"
+    ],
+    "subject": "Re: Infrastructure proposal — concerns",
+    "excerpt": "Flagging a few risks before we commit on Infrastructure. We saw issues last time.",
+    "topic": "Infrastructure",
+    "date": "2026-06-11T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-53",
+    "from": "Laura Mitchell",
+    "to": [
+      "Sarah Johnson"
+    ],
+    "subject": "FYI: Infrastructure update",
+    "excerpt": "Quick status update on Infrastructure, no action needed.",
+    "topic": "Infrastructure",
+    "date": "2026-06-12T09:00:00.000Z",
+    "importance": "high",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-54",
+    "from": "Laura Mitchell",
+    "to": [
+      "Aisha Khan"
+    ],
+    "subject": "Team Restructure cost analysis attached",
+    "excerpt": "Numbers for the Team Restructure decision are in the attached model.",
+    "topic": "Team Restructure",
+    "date": "2026-06-13T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-55",
+    "from": "Michael Lee",
+    "to": [
+      "Ravi Patel",
+      "Sarah Johnson",
+      "Daniel Reyes"
+    ],
+    "subject": "FYI: Infrastructure update",
+    "excerpt": "Quick status update on Infrastructure, no action needed.",
+    "topic": "Infrastructure",
+    "date": "2026-06-14T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": false
+  },
+  {
+    "id": "email-56",
+    "from": "Ravi Patel",
+    "to": [
+      "Daniel Reyes",
+      "Priya Nair"
+    ],
+    "subject": "Support Coverage — outcome review",
+    "excerpt": "Reviewing how the Support Coverage decision played out vs expectations.",
+    "topic": "Support Coverage",
+    "date": "2026-06-14T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  },
+  {
+    "id": "email-57",
+    "from": "Tom Becker",
+    "to": [
+      "Michael Lee",
+      "Jane Smith"
+    ],
+    "subject": "Pricing — outcome review",
+    "excerpt": "Reviewing how the Pricing decision played out vs expectations.",
+    "topic": "Pricing",
+    "date": "2026-06-14T09:00:00.000Z",
+    "importance": "normal",
+    "decisionSignal": true
+  }
+]

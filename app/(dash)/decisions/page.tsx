@@ -12,9 +12,11 @@ const FILTERS = [
   { key: "", label: "All" },
   { key: "high-risk", label: "High Risk" },
   { key: "pending", label: "Pending" },
-  { key: "high-confidence", label: "High Confidence" },
-  { key: "low-confidence", label: "Low Confidence" },
+  { key: "approved", label: "Approved" },
+  { key: "rejected", label: "Rejected" },
 ];
+
+const PAGE_SIZE = 8;
 
 function DecisionsInner() {
   const params = useSearchParams();
@@ -22,22 +24,33 @@ function DecisionsInner() {
   const [q, setQ] = useState("");
   const [items, setItems] = useState<DecisionListItem[] | null>(null);
   const [selected, setSelected] = useState<string | null>(params.get("id"));
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const url = `/api/decisions?filter=${filter}&q=${encodeURIComponent(q)}`;
     setItems(null);
+    setPage(1);
     fetch(url)
       .then((r) => r.json())
       .then((d) => setItems(d.decisions));
   }, [filter, q]);
 
+  const total = items?.length ?? 0;
+  const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  const paged = items?.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE) ?? null;
+
   return (
     <div className="space-y-4">
-      <div>
-        <h1 className="text-lg font-bold text-ink">Decisions</h1>
-        <p className="text-xs text-ink-soft">
-          Track, analyze, and learn from organizational decisions.
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-lg font-bold text-ink">Decisions</h1>
+          <p className="text-xs text-ink-soft">
+            Track, analyze, and learn from organizational decisions.
+          </p>
+        </div>
+        <button className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-2 text-xs font-medium text-white hover:bg-brand-700">
+          + New Decision
+        </button>
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
@@ -76,13 +89,13 @@ function DecisionsInner() {
           <span>Date</span>
         </div>
         <div className="divide-y divide-line">
-          {!items
+          {!paged
             ? Array.from({ length: 6 }).map((_, i) => (
                 <div key={i} className="p-3">
                   <Skeleton className="h-8" />
                 </div>
               ))
-            : items.map((d) => (
+            : paged.map((d) => (
                 <button
                   key={d.id}
                   onClick={() => setSelected(d.id)}
@@ -103,6 +116,25 @@ function DecisionsInner() {
                 </button>
               ))}
         </div>
+        {items && total > 0 && (
+          <div className="flex items-center justify-between border-t border-line px-4 py-2.5 text-[11px] text-ink-soft">
+            <span>
+              Showing {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, total)} of {total} decisions
+            </span>
+            <div className="flex items-center gap-1">
+              <button disabled={page <= 1} onClick={() => setPage((p) => p - 1)}
+                className="rounded-md border border-line px-2 py-1 disabled:opacity-40 hover:bg-surface-2">Prev</button>
+              {Array.from({ length: pages }).map((_, i) => (
+                <button key={i} onClick={() => setPage(i + 1)}
+                  className={`rounded-md px-2 py-1 ${page === i + 1 ? "bg-brand-600 text-white" : "border border-line hover:bg-surface-2"}`}>
+                  {i + 1}
+                </button>
+              ))}
+              <button disabled={page >= pages} onClick={() => setPage((p) => p + 1)}
+                className="rounded-md border border-line px-2 py-1 disabled:opacity-40 hover:bg-surface-2">Next</button>
+            </div>
+          </div>
+        )}
       </Card>
 
       {selected && (

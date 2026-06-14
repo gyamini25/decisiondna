@@ -26,6 +26,12 @@ export async function GET(req: Request) {
     case "pending":
       items = items.filter((d) => d.status === "pending");
       break;
+    case "approved":
+      items = items.filter((d) => d.status === "approved");
+      break;
+    case "rejected":
+      items = items.filter((d) => d.status === "rejected");
+      break;
     case "high-confidence":
       items = items.filter((d) => d.confidence >= 0.8);
       break;

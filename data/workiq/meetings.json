@@ -1,0 +1,665 @@
+[
+  {
+    "id": "mtg-1",
+    "title": "Leadership Sync — 2026-05-18",
+    "topic": "Cost Optimization",
+    "date": "2026-05-18T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      },
+      {
+        "name": "Carlos Mendes",
+        "role": "VP Operations"
+      }
+    ],
+    "hasTranscript": false,
+    "decisionDetected": true,
+    "durationMin": 30
+  },
+  {
+    "id": "mtg-2",
+    "title": "Hiring Working Session",
+    "topic": "Hiring",
+    "date": "2026-05-18T12:00:00.000Z",
+    "participants": [
+      {
+        "name": "Aisha Khan",
+        "role": "Marketing Lead"
+      },
+      {
+        "name": "Ravi Patel",
+        "role": "Customer Success Lead"
+      },
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      },
+      {
+        "name": "Tom Becker",
+        "role": "Engineering Manager"
+      }
+    ],
+    "hasTranscript": false,
+    "decisionDetected": false,
+    "durationMin": 45
+  },
+  {
+    "id": "mtg-3",
+    "title": "Product Sync — 2026-05-19",
+    "topic": "Automation",
+    "date": "2026-05-19T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Priya Nair",
+        "role": "Product Manager"
+      },
+      {
+        "name": "Tom Becker",
+        "role": "Engineering Manager"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": true,
+    "durationMin": 60
+  },
+  {
+    "id": "mtg-4",
+    "title": "Support Ops Review — 2026-05-20",
+    "topic": "Support Coverage",
+    "date": "2026-05-20T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Ravi Patel",
+        "role": "Customer Success Lead"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "SRE Lead"
+      },
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 30
+  },
+  {
+    "id": "mtg-5",
+    "title": "Finance Review — 2026-05-21",
+    "topic": "Pricing",
+    "date": "2026-05-21T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Sarah Johnson",
+        "role": "Finance Analyst"
+      },
+      {
+        "name": "Carlos Mendes",
+        "role": "VP Operations"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 45
+  },
+  {
+    "id": "mtg-6",
+    "title": "Marketing Spend Working Session",
+    "topic": "Marketing Spend",
+    "date": "2026-05-21T12:00:00.000Z",
+    "participants": [
+      {
+        "name": "Carlos Mendes",
+        "role": "VP Operations"
+      },
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "SRE Lead"
+      },
+      {
+        "name": "Ravi Patel",
+        "role": "Customer Success Lead"
+      }
+    ],
+    "hasTranscript": false,
+    "decisionDetected": false,
+    "durationMin": 30
+  },
+  {
+    "id": "mtg-7",
+    "title": "Support Coverage Working Session",
+    "topic": "Support Coverage",
+    "date": "2026-05-23T12:00:00.000Z",
+    "participants": [
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "SRE Lead"
+      },
+      {
+        "name": "Sarah Johnson",
+        "role": "Finance Analyst"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": true,
+    "durationMin": 30
+  },
+  {
+    "id": "mtg-8",
+    "title": "Leadership Sync — 2026-05-25",
+    "topic": "Cost Optimization",
+    "date": "2026-05-25T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      },
+      {
+        "name": "Carlos Mendes",
+        "role": "VP Operations"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": true,
+    "durationMin": 30
+  },
+  {
+    "id": "mtg-9",
+    "title": "Hiring Working Session",
+    "topic": "Hiring",
+    "date": "2026-05-25T12:00:00.000Z",
+    "participants": [
+      {
+        "name": "Ravi Patel",
+        "role": "Customer Success Lead"
+      },
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Priya Nair",
+        "role": "Product Manager"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": true,
+    "durationMin": 45
+  },
+  {
+    "id": "mtg-10",
+    "title": "Product Sync — 2026-05-26",
+    "topic": "Automation",
+    "date": "2026-05-26T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Priya Nair",
+        "role": "Product Manager"
+      },
+      {
+        "name": "Tom Becker",
+        "role": "Engineering Manager"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 60
+  },
+  {
+    "id": "mtg-11",
+    "title": "Support Ops Review — 2026-05-27",
+    "topic": "Support Coverage",
+    "date": "2026-05-27T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Ravi Patel",
+        "role": "Customer Success Lead"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "SRE Lead"
+      },
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": true,
+    "durationMin": 45
+  },
+  {
+    "id": "mtg-12",
+    "title": "Finance Review — 2026-05-28",
+    "topic": "Pricing",
+    "date": "2026-05-28T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Sarah Johnson",
+        "role": "Finance Analyst"
+      },
+      {
+        "name": "Carlos Mendes",
+        "role": "VP Operations"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": true,
+    "durationMin": 45
+  },
+  {
+    "id": "mtg-13",
+    "title": "Leadership Sync — 2026-06-01",
+    "topic": "Cost Optimization",
+    "date": "2026-06-01T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      },
+      {
+        "name": "Carlos Mendes",
+        "role": "VP Operations"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 60
+  },
+  {
+    "id": "mtg-14",
+    "title": "Pricing Working Session",
+    "topic": "Pricing",
+    "date": "2026-06-01T12:00:00.000Z",
+    "participants": [
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Priya Nair",
+        "role": "Product Manager"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 30
+  },
+  {
+    "id": "mtg-15",
+    "title": "Product Sync — 2026-06-02",
+    "topic": "Automation",
+    "date": "2026-06-02T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Priya Nair",
+        "role": "Product Manager"
+      },
+      {
+        "name": "Tom Becker",
+        "role": "Engineering Manager"
+      }
+    ],
+    "hasTranscript": false,
+    "decisionDetected": true,
+    "durationMin": 30
+  },
+  {
+    "id": "mtg-16",
+    "title": "Automation Working Session",
+    "topic": "Automation",
+    "date": "2026-06-02T12:00:00.000Z",
+    "participants": [
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Tom Becker",
+        "role": "Engineering Manager"
+      },
+      {
+        "name": "Sarah Johnson",
+        "role": "Finance Analyst"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 45
+  },
+  {
+    "id": "mtg-17",
+    "title": "Support Ops Review — 2026-06-03",
+    "topic": "Support Coverage",
+    "date": "2026-06-03T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Ravi Patel",
+        "role": "Customer Success Lead"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "SRE Lead"
+      },
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 60
+  },
+  {
+    "id": "mtg-18",
+    "title": "Finance Review — 2026-06-04",
+    "topic": "Pricing",
+    "date": "2026-06-04T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Sarah Johnson",
+        "role": "Finance Analyst"
+      },
+      {
+        "name": "Carlos Mendes",
+        "role": "VP Operations"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 45
+  },
+  {
+    "id": "mtg-19",
+    "title": "Leadership Sync — 2026-06-08",
+    "topic": "Cost Optimization",
+    "date": "2026-06-08T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      },
+      {
+        "name": "Carlos Mendes",
+        "role": "VP Operations"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 60
+  },
+  {
+    "id": "mtg-20",
+    "title": "Automation Working Session",
+    "topic": "Automation",
+    "date": "2026-06-08T12:00:00.000Z",
+    "participants": [
+      {
+        "name": "Ravi Patel",
+        "role": "Customer Success Lead"
+      },
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "SRE Lead"
+      },
+      {
+        "name": "Sarah Johnson",
+        "role": "Finance Analyst"
+      },
+      {
+        "name": "Tom Becker",
+        "role": "Engineering Manager"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 45
+  },
+  {
+    "id": "mtg-21",
+    "title": "Product Sync — 2026-06-09",
+    "topic": "Automation",
+    "date": "2026-06-09T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Priya Nair",
+        "role": "Product Manager"
+      },
+      {
+        "name": "Tom Becker",
+        "role": "Engineering Manager"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": true,
+    "durationMin": 30
+  },
+  {
+    "id": "mtg-22",
+    "title": "Support Ops Review — 2026-06-10",
+    "topic": "Support Coverage",
+    "date": "2026-06-10T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Ravi Patel",
+        "role": "Customer Success Lead"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "SRE Lead"
+      },
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 30
+  },
+  {
+    "id": "mtg-23",
+    "title": "Process Change Working Session",
+    "topic": "Process Change",
+    "date": "2026-06-10T12:00:00.000Z",
+    "participants": [
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      },
+      {
+        "name": "Ravi Patel",
+        "role": "Customer Success Lead"
+      },
+      {
+        "name": "Sarah Johnson",
+        "role": "Finance Analyst"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 30
+  },
+  {
+    "id": "mtg-24",
+    "title": "Finance Review — 2026-06-11",
+    "topic": "Pricing",
+    "date": "2026-06-11T09:00:00.000Z",
+    "participants": [
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      },
+      {
+        "name": "Sarah Johnson",
+        "role": "Finance Analyst"
+      },
+      {
+        "name": "Carlos Mendes",
+        "role": "VP Operations"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": true,
+    "durationMin": 45
+  },
+  {
+    "id": "mtg-25",
+    "title": "Team Restructure Working Session",
+    "topic": "Team Restructure",
+    "date": "2026-06-11T12:00:00.000Z",
+    "participants": [
+      {
+        "name": "Jane Smith",
+        "role": "SRE Lead"
+      },
+      {
+        "name": "Aisha Khan",
+        "role": "Marketing Lead"
+      },
+      {
+        "name": "Daniel Reyes",
+        "role": "Finance Lead"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": false,
+    "durationMin": 45
+  },
+  {
+    "id": "mtg-26",
+    "title": "Automation Working Session",
+    "topic": "Automation",
+    "date": "2026-06-13T12:00:00.000Z",
+    "participants": [
+      {
+        "name": "Jane Smith",
+        "role": "SRE Lead"
+      },
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      },
+      {
+        "name": "Aisha Khan",
+        "role": "Marketing Lead"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": true,
+    "durationMin": 45
+  },
+  {
+    "id": "meeting-leadership-sync-support-coverage",
+    "title": "Leadership Sync — Support Coverage Proposal",
+    "topic": "Support Coverage",
+    "date": "2026-06-14T09:00:00Z",
+    "participants": [
+      {
+        "name": "Laura Mitchell",
+        "role": "Senior Product Manager"
+      },
+      {
+        "name": "Ravi Patel",
+        "role": "Customer Success Lead"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "SRE Lead"
+      },
+      {
+        "name": "Michael Lee",
+        "role": "Operations Manager"
+      }
+    ],
+    "hasTranscript": true,
+    "decisionDetected": true,
+    "durationMin": 30,
+    "status": "live",
+    "transcriptRef": "hero-support-staffing"
+  }
+]

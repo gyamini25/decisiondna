@@ -1,0 +1,102 @@
+[
+  {
+    "id": "log-1",
+    "title": "Reduce weekend support coverage",
+    "owner": "Daniel Reyes",
+    "topic": "Pricing",
+    "date": "2026-06-14T09:00:00.000Z",
+    "status": "review",
+    "confidence": 0.89,
+    "risk": "Low"
+  },
+  {
+    "id": "log-2",
+    "title": "Q2 marketing budget reallocation",
+    "owner": "Tom Becker",
+    "topic": "Vendor Management",
+    "date": "2026-05-27T09:00:00.000Z",
+    "status": "review",
+    "confidence": 0.59,
+    "risk": "Low"
+  },
+  {
+    "id": "log-3",
+    "title": "Engineering hiring freeze",
+    "owner": "Michael Lee",
+    "topic": "Vendor Management",
+    "date": "2026-06-13T09:00:00.000Z",
+    "status": "review",
+    "confidence": 0.91,
+    "risk": "Medium"
+  },
+  {
+    "id": "log-4",
+    "title": "Standardize vendor contracts",
+    "owner": "Jane Smith",
+    "topic": "Automation",
+    "date": "2026-06-10T09:00:00.000Z",
+    "status": "pending",
+    "confidence": 0.89,
+    "risk": "Low"
+  },
+  {
+    "id": "log-5",
+    "title": "Pilot chatbot deflection",
+    "owner": "Daniel Reyes",
+    "topic": "Vendor Management",
+    "date": "2026-06-07T09:00:00.000Z",
+    "status": "rejected",
+    "confidence": 0.73,
+    "risk": "High"
+  },
+  {
+    "id": "log-6",
+    "title": "Office space consolidation",
+    "owner": "Ravi Patel",
+    "topic": "Automation",
+    "date": "2026-05-25T09:00:00.000Z",
+    "status": "approved",
+    "confidence": 0.73,
+    "risk": "Medium"
+  },
+  {
+    "id": "log-7",
+    "title": "Tier-1 support outsourcing review",
+    "owner": "Ravi Patel",
+    "topic": "Marketing Spend",
+    "date": "2026-05-27T09:00:00.000Z",
+    "status": "pending",
+    "confidence": 0.79,
+    "risk": "High"
+  },
+  {
+    "id": "log-8",
+    "title": "Pricing experiment — emerging markets",
+    "owner": "Laura Mitchell",
+    "topic": "Automation",
+    "date": "2026-06-05T09:00:00.000Z",
+    "status": "approved",
+    "confidence": 0.56,
+    "risk": "Medium"
+  },
+  {
+    "id": "log-9",
+    "title": "Process change: approval routing",
+    "owner": "Michael Lee",
+    "topic": "Marketing Spend",
+    "date": "2026-05-18T09:00:00.000Z",
+    "status": "review",
+    "confidence": 0.81,
+    "risk": "Low"
+  },
+  {
+    "id": "log-10",
+    "title": "Data platform migration phase 2",
+    "owner": "Aisha Khan",
+    "topic": "Automation",
+    "date": "2026-06-12T09:00:00.000Z",
+    "status": "review",
+    "confidence": 0.87,
+    "risk": "High"
+  }
+]

@@ -1,0 +1,146 @@
+[
+  {
+    "id": "doc-1",
+    "title": "marketing-spend-brief.docx",
+    "kind": "brief",
+    "topic": "Marketing Spend",
+    "author": "Sarah Johnson",
+    "date": "2026-05-18T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-2",
+    "title": "team-restructure-model.xlsx",
+    "kind": "model",
+    "topic": "Team Restructure",
+    "author": "Aisha Khan",
+    "date": "2026-05-31T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-3",
+    "title": "support-coverage-analysis.pdf",
+    "kind": "analysis",
+    "topic": "Support Coverage",
+    "author": "Michael Lee",
+    "date": "2026-06-05T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-4",
+    "title": "vendor-management-analysis.pdf",
+    "kind": "analysis",
+    "topic": "Vendor Management",
+    "author": "Sarah Johnson",
+    "date": "2026-05-17T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-5",
+    "title": "process-change-model.xlsx",
+    "kind": "model",
+    "topic": "Process Change",
+    "author": "Sarah Johnson",
+    "date": "2026-05-15T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-6",
+    "title": "process-change-analysis.pdf",
+    "kind": "analysis",
+    "topic": "Process Change",
+    "author": "Jane Smith",
+    "date": "2026-05-21T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-7",
+    "title": "process-change-brief.docx",
+    "kind": "brief",
+    "topic": "Process Change",
+    "author": "Priya Nair",
+    "date": "2026-05-17T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-8",
+    "title": "support-coverage-deck.pptx",
+    "kind": "deck",
+    "topic": "Support Coverage",
+    "author": "Tom Becker",
+    "date": "2026-05-16T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-9",
+    "title": "automation-analysis.pdf",
+    "kind": "analysis",
+    "topic": "Automation",
+    "author": "Aisha Khan",
+    "date": "2026-05-16T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-10",
+    "title": "automation-brief.docx",
+    "kind": "brief",
+    "topic": "Automation",
+    "author": "Carlos Mendes",
+    "date": "2026-05-24T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-11",
+    "title": "hiring-model.xlsx",
+    "kind": "model",
+    "topic": "Hiring",
+    "author": "Aisha Khan",
+    "date": "2026-05-28T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-12",
+    "title": "support-coverage-brief.docx",
+    "kind": "brief",
+    "topic": "Support Coverage",
+    "author": "Michael Lee",
+    "date": "2026-06-02T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-13",
+    "title": "cost-optimization-model.xlsx",
+    "kind": "model",
+    "topic": "Cost Optimization",
+    "author": "Jane Smith",
+    "date": "2026-05-31T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-14",
+    "title": "vendor-management-model.xlsx",
+    "kind": "model",
+    "topic": "Vendor Management",
+    "author": "Michael Lee",
+    "date": "2026-06-11T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-15",
+    "title": "vendor-management-brief.docx",
+    "kind": "brief",
+    "topic": "Vendor Management",
+    "author": "Jane Smith",
+    "date": "2026-06-07T09:00:00.000Z",
+    "source": "SharePoint"
+  },
+  {
+    "id": "doc-16",
+    "title": "support-coverage-deck.pptx",
+    "kind": "deck",
+    "topic": "Support Coverage",
+    "author": "Jane Smith",
+    "date": "2026-05-22T09:00:00.000Z",
+    "source": "SharePoint"
+  }
+]

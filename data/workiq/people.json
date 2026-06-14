@@ -1,0 +1,72 @@
+[
+  {
+    "id": "laura-mitchell",
+    "name": "Laura Mitchell",
+    "role": "Senior Product Manager",
+    "dept": "Product",
+    "manager": "Carlos Mendes"
+  },
+  {
+    "id": "daniel-reyes",
+    "name": "Daniel Reyes",
+    "role": "Finance Lead",
+    "dept": "Finance",
+    "manager": "Carlos Mendes"
+  },
+  {
+    "id": "jane-smith",
+    "name": "Jane Smith",
+    "role": "SRE Lead",
+    "dept": "Engineering",
+    "manager": "Tom Becker"
+  },
+  {
+    "id": "ravi-patel",
+    "name": "Ravi Patel",
+    "role": "Customer Success Lead",
+    "dept": "Customer Success",
+    "manager": "Laura Mitchell"
+  },
+  {
+    "id": "michael-lee",
+    "name": "Michael Lee",
+    "role": "Operations Manager",
+    "dept": "Operations",
+    "manager": "Carlos Mendes"
+  },
+  {
+    "id": "sarah-johnson",
+    "name": "Sarah Johnson",
+    "role": "Finance Analyst",
+    "dept": "Finance",
+    "manager": "Daniel Reyes"
+  },
+  {
+    "id": "priya-nair",
+    "name": "Priya Nair",
+    "role": "Product Manager",
+    "dept": "Product",
+    "manager": "Laura Mitchell"
+  },
+  {
+    "id": "tom-becker",
+    "name": "Tom Becker",
+    "role": "Engineering Manager",
+    "dept": "Engineering",
+    "manager": "Carlos Mendes"
+  },
+  {
+    "id": "aisha-khan",
+    "name": "Aisha Khan",
+    "role": "Marketing Lead",
+    "dept": "Marketing",
+    "manager": "Carlos Mendes"
+  },
+  {
+    "id": "carlos-mendes",
+    "name": "Carlos Mendes",
+    "role": "VP Operations",
+    "dept": "Executive",
+    "manager": null
+  }
+]
