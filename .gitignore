@@ -42,3 +42,6 @@ next-env.d.ts
 
 # DecisionDNA runtime memory store
 /data/.memory-store.json
+
+# Demo recording (not committed)
+/demo-recording/

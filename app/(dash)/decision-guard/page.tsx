@@ -33,6 +33,12 @@ export default function DecisionGuardPage() {
   const [analysis, setAnalysis] = useState<DecisionAnalysis | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // Allow deep-linking a scenario, e.g. /decision-guard?scenario=lowconf-sponsorship
+  useEffect(() => {
+    const s = new URLSearchParams(window.location.search).get("scenario");
+    if (s && SCENARIOS.some((x) => x.id === s)) setScenario(s);
+  }, []);
+
   useEffect(() => {
     let active = true;
     setLoading(true);
