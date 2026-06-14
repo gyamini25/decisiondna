@@ -106,6 +106,16 @@ npm run typecheck
 
 ### Live mode (real Azure OpenAI)
 
+**One-command provision** (after `az login`):
+
+```bash
+./scripts/provision-azure.sh   # RG + Bicep deploy + models + writes .env (MOCK_LLM=0) + verifies
+npm run dev                    # now runs on real Azure OpenAI
+# tear down: az group delete -n decisiondna-rg
+```
+
+Or wire it manually:
+
 ```bash
 # 1. fill in Azure values in .env (endpoint, key, deployments)
 set -a; source .env; set +a
@@ -113,6 +123,9 @@ npm run test:azure          # verifies embeddings + chat are reachable
 # 2. set MOCK_LLM=0 in .env, then:
 npm run dev
 ```
+
+> `bicep/main.bicep` compiles clean (`az bicep build`) and provisions Azure OpenAI
+> (+ model deployments), AI Search, Cosmos serverless, Key Vault, and App Service.
 
 With live Azure OpenAI, candidate embeddings are computed once (batched) and
 cached, so each analysis makes only a query embedding + entity-extraction call.
