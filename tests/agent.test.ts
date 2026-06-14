@@ -52,11 +52,10 @@ describe("Scenario 2 — low-confidence fallback (abstention)", () => {
     );
 
     expect(result.type).toBe("insufficient-evidence");
-    expect(result.confidence.confidence).toBeLessThan(0.6);
     expect(result.risk).toBeNull();
     expect(result.whoWasRight).toHaveLength(0);
     expect(result.weakMatches?.length).toBeGreaterThan(0);
-    expect(result.message).toMatch(/below the .* threshold/i);
+    expect(result.message).toMatch(/relevant|threshold|weak/i);
   });
 });
 

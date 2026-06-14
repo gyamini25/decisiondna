@@ -179,8 +179,8 @@
         "temporalConsistency": 0.74,
         "directionalCorrectness": 1,
         "sFinal": 0.81,
-        "confidence": 0.98,
-        "rank": 0.79
+        "confidence": 0.99,
+        "rank": 0.8
       },
       "tags": [
         "restructure",
@@ -260,8 +260,8 @@
         "temporalConsistency": 0.55,
         "directionalCorrectness": 0.5,
         "sFinal": 0.64,
-        "confidence": 0.93,
-        "rank": 0.6
+        "confidence": 0.99,
+        "rank": 0.63
       },
       "tags": [
         "cost-cutting",
@@ -349,7 +349,7 @@
         "temporalConsistency": 0.9,
         "directionalCorrectness": 1,
         "sFinal": 0.89,
-        "confidence": 0.99,
+        "confidence": 1,
         "rank": 0.88
       },
       "tags": [
@@ -450,8 +450,8 @@
         "temporalConsistency": 0.81,
         "directionalCorrectness": 1,
         "sFinal": 0.76,
-        "confidence": 0.97,
-        "rank": 0.73
+        "confidence": 0.98,
+        "rank": 0.74
       },
       "tags": [
         "pricing",
@@ -556,8 +556,8 @@
         "temporalConsistency": 0.72,
         "directionalCorrectness": 0.5,
         "sFinal": 0.7,
-        "confidence": 0.96,
-        "rank": 0.67
+        "confidence": 0.99,
+        "rank": 0.69
       },
       "tags": [
         "outsourcing",
@@ -637,8 +637,8 @@
         "temporalConsistency": 0.5,
         "directionalCorrectness": 0.5,
         "sFinal": 0.49,
-        "confidence": 0.7,
-        "rank": 0.34
+        "confidence": 1,
+        "rank": 0.49
       },
       "tags": [
         "real-estate",
@@ -717,8 +717,8 @@
         "temporalConsistency": 0.6,
         "directionalCorrectness": 0.5,
         "sFinal": 0.53,
-        "confidence": 0.81,
-        "rank": 0.43
+        "confidence": 1,
+        "rank": 0.53
       },
       "tags": [
         "marketing",
@@ -798,8 +798,8 @@
         "temporalConsistency": 0.45,
         "directionalCorrectness": 1,
         "sFinal": 0.53,
-        "confidence": 0.76,
-        "rank": 0.4
+        "confidence": 0.94,
+        "rank": 0.5
       },
       "tags": [
         "procurement",
@@ -879,8 +879,8 @@
         "temporalConsistency": 0.7,
         "directionalCorrectness": 0.5,
         "sFinal": 0.59,
-        "confidence": 0.89,
-        "rank": 0.53
+        "confidence": 0.99,
+        "rank": 0.58
       },
       "tags": [
         "hiring",
@@ -960,8 +960,8 @@
         "temporalConsistency": 0.4,
         "directionalCorrectness": 1,
         "sFinal": 0.47,
-        "confidence": 0.6,
-        "rank": 0.28
+        "confidence": 0.92,
+        "rank": 0.43
       },
       "tags": [
         "infrastructure",
@@ -1029,8 +1029,8 @@
         "temporalConsistency": 0.3,
         "directionalCorrectness": 0,
         "sFinal": 0.26,
-        "confidence": 0.11,
-        "rank": 0.03
+        "confidence": 0.98,
+        "rank": 0.25
       },
       "tags": [
         "people",

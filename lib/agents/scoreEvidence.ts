@@ -8,7 +8,7 @@
  */
 
 import type { Citation, MatchCard, ScoredCandidate } from "@/lib/types";
-import { DEFAULT_CONFIDENCE_THRESHOLD } from "@/lib/confidence";
+import { DEFAULT_CONFIDENCE_THRESHOLD, surfaces } from "@/lib/confidence";
 
 export function toMatchCard(c: ScoredCandidate): MatchCard {
   return {
@@ -40,10 +40,14 @@ export function gateEvidence(
   ranked: ScoredCandidate[],
   threshold: number = envThreshold(),
 ): EvidenceGate {
-  const confident = ranked.filter(
-    (c) => c.confidence.confidence >= threshold,
+  // Abstention protocol: confident = signals agree (C ≥ threshold) AND evidence
+  // is genuinely strong (S_final ≥ relevance floor).
+  const confident = ranked.filter((c) =>
+    surfaces(c.confidence.confidence, c.sFinal, threshold),
   );
-  const weak = ranked.filter((c) => c.confidence.confidence < threshold);
+  const weak = ranked.filter(
+    (c) => !surfaces(c.confidence.confidence, c.sFinal, threshold),
+  );
   return {
     confident,
     weak,

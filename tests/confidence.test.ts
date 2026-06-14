@@ -3,7 +3,7 @@ import {
   computeConfidence,
   detectDisagreement,
   variance,
-  DEFAULT_CONFIDENCE_THRESHOLD,
+  surfaces,
 } from "@/lib/confidence";
 import { sFinal } from "@/lib/scoring";
 import type { SignalVector } from "@/lib/types";
@@ -40,8 +40,8 @@ describe("disagreement detector (semantic-only-match)", () => {
   });
 });
 
-describe("computeConfidence", () => {
-  it("high, concurring signals → high confidence category", () => {
+describe("computeConfidence — C = 1 − Var(signals)", () => {
+  it("strong concurring signals → high confidence; surfaces", () => {
     const s: SignalVector = {
       semantic: 0.9,
       entity: 0.85,
@@ -52,28 +52,25 @@ describe("computeConfidence", () => {
     expect(c.category).toBe("high");
     expect(c.confidence).toBeGreaterThan(0.8);
     expect(c.disagreement).toBe(false);
+    expect(surfaces(c.confidence, sFinal(s))).toBe(true);
   });
 
-  it("halves confidence and flags when disagreement fires", () => {
+  it("halves confidence and flags on a semantic-only bluff → does NOT surface", () => {
     const s: SignalVector = {
       semantic: 0.8,
       entity: 0.1,
       temporal: 0.1,
       directional: 0.5,
     };
-    const withGuard = computeConfidence(s, sFinal(s));
-    expect(withGuard.disagreement).toBe(true);
-    expect(withGuard.disagreementFlag).toBe("semantic-only-match");
-
-    // Confidence is exactly half of the no-guard agreement * sFinal.
-    const noGuard = computeConfidence(
-      { semantic: 0.6, entity: 0.1, temporal: 0.1, directional: 0.5 }, // sem<=0.7 → no guard
-      sFinal(s),
-    );
-    expect(withGuard.confidence).toBeLessThan(noGuard.confidence);
+    const c = computeConfidence(s, sFinal(s));
+    expect(c.disagreement).toBe(true);
+    expect(c.disagreementFlag).toBe("semantic-only-match");
+    // Guard halves C below 0.6 → abstains.
+    expect(c.confidence).toBeLessThan(0.6);
+    expect(surfaces(c.confidence, sFinal(s))).toBe(false);
   });
 
-  it("weak best match → below abstention threshold", () => {
+  it("uniformly weak but concurring signals → HIGH C, but abstains on evidence floor", () => {
     const s: SignalVector = {
       semantic: 0.4,
       entity: 0.2,
@@ -81,8 +78,11 @@ describe("computeConfidence", () => {
       directional: 0,
     };
     const c = computeConfidence(s, sFinal(s));
-    expect(c.confidence).toBeLessThan(DEFAULT_CONFIDENCE_THRESHOLD);
-    expect(c.category === "low" || c.category === "insufficient").toBe(true);
+    // Signals agree, so C is high — this is exactly why C alone can't abstain...
+    expect(c.confidence).toBeGreaterThan(0.6);
+    // ...but S_final is below the relevance floor, so the protocol abstains.
+    expect(sFinal(s)).toBeLessThan(0.5);
+    expect(surfaces(c.confidence, sFinal(s))).toBe(false);
   });
 
   it("reports diverging signals for the UI", () => {

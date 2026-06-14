@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Video, Search, Plus } from "lucide-react";
 import { Card, CardHeader, Avatar, Badge, Skeleton } from "@/components/ui/primitives";
+import { Modal } from "@/components/ui/modal";
 import { useJson } from "@/lib/use-fetch";
 import { formatDate } from "@/lib/ui";
 import type { Meeting, WorkMemory } from "@/lib/types";
@@ -16,8 +17,10 @@ export default function MeetingsPage() {
   const work = useJson<WorkMemory>("/api/workiq");
   const [tab, setTab] = useState<(typeof TABS)[number]>("Upcoming");
   const [q, setQ] = useState("");
+  const [added, setAdded] = useState<Meeting[]>([]);
+  const [showAdd, setShowAdd] = useState(false);
 
-  const all = data?.meetings ?? [];
+  const all = [...added, ...(data?.meetings ?? [])];
   const meetings = all.filter((m) => {
     if (q && !m.title.toLowerCase().includes(q.toLowerCase())) return false;
     if (tab === "My Meetings") return m.participants.some((p) => p.name === ME);
@@ -44,10 +47,21 @@ export default function MeetingsPage() {
           <h1 className="text-lg font-bold text-ink">Meetings</h1>
           <p className="text-xs text-ink-soft">All meetings and transcripts across the organization (Work IQ).</p>
         </div>
-        <button className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-2 text-xs font-medium text-white hover:bg-brand-700">
+        <button onClick={() => setShowAdd(true)} className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-2 text-xs font-medium text-white hover:bg-brand-700">
           <Plus size={14} /> Add Meeting
         </button>
       </div>
+
+      {showAdd && (
+        <AddMeetingModal
+          onClose={() => setShowAdd(false)}
+          onAdd={(m) => {
+            setAdded((a) => [m, ...a]);
+            setTab(m.status === "live" ? "Live" : "Upcoming");
+            setShowAdd(false);
+          }}
+        />
+      )}
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex gap-1.5">
@@ -160,6 +174,60 @@ function ImpactRow({ label, value, tone }: { label: string; value: number; tone:
     <div className="flex items-center justify-between text-[11px]">
       <span className="flex items-center gap-1.5 text-ink-soft"><span className={`h-2 w-2 rounded-full ${dot}`} />{label}</span>
       <span className="font-semibold text-ink">{value}</span>
+    </div>
+  );
+}
+
+function AddMeetingModal({ onClose, onAdd }: { onClose: () => void; onAdd: (m: Meeting) => void }) {
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("2026-06-18");
+  const [people, setPeople] = useState("Laura Mitchell, Daniel Reyes");
+  const [live, setLive] = useState(false);
+
+  function submit() {
+    if (!title.trim()) return;
+    onAdd({
+      id: `mtg-new-${title.toLowerCase().replace(/\s+/g, "-")}`,
+      title: title.trim(),
+      date,
+      status: live ? "live" : "upcoming",
+      participants: people.split(",").map((p) => ({ name: p.trim(), role: "" })).filter((p) => p.name),
+    });
+  }
+
+  return (
+    <Modal title="Add Meeting" onClose={onClose}>
+      <div className="space-y-3">
+        <Field label="Title">
+          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="e.g. Q3 Planning — Cost Review"
+            className="w-full rounded-md border border-line bg-surface-2 px-3 py-2 text-sm outline-none focus:border-brand-400" />
+        </Field>
+        <Field label="Date">
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)}
+            className="w-full rounded-md border border-line bg-surface-2 px-3 py-2 text-sm outline-none focus:border-brand-400" />
+        </Field>
+        <Field label="Participants (comma-separated)">
+          <input value={people} onChange={(e) => setPeople(e.target.value)}
+            className="w-full rounded-md border border-line bg-surface-2 px-3 py-2 text-sm outline-none focus:border-brand-400" />
+        </Field>
+        <label className="flex items-center gap-2 text-xs text-ink-soft">
+          <input type="checkbox" checked={live} onChange={(e) => setLive(e.target.checked)} className="accent-brand-600" />
+          Start as a live meeting
+        </label>
+        <div className="flex justify-end gap-2 pt-1">
+          <button onClick={onClose} className="rounded-md border border-line px-3 py-1.5 text-xs text-ink-soft hover:bg-surface-2">Cancel</button>
+          <button onClick={submit} disabled={!title.trim()} className="rounded-md bg-brand-600 px-3 py-1.5 text-xs font-medium text-white disabled:opacity-50">Schedule Meeting</button>
+        </div>
+      </div>
+    </Modal>
+  );
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <label className="mb-1 block text-[11px] font-medium text-ink-soft">{label}</label>
+      {children}
     </div>
   );
 }

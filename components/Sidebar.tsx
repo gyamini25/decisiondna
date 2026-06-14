@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { CopilotPanel } from "@/components/CopilotPanel";
 import {
   Home,
   Video,
@@ -39,6 +41,7 @@ const NAV: NavItem[] = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const [copilotOpen, setCopilotOpen] = useState(false);
 
   return (
     <aside className="flex h-screen w-60 shrink-0 flex-col bg-sidebar text-sidebar-fg">
@@ -89,12 +92,17 @@ export function Sidebar() {
           <p className="mt-0.5 text-[10px] text-sidebar-muted">
             Ask anything about past decisions.
           </p>
-          <button className="mt-2 w-full rounded-md bg-brand-600 px-2 py-1.5 text-[11px] font-medium text-white hover:bg-brand-700">
+          <button
+            onClick={() => setCopilotOpen(true)}
+            className="mt-2 w-full rounded-md bg-brand-600 px-2 py-1.5 text-[11px] font-medium text-white hover:bg-brand-700"
+          >
             Ask Copilot
           </button>
         </div>
         <p className="mt-3 text-center text-[10px] text-sidebar-muted">v2.0.0</p>
       </div>
+
+      {copilotOpen && <CopilotPanel onClose={() => setCopilotOpen(false)} />}
     </aside>
   );
 }

@@ -2,8 +2,10 @@
 
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { Search, X } from "lucide-react";
+import { Search, X, Loader2 } from "lucide-react";
 import { Card, ConfidenceBar, RiskBadge, Badge, Skeleton } from "@/components/ui/primitives";
+import { Modal } from "@/components/ui/modal";
+import type { DecisionAnalysis } from "@/lib/types";
 import { formatDate } from "@/lib/ui";
 import type { DecisionListItem } from "@/lib/decisions-view";
 import type { DecisionRecord, StoredDecision } from "@/lib/types";
@@ -25,6 +27,7 @@ function DecisionsInner() {
   const [items, setItems] = useState<DecisionListItem[] | null>(null);
   const [selected, setSelected] = useState<string | null>(params.get("id"));
   const [page, setPage] = useState(1);
+  const [showNew, setShowNew] = useState(false);
 
   useEffect(() => {
     const url = `/api/decisions?filter=${filter}&q=${encodeURIComponent(q)}`;
@@ -48,10 +51,12 @@ function DecisionsInner() {
             Track, analyze, and learn from organizational decisions.
           </p>
         </div>
-        <button className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-2 text-xs font-medium text-white hover:bg-brand-700">
+        <button onClick={() => setShowNew(true)} className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-2 text-xs font-medium text-white hover:bg-brand-700">
           + New Decision
         </button>
       </div>
+
+      {showNew && <NewDecisionModal onClose={() => setShowNew(false)} />}
 
       <div className="flex flex-wrap items-center gap-3">
         <div className="relative w-72">
@@ -276,6 +281,79 @@ function NewDetail({ decision }: { decision: StoredDecision }) {
         <p className="mt-1 text-[11px] text-ink-soft">{decision.confidence.explanation}</p>
       </div>
     </div>
+  );
+}
+
+function NewDecisionModal({ onClose }: { onClose: () => void }) {
+  const [text, setText] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [result, setResult] = useState<DecisionAnalysis | null>(null);
+
+  async function analyze() {
+    if (text.trim().length < 8 || busy) return;
+    setBusy(true);
+    try {
+      const res = await fetch("/api/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ transcript: text }),
+      });
+      setResult(await res.json());
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <Modal title="New Decision — Analyze" onClose={onClose} width={560}>
+      <div className="space-y-3">
+        <p className="text-xs text-ink-soft">
+          Describe a decision or paste a meeting snippet. DecisionDNA will detect it
+          and analyze it against organizational memory.
+        </p>
+        <textarea
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          rows={3}
+          placeholder="e.g. We're considering reducing customer support staffing by 20% to cut costs."
+          className="w-full rounded-md border border-line bg-surface-2 p-3 text-sm outline-none focus:border-brand-400"
+        />
+        <div className="flex justify-end gap-2">
+          <button onClick={onClose} className="rounded-md border border-line px-3 py-1.5 text-xs text-ink-soft hover:bg-surface-2">Cancel</button>
+          <button onClick={analyze} disabled={text.trim().length < 8 || busy}
+            className="inline-flex items-center gap-1.5 rounded-md bg-brand-600 px-3 py-1.5 text-xs font-medium text-white disabled:opacity-50">
+            {busy && <Loader2 size={13} className="animate-spin" />} Analyze
+          </button>
+        </div>
+
+        {result && (
+          <div className="rounded-lg border border-line bg-surface-2 p-3">
+            {result.type === "insufficient-evidence" ? (
+              <>
+                <p className="text-xs font-semibold text-risk-med">Insufficient Historical Data</p>
+                <p className="mt-1 text-[11px] text-ink-soft">{result.message}</p>
+              </>
+            ) : (
+              <>
+                <div className="flex items-center justify-between">
+                  <p className="text-xs font-semibold text-ink">Closest precedent</p>
+                  <RiskBadge level={result.risk?.overall ?? "Low"} />
+                </div>
+                <p className="mt-1 text-sm text-ink">
+                  {result.matches[0]?.title}{" "}
+                  <span className="text-brand-400">{result.matches[0]?.matchPct}% match</span>
+                </p>
+                <p className="mt-1 text-[11px] text-ink-soft">{result.matches[0]?.outcomeSummary}</p>
+                <div className="mt-2 flex items-center justify-between border-t border-line pt-2 text-[11px]">
+                  <span className="text-ink-soft">Confidence {Math.round(result.confidence.confidence * 100)}%</span>
+                  <a href="/decision-guard" className="font-medium text-brand-400 hover:text-brand-300">Open in Decision Guard →</a>
+                </div>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+    </Modal>
   );
 }
 

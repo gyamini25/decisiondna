@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { retrieveSimilar } from "@/lib/search";
+import { surfaces } from "@/lib/confidence";
 import { MockLLMClient } from "@/lib/llm/mock-llm";
 
 const llm = new MockLLMClient();
@@ -13,8 +14,8 @@ describe("hybrid retrieval (mock LLM) — hero scenario", () => {
     const top3 = ranked.slice(0, 3).map((c) => c.record.id);
     expect(ranked[0].record.id).toBe("dec-2023-0312-support-staffing");
     expect(top3.filter((id) => id.includes("support")).length).toBeGreaterThanOrEqual(2);
-    // Hero surfaces above the abstention threshold.
-    expect(ranked[0].confidence.confidence).toBeGreaterThan(0.6);
+    // Hero clears the abstention protocol (C ≥ 0.6 AND S_final ≥ 0.5).
+    expect(surfaces(ranked[0].confidence.confidence, ranked[0].sFinal)).toBe(true);
   });
 });
 
@@ -24,7 +25,9 @@ describe("hybrid retrieval (mock LLM) — low-confidence scenario", () => {
       { text: "Sponsor a Formula 1 motorsport team for brand awareness in new markets", direction: "up", referenceDate: "2026-06-13" },
       llm,
     );
-    // No precedent clears the abstention threshold → the pipeline will abstain.
-    expect(ranked[0].confidence.confidence).toBeLessThan(0.6);
+    // No precedent clears the abstention protocol → the pipeline will abstain
+    // (evidence strength S_final is below the relevance floor, even if signals agree).
+    expect(ranked.some((c) => surfaces(c.confidence.confidence, c.sFinal))).toBe(false);
+    expect(ranked[0].sFinal).toBeLessThan(0.5);
   });
 });

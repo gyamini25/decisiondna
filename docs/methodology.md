@@ -22,54 +22,52 @@ S_final = 0.35·S_sem + 0.30·S_ent + 0.20·S_time + 0.15·S_dir
 Each term is decomposable and shown in the UI breakdown, so "91% match" is never
 a black box — it is `0.35·0.91 + 0.30·0.78 + 0.20·0.86 + 0.15·1.0`.
 
-## 2. Confidence ≠ score magnitude
-
-Confidence is about **whether the signals agree**, combined with **whether there
-is a real match at all**:
+## 2. Confidence = signal agreement (not score magnitude)
 
 ```
-agreement   = 1 − Var([S_sem, S_ent, S_time, S_dir])
-sufficiency = logistic(S_final; x0 = 0.42, k = 13)
-confidence  = agreement · sufficiency
-rank        = S_final · confidence
+C = 1 − Var([S_sem, S_ent, S_time, S_dir])      confidence = agreement
+R = S_final × C                                  rank — punishes uncertain matches
 ```
 
-### Why not the naive `C = 1 − Var(signals)`?
+Confidence is **how much the four signals agree**, not how high the score is. Two
+matches with the same `S_final` are ranked apart by `R` when one has concurring
+signals and the other does not.
 
-The variance of four values in `[0,1]` is bounded by `0.25`, so `1 − Var` lives
-in `[0.75, 1.0]` — it can never cross a 0.6 abstention threshold, and four
-**uniformly weak** signals "agree" and would look falsely confident. We therefore
-keep agreement (`1 − Var`) as a first-class *multiplier* (confidence is still
-about agreement, not raw magnitude) but multiply by a **sufficiency gate** on
-`S_final`, so that BOTH "signals disagree" AND "nothing matched well" drive the
-system to abstain. The logistic is centered so it separates a genuine match from
-noise for both backends: real Azure OpenAI embeddings (`S_final ≈ 0.7 → ~1.0`)
-and the offline lexical mock (`S_final ≈ 0.49 → ~0.7`), while unrelated proposals
-(`S_final ≲ 0.37`) fall below threshold. The threshold itself is user-tunable
-(Settings → confidence threshold).
+## 3. Abstention protocol (reliability/safety)
 
-## 3. Disagreement detector (anti-bluff)
+Surface a match only when **both** hold; otherwise return `insufficient-evidence`:
+
+```
+C ≥ 0.6          signals agree (not internally contradictory)
+S_final ≥ 0.5    evidence is genuinely strong (a real match exists)
+```
+
+**Why two conditions, not just `C > 0.6`?** Variance of four values in `[0,1]`
+keeps `1 − Var` in `[0.75, 1.0]`, so the confidence test *alone* can never express
+"nothing matched" — four uniformly weak but concurring signals still agree (high
+C). The `S_final ≥ 0.5` relevance floor is the second half of the protocol (from
+the RAG spec: "similarity < 0.5 → low confidence"). The two conditions catch the
+two distinct failure modes:
+
+- **Internally contradictory match** → caught by `C` (the disagreement guard
+  below pushes `C` under 0.6).
+- **Nothing matched well** → caught by the `S_final` floor.
+
+When the system abstains it shows the **top-3 weak matches**, names which signals
+diverge, and **does not** fabricate risk scores or objections. The threshold is
+user-tunable (Settings → confidence threshold).
+
+## 3a. Disagreement detector (anti-bluff)
 
 ```
 if S_sem > 0.7 and S_ent < 0.3 and S_time < 0.3:
     flag = "semantic-only-match"
-    agreement *= 0.5
+    C *= 0.5            # pushes C below 0.6 → abstains
 ```
 
 A proposal that *sounds* like a precedent but shares no entities and no temporal
-alignment is the classic semantic bluff — we detect it and halve confidence.
-
-## 4. Abstention protocol (reliability/safety)
-
-If **no** candidate clears the confidence threshold, the pipeline returns
-`insufficient-evidence`:
-
-- shows the **top-3 weak matches**, clearly labeled low-confidence,
-- names **which signals disagree**,
-- and **does not** run risk scoring or surface objections — it refuses to
-  fabricate conclusions from weak evidence.
-
-This is the behavior judges probe with "what if there's no data?".
+alignment is the classic semantic bluff — we detect it and halve confidence so it
+fails the `C ≥ 0.6` test.
 
 ## 5. Auditability
 

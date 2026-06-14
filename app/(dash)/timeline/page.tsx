@@ -9,7 +9,7 @@ const MILESTONES = [
   { icon: FileText, label: "Proposal Made", date: "Jun 13, 09:15", desc: "Laura Mitchell proposed reducing customer support staffing by 20%.", tone: "text-brand-400" },
   { icon: MessageSquareWarning, label: "Objections Raised", date: "Jun 13, 09:22", desc: "Ravi Patel & Jane Smith raised concerns about APAC customer impact and incident response.", tone: "text-risk-med" },
   { icon: Sparkles, label: "Analysis Completed", date: "Jun 13, 09:24", desc: "DecisionDNA surfaced 3 matching precedents (Foundry IQ), confidence-graded.", tone: "text-brand-400" },
-  { icon: ShieldAlert, label: "Guard Activated", date: "Jun 13, 09:25", desc: "HIGH risk — the closest precedent went negative and was later reversed.", tone: "text-risk-high" },
+  { icon: ShieldAlert, label: "Risk Flagged", date: "Jun 13, 09:25", desc: "Decision Guard flagged HIGH risk — the closest precedent went negative and was later reversed.", tone: "text-risk-high" },
   { icon: Clock, label: "Approval Pending", date: "Jun 13, 09:30", desc: "Routed to manager via Teams Adaptive Card (Power Automate).", tone: "text-risk-med" },
   { icon: Database, label: "Decision Stored", date: "Jun 13, 09:31", desc: "Written to organizational memory with the full evidence chain.", tone: "text-risk-low" },
 ];

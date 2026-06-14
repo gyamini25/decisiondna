@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Card } from "@/components/ui/primitives";
 import { TeamsMeeting } from "@/components/guard/TeamsMeeting";
+import { DecisionTimeline } from "@/components/DecisionTimeline";
 import { MatchCardView } from "@/components/guard/MatchCardView";
 import { WhoWasRight } from "@/components/guard/WhoWasRight";
 import { RiskPanel, ConfidenceMeter } from "@/components/guard/RiskPanel";
@@ -202,18 +203,7 @@ export default function DecisionGuardPage() {
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           <Card className="p-4">
             <p className="mb-3 text-xs font-semibold text-ink">Decision Timeline</p>
-            <div className="flex justify-between gap-1">
-              {["Proposal", "Objections", "Analysis", "Guard", "Approval", "Stored"].map(
-                (m, i) => (
-                  <div key={m} className="flex flex-1 flex-col items-center text-center">
-                    <div
-                      className={`h-2.5 w-2.5 rounded-full ${i <= 3 ? "bg-brand-500" : "bg-line"}`}
-                    />
-                    <span className="mt-1 text-[9px] text-ink-soft">{m}</span>
-                  </div>
-                ),
-              )}
-            </div>
+            <DecisionTimeline />
           </Card>
 
           <Card className="p-4">

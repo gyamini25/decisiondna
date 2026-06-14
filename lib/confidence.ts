@@ -1,23 +1,20 @@
 /**
- * DecisionDNA — explainable confidence model.
+ * DecisionDNA — explainable confidence model (judge-proof framing).
  *
- * Design (defended in docs/methodology.md):
+ *   S_final = Σ wᵢ·Sᵢ                       (lib/scoring)
+ *   C       = 1 − Var(S₁…S₄)                confidence = signal AGREEMENT
+ *   R       = S_final × C                   rank — punishes uncertain matches
  *
- *   agreement   = 1 - Var(signals)              // signals concurring → high
- *   sufficiency = logistic(sFinal; x0=0.5, k=10) // is there a real match?
- *   confidence  = agreement · sufficiency
+ * Abstention protocol — surface a match only when BOTH hold:
+ *   • C ≥ 0.6                 (signals agree — not internally contradictory)
+ *   • S_final ≥ 0.5           (there is genuine evidence strength — a real match)
  *
- * Why not the naive `C = 1 - Var(signals)` alone? Variance of four values in
- * [0,1] is bounded by 0.25, so `1 - Var` lives in [0.75, 1.0] and can never
- * cross a 0.6 abstention threshold — worse, four *uniformly weak* signals
- * "agree" and would look confident. We keep agreement (1 - Var) as a
- * first-class multiplier (confidence is still about signal agreement, not raw
- * magnitude) but multiply by a sufficiency gate on S_final so that BOTH
- * "signals disagree" AND "nothing matched well" drive the system to abstain.
- *
- * Disagreement guard: a high semantic score with low entity AND low temporal
- * support is the classic "semantic bluff" — meaning overlaps but the facts and
- * timing do not. We flag it and halve agreement.
+ * Why both? Variance of four values in [0,1] keeps `1 − Var` in [0.75, 1], so the
+ * confidence test alone cannot express "nothing matched" (uniformly weak but
+ * concurring signals still agree). The S_final relevance floor is the second half
+ * of the protocol (from the RAG spec: "similarity < 0.5 → low confidence"), and
+ * the disagreement guard below is what makes C itself cross 0.6 for a semantic
+ * bluff. Together they are the formal abstention protocol.
  */
 
 import type {
@@ -27,6 +24,8 @@ import type {
 } from "@/lib/types";
 
 export const DEFAULT_CONFIDENCE_THRESHOLD = 0.6;
+/** Minimum S_final for a candidate to count as a real match (evidence floor). */
+export const RELEVANCE_FLOOR = 0.5;
 
 /** Population variance of a numeric array. */
 export function variance(nums: number[]): number {
@@ -59,28 +58,20 @@ function clamp01(x: number): number {
 }
 
 /**
- * Sufficiency gate — logistic on S_final. Suppresses uniformly weak matches (so
- * abstention can fire) while letting strong evidence through. Centered at 0.42
- * so it separates a genuine match from noise for BOTH backends: real Azure
- * OpenAI embeddings (S_final ≈ 0.7 → ~1.0) and the lexical mock (S_final ≈ 0.49
- * → ~0.7), while unrelated proposals (S_final ≲ 0.37) fall below threshold.
+ * Whether a candidate clears the abstention protocol: signals agree (C) AND the
+ * evidence is genuinely strong (S_final).
  */
-export const SUFFICIENCY_X0 = 0.42;
-export const SUFFICIENCY_K = 13;
-
-export function sufficiency(
+export function surfaces(
+  confidence: number,
   sFinalValue: number,
-  x0 = SUFFICIENCY_X0,
-  k = SUFFICIENCY_K,
-): number {
-  return 1 / (1 + Math.exp(-k * (sFinalValue - x0)));
+  threshold = DEFAULT_CONFIDENCE_THRESHOLD,
+): boolean {
+  return confidence >= threshold && sFinalValue >= RELEVANCE_FLOOR;
 }
 
 /**
- * Compute confidence from the four signals and the composite sFinal.
- *
- * @param signals raw signal vector (each 0..1)
- * @param sFinalValue weighted composite (pass from lib/scoring.sFinal)
+ * Compute confidence C = 1 − Var(signals) (with the semantic-bluff guard halving
+ * it). @param sFinalValue is used only for the explanation/relevance context.
  */
 export function computeConfidence(
   signals: SignalVector,
@@ -93,12 +84,12 @@ export function computeConfidence(
     signals.directional,
   ];
   const v = variance(values);
-  let agreement = 1 - v;
+  let c = 1 - v;
 
   const disagreement = detectDisagreement(signals);
-  if (disagreement) agreement *= 0.5;
+  if (disagreement) c *= 0.5;
 
-  const confidence = clamp01(agreement * sufficiency(sFinalValue));
+  const confidence = clamp01(c);
   const category = categorize(confidence);
 
   // Which signals diverge most from the mean (for the UI "disagreeing signals").
@@ -118,6 +109,7 @@ export function computeConfidence(
   const explanation = buildExplanation(
     category,
     confidence,
+    sFinalValue,
     disagreement,
     divergingSignals,
   );
@@ -136,22 +128,29 @@ export function computeConfidence(
 function buildExplanation(
   category: ConfidenceCategory,
   confidence: number,
+  sFinalValue: number,
   disagreement: boolean,
   diverging: string[],
 ): string {
   const pct = Math.round(confidence * 100);
+  const rel = Math.round(sFinalValue * 100);
   if (disagreement) {
-    return `Confidence downgraded to ${pct}% — semantic-only match detected: meaning overlaps but entity and temporal evidence do not support it.`;
+    return `Confidence downgraded to ${pct}% — semantic-only match: meaning overlaps but entity and temporal evidence do not support it.`;
+  }
+  if (sFinalValue < RELEVANCE_FLOOR) {
+    return `Signals agree (${pct}% confidence) but evidence strength is only ${rel}% — below the ${Math.round(
+      RELEVANCE_FLOOR * 100,
+    )}% bar for a reliable match.`;
   }
   switch (category) {
     case "high":
-      return `High confidence (${pct}%) — all four signals concur and the evidence is strong.`;
+      return `High confidence (${pct}%) — all four signals concur on strong evidence (S_final ${rel}%).`;
     case "moderate":
-      return `Moderate confidence (${pct}%) — signals broadly agree with reasonable evidence support.`;
+      return `Moderate confidence (${pct}%) — signals broadly agree with reasonable evidence (S_final ${rel}%).`;
     case "low":
       return diverging.length
         ? `Low confidence (${pct}%) — signals disagree (${diverging.join(", ")}).`
-        : `Low confidence (${pct}%) — evidence is weak.`;
+        : `Low confidence (${pct}%) — signals diverge.`;
     default:
       return `Insufficient evidence (${pct}%) — no historical decision matched strongly enough to rely on.`;
   }

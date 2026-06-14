@@ -17,6 +17,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { Card, CardHeader, Badge, ConfidenceBar, RiskBadge, Skeleton, Avatar } from "@/components/ui/primitives";
+import { DecisionTimeline } from "@/components/DecisionTimeline";
 import { useJson } from "@/lib/use-fetch";
 import { formatDate } from "@/lib/ui";
 import type { Alert, Meeting, WorkMemory } from "@/lib/types";
@@ -34,8 +35,6 @@ interface ReportData {
   aiInsights: { kind: string; text: string }[];
   whoWasRight: { stakeholder: string; role: string; prediction: string; verdict: "Correct" | "Incorrect" }[];
 }
-
-const TIMELINE = ["Proposal", "Objections", "Analysis", "Guard", "Approval", "Stored"];
 
 export default function HomePage() {
   const reports = useJson<ReportData>("/api/reports");
@@ -150,17 +149,9 @@ export default function HomePage() {
 
         {/* Decision timeline strip */}
         <Card className="lg:col-span-1">
-          <CardHeader title="Decision Timeline" />
+          <CardHeader title="Decision Timeline" subtitle="Reduce Support Staffing by 20%" />
           <div className="p-4">
-            <div className="flex justify-between">
-              {TIMELINE.map((m, i) => (
-                <div key={m} className="flex flex-1 flex-col items-center text-center">
-                  <div className={`h-2.5 w-2.5 rounded-full ${i <= 3 ? "bg-brand-500" : "bg-line"}`} />
-                  <span className="mt-1 text-[9px] text-ink-soft">{m}</span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-3 text-[11px] text-ink-soft">Latest: Reduce Support Staffing — Guard activated, approval pending.</p>
+            <DecisionTimeline caption="Currently at Approval Pending — routed to manager via Teams after Decision Guard flagged HIGH risk." />
           </div>
         </Card>
 

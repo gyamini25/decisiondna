@@ -13,7 +13,7 @@
  * stand-in for Application Insights.
  */
 
-import type { DecisionAnalysis, TelemetryStep } from "@/lib/types";
+import type { DecisionAnalysis, ScoredCandidate, TelemetryStep } from "@/lib/types";
 import { getLLMClient, type LLMClient } from "@/lib/llm";
 import {
   detectDecision,
@@ -36,6 +36,19 @@ export interface AnalyzeOptions {
   threshold?: number;
   referenceDate?: string;
   llm?: LLMClient;
+}
+
+/** Human-readable reason the pipeline abstained, based on which gate failed. */
+function abstentionReason(top: ScoredCandidate | null): string {
+  if (!top) return "No comparable historical decision was found.";
+  const c = Math.round(top.confidence.confidence * 100);
+  const rel = Math.round(top.sFinal * 100);
+  if (top.sFinal < 0.5) {
+    return `The closest precedent is only ${rel}% relevant (evidence strength S_final) — below the 50% bar for a reliable match. Showing the closest weak matches.`;
+  }
+  return `Signals disagree on ${
+    top.confidence.divergingSignals.join(", ") || "multiple dimensions"
+  } — confidence ${c}% is below the 60% threshold. Showing the closest weak matches.`;
 }
 
 export async function analyzeDecision(
@@ -120,13 +133,7 @@ export async function analyzeDecision(
       confidence: topConfidence,
       evidenceTotals,
       weakMatches: ranked.slice(0, 3).map(toMatchCard),
-      message: `Confidence ${Math.round(
-        topConfidence.confidence * 100,
-      )}% is below the ${Math.round(
-        threshold * 100,
-      )}% threshold for reliable analysis. Showing the closest weak matches; signals diverge on ${
-        topConfidence.divergingSignals.join(", ") || "multiple dimensions"
-      }.`,
+      message: abstentionReason(gate.top),
       telemetry,
     };
   }
