@@ -169,7 +169,7 @@ export function MemoryGraph({ data }: { data: GraphData }) {
         <div className="rounded-xl border border-line bg-surface p-4">
           <p className="text-xs font-semibold text-ink">Node Detail</p>
           {active ? (
-            <div className="mt-2 space-y-1">
+            <div className="mt-2 space-y-2">
               <p className="text-sm font-semibold text-ink">{active.label}</p>
               <span
                 className="inline-block rounded-full px-2 py-0.5 text-[10px] font-medium capitalize text-white"
@@ -177,12 +177,19 @@ export function MemoryGraph({ data }: { data: GraphData }) {
               >
                 {active.type}
               </span>
-              {active.meta &&
-                Object.entries(active.meta).map(([k, v]) => (
-                  <p key={k} className="text-[11px] text-ink-soft">
-                    <span className="capitalize">{k}</span>: {String(v)}
-                  </p>
-                ))}
+              <p className="text-[11px] leading-relaxed text-ink-soft">
+                {active.description}
+              </p>
+              {active.meta && (
+                <div className="space-y-0.5 border-t border-line pt-2">
+                  {Object.entries(active.meta).map(([k, v]) => (
+                    <p key={k} className="text-[11px] text-ink-soft">
+                      <span className="capitalize text-ink-faint">{k}</span>:{" "}
+                      {String(v)}
+                    </p>
+                  ))}
+                </div>
+              )}
             </div>
           ) : (
             <p className="mt-2 text-[11px] text-ink-soft">

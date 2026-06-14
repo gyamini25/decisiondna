@@ -13,8 +13,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { Card } from "@/components/ui/primitives";
-import { TranscriptFeed } from "@/components/guard/TranscriptFeed";
-import { VideoGrid } from "@/components/guard/VideoGrid";
+import { TeamsMeeting } from "@/components/guard/TeamsMeeting";
 import { MatchCardView } from "@/components/guard/MatchCardView";
 import { WhoWasRight } from "@/components/guard/WhoWasRight";
 import { RiskPanel, ConfidenceMeter } from "@/components/guard/RiskPanel";
@@ -83,16 +82,9 @@ export default function DecisionGuardPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:h-[640px] lg:grid-cols-[35%_minmax(0,1fr)_30%]">
-        {/* LEFT — live meeting (video tiles) + transcript */}
-        <Card className="flex flex-col overflow-hidden">
-          {doc && (
-            <>
-              <VideoGrid participants={doc.participants} activeSpeaker="Laura Mitchell" />
-              <div className="min-h-0 flex-1 border-t border-line">
-                <TranscriptFeed doc={doc} detection={analysis?.detection} />
-              </div>
-            </>
-          )}
+        {/* LEFT — live Microsoft Teams meeting */}
+        <Card className="overflow-hidden">
+          {doc && <TeamsMeeting doc={doc} detection={analysis?.detection} />}
         </Card>
 
         {/* CENTER — analysis */}
