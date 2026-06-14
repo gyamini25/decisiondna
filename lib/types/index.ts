@@ -252,6 +252,8 @@ export interface DecisionAnalysis {
   risk: RiskAssessment | null;
   recommendations: Recommendation[];
   citations: Citation[];
+  /** Foundry IQ grounding summary (cited, source-diversity-checked evidence). */
+  grounding?: GroundingSummary;
   /** Aggregate confidence of the top match (or best weak match when abstaining). */
   confidence: ConfidenceResult;
   evidenceTotals: { meetings: number; emails: number; documents: number; chats: number };
@@ -259,6 +261,13 @@ export interface DecisionAnalysis {
   weakMatches?: MatchCard[];
   message?: string;
   telemetry: TelemetryStep[];
+}
+
+export interface GroundingSummary {
+  groundedSources: number;
+  sourceDiversityScore: number;
+  totalEvidenceCount: number;
+  passed: boolean;
 }
 
 export interface TelemetryStep {

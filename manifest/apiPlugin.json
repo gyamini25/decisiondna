@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.1/schema.json",
+  "schema_version": "v2.1",
+  "name_for_human": "DecisionDNA",
+  "description_for_human": "Retrieve similar past decisions, evidence, objections, who-was-right, and risk before approving a decision.",
+  "description_for_model": "Analyzes a proposed organizational decision against historical decision memory using a four-signal evidence model with confidence and abstention. Returns similar decisions with citations, the who-was-right ledger, risk assessment, and recommended mitigations.",
+  "namespace": "decisiondna",
+  "capabilities": {
+    "response_semantics": {
+      "data_path": "$.matches",
+      "properties": {
+        "title": "$.title",
+        "subtitle": "$.outcomeSummary"
+      }
+    }
+  },
+  "functions": [
+    {
+      "name": "analyzeDecision",
+      "description": "Analyze a proposed decision or meeting transcript and return grounded similar decisions, who-was-right, risk, and recommendations.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.matches",
+          "properties": { "title": "$.title", "subtitle": "$.outcomeSummary" }
+        }
+      }
+    },
+    {
+      "name": "listDecisions",
+      "description": "List decisions in organizational memory with risk and confidence."
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "OpenApi",
+      "auth": { "type": "None" },
+      "spec": { "url": "openapi.json" },
+      "run_for_functions": ["analyzeDecision", "listDecisions"]
+    }
+  ]
+}

@@ -33,6 +33,22 @@ See [docs/architecture.md](docs/architecture.md) for the full design, and [bicep
 
 ---
 
+## Microsoft IQ integration (required) · Track: 💼 Enterprise Agents (M365 Copilot)
+
+DecisionDNA integrates **two** Microsoft IQ intelligence layers:
+
+| IQ layer | How DecisionDNA uses it | Code |
+|---|---|---|
+| **Foundry IQ** | Agentic, **cited, grounded** knowledge retrieval over the decision memory, with a **source-diversity grounding check** to reduce hallucination — surfaced in the UI as "Foundry IQ — Grounded Evidence". | [lib/foundryiq/](lib/foundryiq/) |
+| **Work IQ** | Organizational context — meetings, people, and each stakeholder's prediction-validation history — that powers decision detection and the "Who Was Right?" people graph. | [lib/workiq/](lib/workiq/) |
+
+It ships as a **declarative agent for Microsoft 365 Copilot** with an API plugin
+([manifest/](manifest/)) so Copilot Chat can call the DecisionDNA pipeline
+directly — the Enterprise Agents surface. Foundry IQ grounding and Work IQ context
+are both visible on the Decision Guard screen.
+
+---
+
 ## The judge-proof scoring engine
 
 Decision correctness is a **weighted composite of four independent signals**, not cosine similarity alone:
@@ -126,6 +142,9 @@ Full script: [docs/demo-script.md](docs/demo-script.md).
 | Reliability & Safety | 20% | Confidence estimator + abstention protocol; never fabricates analysis from weak evidence |
 | Creativity & Originality | 15% | "Who Was Right?" ledger — surfaces which stakeholders predicted outcomes |
 | UX & Presentation | 15% | 9-screen dashboard, Decision Guard hero, Memory Graph, evidence breakdowns |
+| Community vote | 10% | Vote for DecisionDNA in the [Agents League Discord](https://aka.ms/agentsleague/discord) 🗳️ |
+
+> **Required Microsoft IQ:** ✅ Foundry IQ (grounded cited retrieval) + Work IQ (org context). See above.
 
 ---
 

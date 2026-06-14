@@ -1,0 +1,63 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "DecisionDNA API",
+    "description": "Organizational decision intelligence — analyze decisions against historical memory.",
+    "version": "2.0.0"
+  },
+  "servers": [{ "url": "https://decisiondna.example.com" }],
+  "paths": {
+    "/api/analyze": {
+      "post": {
+        "operationId": "analyzeDecision",
+        "summary": "Analyze a proposed decision or transcript",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "transcript": {
+                    "type": "string",
+                    "description": "Meeting transcript or proposal text."
+                  },
+                  "transcriptId": {
+                    "type": "string",
+                    "description": "Optional id of a demo transcript."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Decision analysis with matches, who-was-right, risk, recommendations, grounding.",
+            "content": { "application/json": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    },
+    "/api/decisions": {
+      "get": {
+        "operationId": "listDecisions",
+        "summary": "List decisions in organizational memory",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "all | high-risk | pending | high-confidence | low-confidence"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Decision list",
+            "content": { "application/json": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    }
+  }
+}

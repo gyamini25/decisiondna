@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Sparkles, ShieldAlert, Loader2 } from "lucide-react";
+import { Sparkles, ShieldAlert, Loader2, BookCheck, FileText } from "lucide-react";
 import { Card } from "@/components/ui/primitives";
 import { TranscriptFeed } from "@/components/guard/TranscriptFeed";
 import { MatchCardView } from "@/components/guard/MatchCardView";
@@ -82,6 +82,9 @@ export default function DecisionGuardPage() {
           <div className="flex items-center gap-2 border-b border-line px-4 py-3">
             <Sparkles size={16} className="text-brand-600" />
             <h3 className="text-sm font-semibold text-ink">DecisionDNA Analysis</h3>
+            <span className="ml-auto rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-medium text-brand-700">
+              Foundry IQ · Work IQ
+            </span>
           </div>
           <div className="p-4">
             {loading || !analysis ? (
@@ -109,6 +112,48 @@ export default function DecisionGuardPage() {
                       Who Was Right?
                     </p>
                     <WhoWasRight cards={analysis.whoWasRight} />
+                  </div>
+                )}
+
+                {analysis.grounding && analysis.citations.length > 0 && (
+                  <div>
+                    <div className="mb-2 flex items-center gap-2">
+                      <BookCheck size={15} className="text-brand-600" />
+                      <p className="text-xs font-semibold text-ink">
+                        Foundry IQ — Grounded Evidence
+                      </p>
+                      <span
+                        className={`ml-auto rounded-full px-2 py-0.5 text-[10px] font-semibold ${
+                          analysis.grounding.passed
+                            ? "bg-risk-low-bg text-risk-low"
+                            : "bg-risk-med-bg text-risk-med"
+                        }`}
+                      >
+                        {analysis.grounding.passed ? "Grounded" : "Thin grounding"}
+                      </span>
+                    </div>
+                    <div className="rounded-lg border border-line bg-surface-2 p-3">
+                      <p className="text-[11px] text-ink-soft">
+                        {analysis.grounding.groundedSources} source decisions ·{" "}
+                        {analysis.grounding.totalEvidenceCount} evidence items ·
+                        source diversity{" "}
+                        {Math.round(analysis.grounding.sourceDiversityScore * 100)}%
+                      </p>
+                      <div className="mt-2 space-y-1.5">
+                        {analysis.citations.slice(0, 5).map((c, i) => (
+                          <div key={i} className="flex items-start gap-2">
+                            <FileText size={12} className="mt-0.5 text-ink-faint" />
+                            <p className="text-[11px] text-ink-soft">
+                              <span className="font-medium text-ink">{c.ref}</span>{" "}
+                              · {c.sourceType} · {c.title}{" "}
+                              <span className="text-ink-faint">
+                                (quality {Math.round(c.quality * 100)}%)
+                              </span>
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 )}
 

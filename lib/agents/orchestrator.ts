@@ -24,13 +24,13 @@ import { retrieveHistory } from "@/lib/agents/retrieveHistory";
 import {
   toMatchCard,
   gateEvidence,
-  buildCitations,
   aggregateEvidenceTotals,
   envThreshold,
 } from "@/lib/agents/scoreEvidence";
 import { scoreRisk } from "@/lib/agents/scoreRisk";
 import { surfaceObjections } from "@/lib/agents/surfaceObjections";
 import { recommend } from "@/lib/agents/recommend";
+import { groundDecision } from "@/lib/foundryiq";
 
 export interface AnalyzeOptions {
   threshold?: number;
@@ -144,7 +144,11 @@ export async function analyzeDecision(
     recommend(gate.confident, risk),
   );
 
-  const citations = buildCitations(gate.confident);
+  // Foundry IQ — ground the answer with cited, source-diversity-checked evidence.
+  const grounding = await time("ground", "FoundryIQ", () =>
+    groundDecision(gate.confident),
+  );
+  const citations = grounding.citations;
 
   // Display the closest precedents (top 3) as match cards; the analysis above
   // (risk, who-was-right, recommendations) is derived ONLY from confident
@@ -159,6 +163,12 @@ export async function analyzeDecision(
     risk,
     recommendations,
     citations,
+    grounding: {
+      groundedSources: grounding.groundedSources,
+      sourceDiversityScore: grounding.sourceDiversityScore,
+      totalEvidenceCount: grounding.totalEvidenceCount,
+      passed: grounding.passed,
+    },
     confidence: topConfidence,
     evidenceTotals,
     telemetry,

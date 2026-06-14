@@ -37,6 +37,10 @@ describe("Scenario 1 — happy path (hero support-staffing)", () => {
 
     // Citations are auditable back to sources.
     expect(result.citations.length).toBeGreaterThan(0);
+
+    // Foundry IQ grounding is present and grounded.
+    expect(result.grounding?.passed).toBe(true);
+    expect(result.grounding?.groundedSources).toBeGreaterThan(0);
   });
 });
 
