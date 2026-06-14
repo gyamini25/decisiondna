@@ -51,7 +51,29 @@ function abstentionReason(top: ScoredCandidate | null): string {
   } — confidence ${c}% is below the 60% threshold. Showing the closest weak matches.`;
 }
 
+/**
+ * Run the pipeline, but if a live (Azure) backend fails mid-request, transparently
+ * retry the WHOLE request in deterministic mock mode — so the app works either
+ * way (with or without working Azure OpenAI) and never errors for a user/judge.
+ */
 export async function analyzeDecision(
+  input: DetectInput,
+  opts: AnalyzeOptions = {},
+): Promise<DecisionAnalysis> {
+  try {
+    return await runPipeline(input, opts);
+  } catch (err) {
+    if (opts.llm?.backend === "mock") throw err; // already mock — nothing to fall back to
+    console.warn(
+      "[DecisionDNA] live LLM failed — falling back to deterministic mock for this request:",
+      String(err),
+    );
+    const { MockLLMClient } = await import("@/lib/llm/mock-llm");
+    return await runPipeline(input, { ...opts, llm: new MockLLMClient() });
+  }
+}
+
+async function runPipeline(
   input: DetectInput,
   opts: AnalyzeOptions = {},
 ): Promise<DecisionAnalysis> {
