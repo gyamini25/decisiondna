@@ -24,7 +24,7 @@ export function MatchCardView({ match }: { match: MatchCard }) {
     <div className="rounded-lg border border-line bg-surface">
       <div className="flex items-start justify-between gap-2 px-3 py-2.5">
         <div className="flex items-center gap-2">
-          <Badge tone="brand" className="font-semibold">
+          <Badge tone="good" className="font-semibold">
             {match.matchPct}% Match
           </Badge>
           <Badge tone={impactTone(match.impact)}>{match.impact} Impact</Badge>

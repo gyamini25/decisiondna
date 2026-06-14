@@ -1,42 +1,42 @@
 @import "tailwindcss";
 
 /* ----------------------------------------------------------------------------
-   DecisionDNA design tokens
-   Dark sidebar + light content. Risk = RED/AMBER/GREEN. Confidence = brand.
+   DecisionDNA design tokens — full dark theme (matches product mockup).
+   Risk = RED/AMBER/GREEN. Confidence/accent = brand indigo.
 ---------------------------------------------------------------------------- */
 @theme {
-  --color-brand-50: #eef2ff;
-  --color-brand-100: #e0e7ff;
+  --color-brand-50: #1a1f3a;   /* dark indigo tint (badge bg on dark) */
+  --color-brand-100: #232a4d;
   --color-brand-300: #a5b4fc;
   --color-brand-400: #818cf8;
   --color-brand-500: #6366f1;
-  --color-brand-600: #4f46e5;
-  --color-brand-700: #4338ca;
+  --color-brand-600: #6366f1;
+  --color-brand-700: #818cf8;  /* text-on-tint → light enough for dark */
 
-  --color-sidebar: #0f1424;
-  --color-sidebar-hover: #1b2236;
-  --color-sidebar-active: #4f46e5;
-  --color-sidebar-fg: #c7ccdb;
+  --color-sidebar: #0c1020;
+  --color-sidebar-hover: #1a2138;
+  --color-sidebar-active: #6366f1;
+  --color-sidebar-fg: #aeb6cc;
   --color-sidebar-muted: #6b7390;
 
-  --color-canvas: #f6f7fb;
-  --color-surface: #ffffff;
-  --color-surface-2: #f9fafc;
-  --color-line: #e6e8ef;
-  --color-ink: #11151f;
-  --color-ink-soft: #5b6172;
-  --color-ink-faint: #9aa0b0;
+  --color-canvas: #080b16;
+  --color-surface: #111728;
+  --color-surface-2: #1a2138;
+  --color-line: #232c44;
+  --color-ink: #e9ecf5;
+  --color-ink-soft: #97a1ba;
+  --color-ink-faint: #6b7595;
 
-  --color-risk-high: #dc2626;
-  --color-risk-high-bg: #fdecec;
-  --color-risk-med: #d97706;
-  --color-risk-med-bg: #fbf0dd;
-  --color-risk-low: #16a34a;
-  --color-risk-low-bg: #e8f5e9;
+  --color-risk-high: #f87171;
+  --color-risk-high-bg: rgba(248, 113, 113, 0.14);
+  --color-risk-med: #fbbf24;
+  --color-risk-med-bg: rgba(251, 191, 36, 0.14);
+  --color-risk-low: #34d399;
+  --color-risk-low-bg: rgba(52, 211, 153, 0.14);
 
-  --color-good: #16a34a;
-  --color-warn: #d97706;
-  --color-bad: #dc2626;
+  --color-good: #34d399;
+  --color-warn: #fbbf24;
+  --color-bad: #f87171;
 }
 
 :root {
@@ -62,7 +62,7 @@ body {
   height: 8px;
 }
 .scroll-thin::-webkit-scrollbar-thumb {
-  background: #d4d8e3;
+  background: #2a344f;
   border-radius: 9999px;
 }
 .scroll-thin::-webkit-scrollbar-track {
@@ -71,15 +71,22 @@ body {
 
 @keyframes pulse-ring {
   0% {
-    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.45);
+    box-shadow: 0 0 0 0 rgba(248, 113, 113, 0.5);
   }
   70% {
-    box-shadow: 0 0 0 6px rgba(220, 38, 38, 0);
+    box-shadow: 0 0 0 6px rgba(248, 113, 113, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+    box-shadow: 0 0 0 0 rgba(248, 113, 113, 0);
   }
 }
 .live-dot {
   animation: pulse-ring 1.8s infinite;
+}
+
+/* video-tile gradient for participant grid */
+.video-tile {
+  background:
+    radial-gradient(120% 120% at 30% 20%, rgba(99, 102, 241, 0.25), transparent 60%),
+    linear-gradient(160deg, #1a2138, #0c1020);
 }

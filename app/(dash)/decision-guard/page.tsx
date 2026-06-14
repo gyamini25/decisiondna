@@ -1,9 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Sparkles, ShieldAlert, Loader2, BookCheck, FileText } from "lucide-react";
+import {
+  Sparkles,
+  ShieldAlert,
+  Loader2,
+  BookCheck,
+  FileText,
+  Video,
+  Mail,
+  FileBox,
+  MessageSquare,
+} from "lucide-react";
 import { Card } from "@/components/ui/primitives";
 import { TranscriptFeed } from "@/components/guard/TranscriptFeed";
+import { VideoGrid } from "@/components/guard/VideoGrid";
 import { MatchCardView } from "@/components/guard/MatchCardView";
 import { WhoWasRight } from "@/components/guard/WhoWasRight";
 import { RiskPanel, ConfidenceMeter } from "@/components/guard/RiskPanel";
@@ -49,8 +60,8 @@ export default function DecisionGuardPage() {
   const abstain = analysis?.type === "insufficient-evidence";
 
   return (
-    <div className="flex h-full flex-col">
-      <div className="mb-4 flex items-center justify-between">
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ShieldAlert size={20} className="text-brand-600" />
           <h1 className="text-lg font-bold text-ink">Decision Guard</h1>
@@ -71,10 +82,17 @@ export default function DecisionGuardPage() {
         </select>
       </div>
 
-      <div className="grid flex-1 grid-cols-1 gap-4 overflow-hidden lg:grid-cols-[35%_minmax(0,1fr)_30%]">
-        {/* LEFT — live transcript */}
-        <Card className="overflow-hidden">
-          {doc && <TranscriptFeed doc={doc} detection={analysis?.detection} />}
+      <div className="grid grid-cols-1 gap-4 lg:h-[640px] lg:grid-cols-[35%_minmax(0,1fr)_30%]">
+        {/* LEFT — live meeting (video tiles) + transcript */}
+        <Card className="flex flex-col overflow-hidden">
+          {doc && (
+            <>
+              <VideoGrid participants={doc.participants} activeSpeaker="Laura Mitchell" />
+              <div className="min-h-0 flex-1 border-t border-line">
+                <TranscriptFeed doc={doc} detection={analysis?.detection} />
+              </div>
+            </>
+          )}
         </Card>
 
         {/* CENTER — analysis */}
@@ -186,6 +204,111 @@ export default function DecisionGuardPage() {
           </div>
         </Card>
       </div>
+
+      {/* BOTTOM ROW — timeline · evidence summary · mini memory graph */}
+      {analysis && !abstain && (
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+          <Card className="p-4">
+            <p className="mb-3 text-xs font-semibold text-ink">Decision Timeline</p>
+            <div className="flex justify-between gap-1">
+              {["Proposal", "Objections", "Analysis", "Guard", "Approval", "Stored"].map(
+                (m, i) => (
+                  <div key={m} className="flex flex-1 flex-col items-center text-center">
+                    <div
+                      className={`h-2.5 w-2.5 rounded-full ${i <= 3 ? "bg-brand-500" : "bg-line"}`}
+                    />
+                    <span className="mt-1 text-[9px] text-ink-soft">{m}</span>
+                  </div>
+                ),
+              )}
+            </div>
+          </Card>
+
+          <Card className="p-4">
+            <p className="mb-3 text-xs font-semibold text-ink">Evidence Summary</p>
+            <div className="grid grid-cols-4 gap-2">
+              <EvidenceTile icon={<Video size={14} />} label="Meetings" value={analysis.evidenceTotals.meetings} />
+              <EvidenceTile icon={<Mail size={14} />} label="Emails" value={analysis.evidenceTotals.emails} />
+              <EvidenceTile icon={<FileBox size={14} />} label="Docs" value={analysis.evidenceTotals.documents} />
+              <EvidenceTile icon={<MessageSquare size={14} />} label="Chats" value={analysis.evidenceTotals.chats} />
+            </div>
+            <div className="mt-3 flex items-center justify-between">
+              <span className="text-[11px] text-ink-soft">Confidence</span>
+              <span className="text-sm font-bold text-ink">
+                {Math.round(analysis.confidence.confidence * 100)}%
+              </span>
+            </div>
+          </Card>
+
+          <Card className="p-4">
+            <p className="mb-2 text-xs font-semibold text-ink">Decision Memory Graph</p>
+            <MiniGraph
+              similar={analysis.matches.length}
+              stakeholders={analysis.whoWasRight.length}
+              risks={analysis.risk?.dimensions.filter((d) => d.level !== "Low").length ?? 0}
+            />
+          </Card>
+        </div>
+      )}
     </div>
+  );
+}
+
+function EvidenceTile({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: number;
+}) {
+  return (
+    <div className="rounded-lg border border-line bg-surface-2 p-2 text-center">
+      <div className="flex justify-center text-brand-400">{icon}</div>
+      <p className="mt-1 text-base font-bold text-ink">{value}</p>
+      <p className="text-[9px] text-ink-soft">{label}</p>
+    </div>
+  );
+}
+
+function MiniGraph({
+  similar,
+  stakeholders,
+  risks,
+}: {
+  similar: number;
+  stakeholders: number;
+  risks: number;
+}) {
+  const nodes = [
+    { x: 40, y: 60, c: "#0ea5e9", label: `Similar (${similar})` },
+    { x: 150, y: 35, c: "#6366f1", label: "Current", big: true },
+    { x: 260, y: 45, c: "#10b981", label: `People (${stakeholders})` },
+    { x: 250, y: 95, c: "#f87171", label: `Risks (${risks})` },
+    { x: 120, y: 100, c: "#f59e0b", label: "Outcomes" },
+  ];
+  return (
+    <svg viewBox="0 0 300 130" className="w-full">
+      {nodes.slice(1).map((n, i) => (
+        <line
+          key={i}
+          x1={nodes[0].x}
+          y1={nodes[0].y}
+          x2={n.x}
+          y2={n.y}
+          stroke="#232c44"
+          strokeWidth={1}
+        />
+      ))}
+      {nodes.map((n, i) => (
+        <g key={i}>
+          <circle cx={n.x} cy={n.y} r={n.big ? 16 : 11} fill={n.c} />
+          <text x={n.x} y={n.y + (n.big ? 30 : 24)} fontSize={8} fill="#97a1ba" textAnchor="middle">
+            {n.label}
+          </text>
+        </g>
+      ))}
+    </svg>
   );
 }

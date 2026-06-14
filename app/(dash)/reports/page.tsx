@@ -82,7 +82,7 @@ export default function ReportsPage() {
                 <XAxis dataKey="year" fontSize={11} stroke="#9aa0b0" />
                 <YAxis fontSize={11} stroke="#9aa0b0" allowDecimals={false} />
                 <Tooltip />
-                <Bar dataKey="count" fill="#6366f1" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="count" fill="#6366f1" radius={[4, 4, 0, 0]} isAnimationActive={false} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -96,7 +96,7 @@ export default function ReportsPage() {
                 <XAxis dataKey="bucket" fontSize={10} stroke="#9aa0b0" />
                 <YAxis fontSize={11} stroke="#9aa0b0" allowDecimals={false} />
                 <Tooltip />
-                <Bar dataKey="count" fill="#10b981" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="count" fill="#10b981" radius={[4, 4, 0, 0]} isAnimationActive={false} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -107,7 +107,7 @@ export default function ReportsPage() {
           <div className="h-56 p-3">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={riskData} dataKey="value" nameKey="name" outerRadius={80} label>
+                <Pie data={riskData} dataKey="value" nameKey="name" outerRadius={80} label isAnimationActive={false}>
                   {riskData.map((d) => (
                     <Cell key={d.name} fill={RISK_COLORS[d.name] ?? "#94a3b8"} />
                   ))}
@@ -123,7 +123,7 @@ export default function ReportsPage() {
           <div className="h-56 p-3">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={outcomeData} dataKey="value" nameKey="name" outerRadius={80} label>
+                <Pie data={outcomeData} dataKey="value" nameKey="name" outerRadius={80} label isAnimationActive={false}>
                   {outcomeData.map((d) => (
                     <Cell key={d.name} fill={OUTCOME_COLORS[d.name] ?? "#94a3b8"} />
                   ))}
