@@ -1,64 +1,65 @@
-# DecisionDNA — 5-minute Demo Script
+# DecisionDNA — 5-minute Demo Script (run-of-show)
 
-> Target: ≤ 5 min YouTube video for the Microsoft Agents League submission.
-> App runs offline (`npm run dev`); no narration of setup needed.
+> ≤ 5 min for the Microsoft Agents League submission. Record locally with
+> `npm run dev`. For the strongest numbers, run live (`MOCK_LLM=0` + Azure
+> OpenAI via `./scripts/provision-azure.sh --openai-only`); keep `MOCK_LLM=1` as
+> an instant fallback if anything hiccups — the app is identical either way.
 
-## 0:00–0:45 — The problem
-> "Every organization makes thousands of decisions a year — and repeats the same
-> mistakes. Objections vanish after the meeting. The people who correctly
-> predicted the risk are forgotten. New leaders re-run failed plays. DecisionDNA
-> is the organization's decision memory — it remembers what happened, why, and
-> *who was right*."
+Each beat is tagged with the judging criterion it targets (Accuracy/Reasoning/
+Reliability 20% each; Creativity/UX 15% each; Community vote 10%).
 
-Show the **Home** dashboard: KPIs, recent decisions, the AI agent active pill.
+## 0:00–0:40 — Problem  · *UX, Creativity*
+Open **Home**.
+> "Every organization makes thousands of decisions a year and repeats the same
+> mistakes — objections vanish after meetings, and the people who correctly
+> predicted the risk are forgotten. DecisionDNA is the decision memory layer."
 
-## 0:45–2:00 — Live detection + retrieval
-Open **Decision Guard**. Scenario: *Support staffing cut*.
-> "In a live leadership meeting, Laura proposes reducing customer support
-> staffing by 20%."
+Point at the KPIs and the **Evidence Summary** — "this is built from a month of
+real org signal via **Work IQ**: 27 meetings, 57 emails, 58 chats, 16 documents."
 
-- The left panel shows the transcript; DecisionDNA fires a **Decision Detected**
-  banner.
-- The center panel shows **Similar Decisions Found** — expand a card to reveal the
-  **four-signal breakdown** (semantic / entity / temporal / directional, each
-  weighted).
+## 0:40–2:15 — Live detection + retrieval  · *Accuracy, Reasoning*
+Open **Decision Guard** (hero). It's a live **Microsoft Teams** meeting.
+> "Laura proposes reducing customer support staffing by 20%."
+
+- DecisionDNA fires **Decision Detected**.
+- Center: **Similar Decisions Found** — expand a card to show the **four-signal
+  breakdown** (semantic · entity · temporal · directional, each weighted).
 > "This isn't cosine similarity guessing — it's a weighted composite of four
 > independent, auditable signals."
+- Show **Foundry IQ — Grounded Evidence** with citations.
+> "Every claim is grounded and cited via Foundry IQ, with a source-diversity
+> check to reduce hallucination."
 
-## 2:00–3:00 — Who Was Right?
-Scroll to the **Who Was Right?** card.
-> "Two years ago, Jane Smith warned wait times would spike, and Ravi Patel
-> warned CSAT would drop. Both were proven right — wait times rose 28%, CSAT fell
-> 6 points. DecisionDNA resurfaces their validated foresight automatically."
+## 2:15–3:00 — Who Was Right?  · *Creativity (the differentiator)*
+Scroll to the **Who Was Right?** card. Linger here.
+> "Two years ago Jane Smith warned wait times would spike and Ravi Patel warned
+> CSAT would drop — both proven right (+28% wait, −6 CSAT). DecisionDNA
+> resurfaces their validated foresight automatically."
 
-## 3:00–3:45 — Risk + recommendation
-Right panel: **HIGH RISK**, four risk dimensions, recommended actions.
-> "The closest precedent went negative and was reversed — so this scores HIGH
-> risk. DecisionDNA recommends what actually worked last time: deploy chatbot
-> deflection *before* cutting staffing, add overflow coverage, define rollback
-> criteria."
+## 3:00–3:40 — Risk → recommend → approve  · *Reasoning, Enterprise*
+Right panel: **HIGH RISK**, four dimensions, recommended actions.
+> "The closest precedent went negative and was reversed, so this scores HIGH. It
+> recommends what actually worked: deploy chatbot deflection before cutting
+> staffing, add overflow coverage, define rollback criteria."
 
-Click **Request Review** → confirmation: *Decision added to Organizational
-Memory*. (Mock Power Automate Teams Adaptive Card.)
+Click **Request Review** → "routes a Teams Adaptive Card via Power Automate and
+writes the decision to organizational memory."
 
-## 3:45–4:30 — Reliability: abstention
-Switch scenario to **F1 sponsorship**.
-> "What happens when there's no precedent? DecisionDNA doesn't bluff. Confidence
-> is below threshold, so it abstains — showing the closest weak matches and which
-> signals disagree, and refusing to fabricate a risk score. That's the safety
-> behavior enterprises need."
+## 3:40–4:20 — Reliability: abstention  · *Reliability & Safety (the moment)*
+Switch the scenario dropdown to **F1 sponsorship**.
+> "No precedent? DecisionDNA doesn't bluff. Confidence is below threshold, so it
+> **abstains** — showing the closest weak matches and which signals disagree, and
+> refusing to fabricate a risk score. That's the safety behavior enterprises need."
 
-## 4:30–5:00 — Memory & close
-Open **Memory Graph** (decisions ↔ stakeholders ↔ risks ↔ outcomes) and
-**Reports** (who-was-right accuracy, risk distribution).
-> "Every decision becomes queryable organizational memory. DecisionDNA turns
-> your company's history into evidence-based foresight — built end-to-end on the
-> Microsoft Agent Framework, Semantic Kernel, Azure OpenAI, AI Search, Cosmos DB,
-> Graph, and Power Automate."
+## 4:20–5:00 — Memory & close  · *Enterprise, IQ requirement*
+Flash **Memory Graph** (decisions ↔ stakeholders ↔ risks ↔ outcomes; click a node
+to show its description) and **Reports** (who-was-right accuracy, trend, risk).
+> "Every decision becomes queryable organizational memory. Built end-to-end on
+> the **Microsoft Agent Framework + Semantic Kernel**, **Azure OpenAI**, and the
+> **Foundry IQ + Work IQ** intelligence layers, surfaced through a **Microsoft 365
+> Copilot** agent."
 
-## Talking points to land
-- Four-signal evidence model (not cosine alone) — **accuracy**.
-- 7-step Agent Framework pipeline with telemetry — **reasoning**.
-- Confidence + abstention — **reliability & responsible AI**.
-- "Who Was Right?" — **creativity**.
-- Polished 9-screen dashboard — **UX**.
+## Don't forget
+- Mention the **Microsoft IQ** integration explicitly (Foundry IQ + Work IQ) —
+  it's a mandatory requirement and a scored item.
+- Close with the GitHub link and a one-line CTA to vote in the Discord poll (10%).

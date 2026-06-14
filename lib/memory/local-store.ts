@@ -86,7 +86,14 @@ export class LocalStore implements DecisionRepository {
   }
 
   private save(shape: StoreShape): void {
-    writeFileSync(STORE_PATH, JSON.stringify(shape, null, 2));
+    // Best-effort persistence. On read-only filesystems (e.g. some serverless
+    // hosts) writes can fail — never let that crash a request; keep the
+    // in-memory result so approve/store still returns successfully.
+    try {
+      writeFileSync(STORE_PATH, JSON.stringify(shape, null, 2));
+    } catch (err) {
+      console.warn("[DecisionDNA] memory store not persisted (read-only fs?):", String(err));
+    }
   }
 
   async listDecisions(filters?: DecisionFilters): Promise<StoredDecision[]> {

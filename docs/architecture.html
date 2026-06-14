@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; background: #ffffff; color: #1a1a1a; }
+  .wrap { width: 1180px; padding: 32px 40px; }
+  .layer { margin-bottom: 6px; }
+  .layer-label { font-size: 14px; color: #8a8f98; font-weight: 600; margin: 14px 0 8px; }
+  .row { display: grid; gap: 16px; }
+  .box { border-radius: 12px; padding: 16px 18px; color: #fff; }
+  .box .t { font-size: 18px; font-weight: 700; }
+  .box .s { font-size: 13px; opacity: 0.85; margin-top: 3px; }
+  .arrows { display: grid; gap: 16px; margin: 8px 0; }
+  .arrow { text-align: center; color: #b3b8c0; font-size: 20px; }
+  .surface { background: #1b4f8a; }
+  .orch { background: #4a3f9e; }
+  .iq { background: #1f6b4f; }
+  .data { background: #4b5054; }
+  .gov { background: #7a4f12; }
+  .sub { background: #6e2f24; }
+  .full { grid-template-columns: 1fr; }
+  .three { grid-template-columns: 1fr 1fr 1fr; }
+  .two { grid-template-columns: 1fr 1fr; }
+  .four { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .orch .flow { font-size: 14px; opacity: 0.9; margin-top: 4px; }
+  .badge { display:inline-block; font-size:11px; background:rgba(255,255,255,.18); border-radius:6px; padding:1px 7px; margin-left:8px; vertical-align:middle; }
+  .title { font-size: 22px; font-weight: 800; margin-bottom: 2px; }
+  .sub-t { font-size: 13px; color: #8a8f98; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="title">DecisionDNA — Architecture</div>
+  <div class="sub-t">Organizational decision intelligence · Microsoft Agents League</div>
+
+  <div class="layer">
+    <div class="layer-label">Surface layer</div>
+    <div class="row three">
+      <div class="box surface"><div class="t">M365 Copilot Chat</div><div class="s">Teams + Outlook</div></div>
+      <div class="box surface"><div class="t">Copilot Studio</div><div class="s">Low-code authoring</div></div>
+      <div class="box surface"><div class="t">React frontend</div><div class="s">Next.js demo UI</div></div>
+    </div>
+  </div>
+  <div class="arrows three"><div class="arrow">↓</div><div class="arrow">↓</div><div class="arrow">↓</div></div>
+
+  <div class="layer">
+    <div class="layer-label">Agent orchestration</div>
+    <div class="row full">
+      <div class="box orch">
+        <div class="t">DecisionDNA agent <span class="badge">Microsoft Agent Framework 1.0 + Semantic Kernel</span></div>
+        <div class="flow">Detect → Retrieve → Score evidence → Risk → Who-Was-Right → Recommend → Approve → Store</div>
+      </div>
+    </div>
+  </div>
+  <div class="arrows three"><div class="arrow">↓</div><div class="arrow">↓</div><div class="arrow">↓</div></div>
+
+  <div class="layer">
+    <div class="layer-label">IQ context layer</div>
+    <div class="row three">
+      <div class="box iq"><div class="t">Work IQ</div><div class="s">Emails, meetings, people graph</div></div>
+      <div class="box iq"><div class="t">Foundry IQ</div><div class="s">Grounded RAG + citations</div></div>
+      <div class="box iq"><div class="t">Azure AI Search</div><div class="s">Cosine similarity, vector index</div></div>
+    </div>
+  </div>
+  <div class="arrows three"><div class="arrow">↓</div><div class="arrow">↓</div><div class="arrow">↓</div></div>
+
+  <div class="layer">
+    <div class="layer-label">Data &amp; memory layer</div>
+    <div class="row three">
+      <div class="box data"><div class="t">M365 Graph API</div><div class="s">Delegated permissions</div></div>
+      <div class="box data"><div class="t">Azure Cosmos DB</div><div class="s">Decision memory store</div></div>
+      <div class="box data"><div class="t">Azure OpenAI</div><div class="s">Embeddings + GPT</div></div>
+    </div>
+  </div>
+  <div class="arrows three"><div class="arrow">↓</div><div class="arrow">↓</div><div class="arrow">↓</div></div>
+
+  <div class="layer">
+    <div class="layer-label">Governance &amp; identity</div>
+    <div class="row two">
+      <div class="box gov"><div class="t">Entra ID / Agent 365</div><div class="s">Per-agent identity, RBAC</div></div>
+      <div class="box gov"><div class="t">Power Automate approval</div><div class="s">Teams Adaptive Card workflow</div></div>
+    </div>
+  </div>
+
+  <div class="layer" style="margin-top:18px">
+    <div class="layer-label">Submission requirements</div>
+    <div class="row four">
+      <div class="box sub"><div class="t">GitHub repo</div><div class="s">Public + README</div></div>
+      <div class="box sub"><div class="t">Demo video</div><div class="s">YouTube, 5 min max</div></div>
+      <div class="box sub"><div class="t">Architecture</div><div class="s">Diagram (this)</div></div>
+      <div class="box sub"><div class="t">Project description</div><div class="s">Problem + technologies</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

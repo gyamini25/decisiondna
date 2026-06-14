@@ -8,13 +8,39 @@ Built for the **Microsoft Agents League Hackathon**.
 
 ---
 
+## ⚡ Quickstart (for reviewers)
+
+Runs **fully offline with zero configuration** — no API keys, no cloud account.
+
+```bash
+npm install
+npm run dev      # → http://localhost:3000  (redirects to /home)
+```
+
+Then open **Decision Guard** (sidebar) — it auto-runs the hero scenario. Switch the
+scenario dropdown to **"F1 sponsorship"** to see the abstention/low-confidence state.
+
+```bash
+npm test         # 44 tests — scoring, confidence, retrieval, 5 judge scenarios
+```
+
+Requires **Node 20+**. Optional live Azure OpenAI mode is in [Live mode](#live-mode-real-azure-openai) below.
+
+---
+
 ## The core question
 
 Before approving a decision, a leader can ask: *"Have we done something like this before?"* DecisionDNA answers with similar historical decisions, supporting evidence, previous objections, **actual outcomes**, materialized risks, the stakeholders who predicted them, confidence scores, and an approval recommendation.
 
 ---
 
+## Decision Guard (hero screen)
+
+![Decision Guard](docs/screenshots/decision-guard.png)
+
 ## Architecture
+
+![DecisionDNA architecture](docs/architecture.png)
 
 ```
 Surface          M365 Copilot Chat   ·   Copilot Studio   ·   Next.js dashboard
