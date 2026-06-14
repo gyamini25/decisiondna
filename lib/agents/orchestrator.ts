@@ -154,6 +154,7 @@ async function runPipeline(
       citations: [],
       confidence: topConfidence,
       evidenceTotals,
+      backend: llm.backend,
       weakMatches: ranked.slice(0, 3).map(toMatchCard),
       message: abstentionReason(gate.top),
       telemetry,
@@ -200,6 +201,7 @@ async function runPipeline(
     },
     confidence: topConfidence,
     evidenceTotals,
+    backend: llm.backend,
     telemetry,
   };
 }

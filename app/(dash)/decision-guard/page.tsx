@@ -101,6 +101,7 @@ export default function DecisionGuardPage() {
             <h3 className="text-sm font-semibold text-ink">DecisionDNA Analysis</h3>
             <span className="ml-auto rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-medium text-brand-700">
               Foundry IQ · Work IQ
+              {analysis?.backend === "azure-openai" ? " · Azure OpenAI" : ""}
             </span>
           </div>
           <div className="p-4">

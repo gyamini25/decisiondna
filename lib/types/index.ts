@@ -257,6 +257,8 @@ export interface DecisionAnalysis {
   /** Aggregate confidence of the top match (or best weak match when abstaining). */
   confidence: ConfidenceResult;
   evidenceTotals: { meetings: number; emails: number; documents: number; chats: number };
+  /** Which intelligence backend served this analysis. */
+  backend?: "mock" | "azure-openai";
   /** Present only when type === "insufficient-evidence". */
   weakMatches?: MatchCard[];
   message?: string;

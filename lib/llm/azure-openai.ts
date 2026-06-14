@@ -9,6 +9,7 @@
 
 import type { Trend } from "@/lib/types";
 import type { LLMClient } from "@/lib/llm";
+import { mockExtractEntities, mockDetectDirection } from "@/lib/llm/mock-llm";
 
 interface AzureConfig {
   endpoint: string;
@@ -71,40 +72,21 @@ export class AzureOpenAIClient implements LLMClient {
       .map((d) => d.embedding);
   }
 
-  private async chatJSON<T>(system: string, user: string): Promise<T> {
-    const res = await this.fetchWithRetry(
-      this.url(this.cfg.chatDeployment, "chat/completions"),
-      {
-        messages: [
-          { role: "system", content: system },
-          { role: "user", content: user },
-        ],
-        temperature: 0,
-        response_format: { type: "json_object" },
-      },
-    );
-    if (!res.ok) throw new Error(`Azure chat failed: ${res.status}`);
-    const json = await res.json();
-    return JSON.parse(json.choices[0].message.content) as T;
-  }
-
+  // Entity + direction extraction use the deterministic heuristics: they're
+  // instant, free, and reproducible. Azure is reserved for the high-value
+  // EMBEDDING signal — which avoids dozens of slow reasoning-model calls per
+  // request (gpt-5 latency) that would time out on serverless. The Azure chat
+  // method below remains available (gpt-5-compatible) for narrative use.
   async extractEntities(text: string): Promise<string[]> {
-    const out = await this.chatJSON<{ entities: string[] }>(
-      "Extract named entities (people, orgs, products, metrics, locations) from the text. Respond as JSON {\"entities\": string[]} with lowercase values.",
-      text,
-    );
-    return out.entities ?? [];
+    return mockExtractEntities(text);
   }
 
   async detectDirection(text: string): Promise<Trend> {
-    const out = await this.chatJSON<{ direction: Trend }>(
-      'Classify the intended trend direction of the proposal as one of "up", "down", or "flat". Respond as JSON {"direction": "up"|"down"|"flat"}.',
-      text,
-    );
-    return out.direction ?? "flat";
+    return mockDetectDirection(text);
   }
 
   async chat(system: string, user: string): Promise<string> {
+    // No temperature/max_tokens → compatible with gpt-5 reasoning models.
     const res = await this.fetchWithRetry(
       this.url(this.cfg.chatDeployment, "chat/completions"),
       {
@@ -112,7 +94,6 @@ export class AzureOpenAIClient implements LLMClient {
           { role: "system", content: system },
           { role: "user", content: user },
         ],
-        temperature: 0.2,
       },
     );
     if (!res.ok) throw new Error(`Azure chat failed: ${res.status}`);

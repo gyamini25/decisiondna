@@ -49,11 +49,11 @@ async function main() {
       method: "POST",
       headers: { "Content-Type": "application/json", "api-key": apiKey },
       body: JSON.stringify({
+        // no temperature/max_tokens → compatible with gpt-5 reasoning models
         messages: [
           { role: "system", content: 'Respond as JSON {"ok": true}.' },
           { role: "user", content: "ping" },
         ],
-        temperature: 0,
         response_format: { type: "json_object" },
       }),
     },
