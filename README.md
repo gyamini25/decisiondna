@@ -6,6 +6,8 @@ Organizations repeatedly face the same decisions and repeat the same mistakes �
 
 Built for the **Microsoft Agents League Hackathon**.
 
+🔗 **Live demo: https://decisiondna.vercel.app** (runs offline in mock mode — no login required)
+
 ---
 
 ## ⚡ Quickstart (for reviewers)
