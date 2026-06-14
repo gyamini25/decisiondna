@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------------------
+   DecisionDNA design tokens
+   Dark sidebar + light content. Risk = RED/AMBER/GREEN. Confidence = brand.
+---------------------------------------------------------------------------- */
+@theme {
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+
+  --color-sidebar: #0f1424;
+  --color-sidebar-hover: #1b2236;
+  --color-sidebar-active: #4f46e5;
+  --color-sidebar-fg: #c7ccdb;
+  --color-sidebar-muted: #6b7390;
+
+  --color-canvas: #f6f7fb;
+  --color-surface: #ffffff;
+  --color-surface-2: #f9fafc;
+  --color-line: #e6e8ef;
+  --color-ink: #11151f;
+  --color-ink-soft: #5b6172;
+  --color-ink-faint: #9aa0b0;
+
+  --color-risk-high: #dc2626;
+  --color-risk-high-bg: #fdecec;
+  --color-risk-med: #d97706;
+  --color-risk-med-bg: #fbf0dd;
+  --color-risk-low: #16a34a;
+  --color-risk-low-bg: #e8f5e9;
+
+  --color-good: #16a34a;
+  --color-warn: #d97706;
+  --color-bad: #dc2626;
+}
+
+:root {
+  --background: var(--color-canvas);
+  --foreground: var(--color-ink);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* thin scrollbars for panels */
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #d4d8e3;
+  border-radius: 9999px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+.live-dot {
+  animation: pulse-ring 1.8s infinite;
+}

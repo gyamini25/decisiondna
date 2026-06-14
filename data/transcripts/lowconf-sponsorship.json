@@ -1,0 +1,17 @@
+{
+  "id": "meeting-brand-sync-sponsorship",
+  "title": "Brand Sync — Motorsport Sponsorship Proposal",
+  "date": "2026-06-13",
+  "participants": [
+    { "name": "Laura Mitchell", "role": "Senior Product Manager" },
+    { "name": "Priya Nair", "role": "Product" },
+    { "name": "Sarah Johnson", "role": "Finance" }
+  ],
+  "scenario": "low-confidence",
+  "lines": [
+    { "speaker": "Laura Mitchell", "role": "Senior Product Manager", "time": "00:09", "text": "I'd like us to sponsor a Formula 1 team next season as a brand awareness play in new markets." },
+    { "speaker": "Priya Nair", "role": "Product", "time": "00:21", "text": "It's a bold idea. We don't really have anything comparable in our history to anchor it." },
+    { "speaker": "Sarah Johnson", "role": "Finance", "time": "00:34", "text": "Right — there's no prior motorsport or large brand-sponsorship decision we can point to for outcomes." }
+  ],
+  "transcript": "Laura Mitchell (00:09): I'd like us to sponsor a Formula 1 team next season as a brand awareness play in new markets. Priya Nair (00:21): It's a bold idea. We don't really have anything comparable in our history to anchor it. Sarah Johnson (00:34): Right — there's no prior motorsport or large brand-sponsorship decision we can point to for outcomes."
+}

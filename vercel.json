@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "env": {
+    "MOCK_LLM": "1"
+  },
+  "build": {
+    "env": {
+      "MOCK_LLM": "1"
+    }
+  }
+}

@@ -1,0 +1,1044 @@
+{
+  "$schema": "https://decisiondna.ai/schemas/decision-record.v1.json",
+  "description": "DecisionDNA decision-memory corpus (12 records). Each record carries the proposal, evidence, objections, the 'who was right?' ledger, materialized risks, the actual outcome, and a self-consistent multi-signal evidence vector (sFinal/confidence/rank are derived from the four raw signals by lib/scoring.ts).",
+  "embeddingModel": "text-embedding-3-large",
+  "records": [
+    {
+      "id": "dec-2023-0312-support-staffing",
+      "orgId": "contoso",
+      "title": "Support Staffing Optimization",
+      "proposal": "Reduce weekend customer support staffing by 18% to lower operating cost.",
+      "owner": "Daniel Reyes",
+      "category": "Cost Optimization",
+      "meeting": "Operations Review",
+      "dateProposed": "2023-03-12",
+      "dateDecided": "2023-03-20",
+      "status": "approved",
+      "impactLevel": "High",
+      "evidence": {
+        "meetings": 8,
+        "emails": 14,
+        "documents": 3,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "ops-review-2023-03-12",
+            "quality": 0.82
+          },
+          {
+            "type": "email-thread",
+            "ref": "cost-analysis-q1-2023",
+            "quality": 0.74
+          },
+          {
+            "type": "document",
+            "ref": "staffing-model-v3.xlsx",
+            "quality": 0.88
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Jane Smith",
+          "role": "SRE Lead",
+          "objection": "Support wait times will increase, especially during APAC hours.",
+          "predictedDirection": "increase",
+          "result": "validated",
+          "evidence": "Average wait time increased 28% within 6 weeks."
+        },
+        {
+          "raisedBy": "Ravi Patel",
+          "role": "Customer Success",
+          "objection": "CSAT will drop for enterprise accounts.",
+          "predictedDirection": "decrease",
+          "result": "validated",
+          "evidence": "CSAT dropped 6 points among top-tier accounts."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Jane Smith",
+          "prediction": "wait times increase",
+          "outcome": "+28%",
+          "status": "validated"
+        },
+        {
+          "stakeholder": "Ravi Patel",
+          "prediction": "CSAT decline",
+          "outcome": "-6 pts",
+          "status": "validated"
+        }
+      ],
+      "risksMaterialized": [
+        {
+          "type": "customer",
+          "severity": "high",
+          "description": "Enterprise APAC incident response slowed."
+        },
+        {
+          "type": "operational",
+          "severity": "medium",
+          "description": "Weekend backlog grew 40%."
+        }
+      ],
+      "outcome": {
+        "summary": "Cost reduced 12% but customer satisfaction dropped 6% and APAC response slowed. Net negative; staffing partially restored in Q3 2023.",
+        "direction": "decline",
+        "metrics": {
+          "costDelta": -0.12,
+          "csatDelta": -0.06,
+          "waitTimeDelta": 0.28
+        },
+        "netAssessment": "negative",
+        "reversed": true
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.91,
+        "entityAlignment": 0.78,
+        "temporalConsistency": 0.86,
+        "directionalCorrectness": 1,
+        "sFinal": 0.87,
+        "confidence": 0.99,
+        "rank": 0.87
+      },
+      "tags": [
+        "staffing",
+        "support",
+        "cost-cutting",
+        "csat",
+        "apac"
+      ]
+    },
+    {
+      "id": "dec-2022-1118-support-restructure",
+      "orgId": "contoso",
+      "title": "Support Team Restructure",
+      "proposal": "Consolidate regional support teams and reduce total headcount by 9%.",
+      "owner": "Michael Lee",
+      "category": "Reorganization",
+      "meeting": "Quarterly Planning",
+      "dateProposed": "2022-11-18",
+      "dateDecided": "2022-12-02",
+      "status": "approved",
+      "impactLevel": "Medium",
+      "evidence": {
+        "meetings": 6,
+        "emails": 12,
+        "documents": 2,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "qplanning-2022-11-18",
+            "quality": 0.79
+          },
+          {
+            "type": "document",
+            "ref": "regional-coverage-map.pdf",
+            "quality": 0.81
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Michael Lee",
+          "role": "Operations",
+          "objection": "Run a pilot before full rollout to surface region-specific risk.",
+          "predictedDirection": "neutral",
+          "result": "recommendation-proven",
+          "evidence": "Pilot identified APAC coverage gap that would have caused SLA breaches."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Michael Lee",
+          "prediction": "pilot reveals APAC risk",
+          "outcome": "gap found pre-rollout",
+          "status": "validated"
+        }
+      ],
+      "risksMaterialized": [
+        {
+          "type": "operational",
+          "severity": "medium",
+          "description": "Temporary coverage gap during transition, mitigated by pilot learnings."
+        }
+      ],
+      "outcome": {
+        "summary": "Phased rollout informed by pilot. Headcount reduced 9% with no SLA breach. Net neutral-to-positive.",
+        "direction": "stable",
+        "metrics": {
+          "headcountDelta": -0.09,
+          "slaBreaches": 0
+        },
+        "netAssessment": "positive",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.85,
+        "entityAlignment": 0.71,
+        "temporalConsistency": 0.74,
+        "directionalCorrectness": 1,
+        "sFinal": 0.81,
+        "confidence": 0.98,
+        "rank": 0.79
+      },
+      "tags": [
+        "restructure",
+        "support",
+        "headcount",
+        "pilot",
+        "apac"
+      ]
+    },
+    {
+      "id": "dec-2021-0802-cost-optimization",
+      "orgId": "contoso",
+      "title": "Cost Optimization Initiative",
+      "proposal": "Multi-department cost reduction program targeting 7% opex savings.",
+      "owner": "Laura Mitchell",
+      "category": "Cost Optimization",
+      "meeting": "Leadership Sync",
+      "dateProposed": "2021-08-02",
+      "dateDecided": "2021-08-16",
+      "status": "approved",
+      "impactLevel": "Low",
+      "evidence": {
+        "meetings": 5,
+        "emails": 9,
+        "documents": 4,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "leadership-sync-2021-08-02",
+            "quality": 0.7
+          },
+          {
+            "type": "document",
+            "ref": "opex-baseline-2021.xlsx",
+            "quality": 0.9
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Sarah Johnson",
+          "role": "Finance",
+          "objection": "Across-the-board cuts risk under-funding revenue-generating teams.",
+          "predictedDirection": "decrease",
+          "result": "partially-validated",
+          "evidence": "Sales tooling budget cut slowed pipeline tooling rollout by one quarter."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Sarah Johnson",
+          "prediction": "revenue teams under-funded",
+          "outcome": "pipeline tooling delayed 1Q",
+          "status": "partially-validated"
+        }
+      ],
+      "risksMaterialized": [
+        {
+          "type": "financial",
+          "severity": "low",
+          "description": "Minor delay in sales tooling; no measurable revenue impact."
+        }
+      ],
+      "outcome": {
+        "summary": "Achieved 7% opex savings with limited side effects after targeting cuts away from revenue teams. Net positive.",
+        "direction": "improvement",
+        "metrics": {
+          "opexDelta": -0.07,
+          "revenueDelta": 0
+        },
+        "netAssessment": "positive",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.78,
+        "entityAlignment": 0.6,
+        "temporalConsistency": 0.55,
+        "directionalCorrectness": 0.5,
+        "sFinal": 0.64,
+        "confidence": 0.93,
+        "rank": 0.6
+      },
+      "tags": [
+        "cost-cutting",
+        "opex",
+        "finance",
+        "multi-department"
+      ]
+    },
+    {
+      "id": "dec-2023-0921-chatbot-deflection",
+      "orgId": "contoso",
+      "title": "Customer Support Chatbot Deflection",
+      "proposal": "Deploy an AI chatbot to deflect 30% of tier-1 support tickets before reducing staffing.",
+      "owner": "Priya Nair",
+      "category": "Automation",
+      "meeting": "Support Strategy Review",
+      "dateProposed": "2023-09-21",
+      "dateDecided": "2023-10-05",
+      "status": "approved",
+      "impactLevel": "High",
+      "evidence": {
+        "meetings": 7,
+        "emails": 11,
+        "documents": 5,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "support-strategy-2023-09-21",
+            "quality": 0.84
+          },
+          {
+            "type": "document",
+            "ref": "chatbot-pilot-results.pdf",
+            "quality": 0.92
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Jane Smith",
+          "role": "SRE Lead",
+          "objection": "Chatbot must have a clean human-handoff path or escalations will spike.",
+          "predictedDirection": "increase",
+          "result": "mitigated",
+          "evidence": "Handoff path built; escalation rate held flat at 4%."
+        },
+        {
+          "raisedBy": "Ravi Patel",
+          "role": "Customer Success",
+          "objection": "Enterprise customers will reject a bot-first experience.",
+          "predictedDirection": "decrease",
+          "result": "not-validated",
+          "evidence": "Enterprise CSAT unchanged; bot scoped to tier-1 only."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Jane Smith",
+          "prediction": "handoff needed",
+          "outcome": "mitigation worked",
+          "status": "validated"
+        },
+        {
+          "stakeholder": "Ravi Patel",
+          "prediction": "enterprise rejection",
+          "outcome": "no change",
+          "status": "not-validated"
+        }
+      ],
+      "risksMaterialized": [],
+      "outcome": {
+        "summary": "Chatbot deflected 31% of tier-1 tickets, enabling later staffing changes without CSAT loss. Net positive.",
+        "direction": "improvement",
+        "metrics": {
+          "deflectionRate": 0.31,
+          "csatDelta": 0,
+          "escalationRate": 0.04
+        },
+        "netAssessment": "positive",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.88,
+        "entityAlignment": 0.83,
+        "temporalConsistency": 0.9,
+        "directionalCorrectness": 1,
+        "sFinal": 0.89,
+        "confidence": 0.99,
+        "rank": 0.88
+      },
+      "tags": [
+        "chatbot",
+        "automation",
+        "deflection",
+        "support",
+        "csat"
+      ]
+    },
+    {
+      "id": "dec-2024-0114-pricing-increase",
+      "orgId": "contoso",
+      "title": "SaaS Pricing Increase",
+      "proposal": "Raise standard-tier subscription price by 12% across all regions.",
+      "owner": "Daniel Reyes",
+      "category": "Pricing",
+      "meeting": "Revenue Strategy",
+      "dateProposed": "2024-01-14",
+      "dateDecided": "2024-01-28",
+      "status": "approved",
+      "impactLevel": "High",
+      "evidence": {
+        "meetings": 9,
+        "emails": 18,
+        "documents": 6,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "revenue-strategy-2024-01-14",
+            "quality": 0.8
+          },
+          {
+            "type": "document",
+            "ref": "price-elasticity-study.pdf",
+            "quality": 0.86
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Sarah Johnson",
+          "role": "Finance",
+          "objection": "Uniform 12% ignores price sensitivity in emerging markets; churn will rise there.",
+          "predictedDirection": "increase",
+          "result": "validated",
+          "evidence": "Emerging-market churn rose 9% vs 2% in mature markets."
+        },
+        {
+          "raisedBy": "Priya Nair",
+          "role": "Product",
+          "objection": "Grandfather existing annual customers to protect renewals.",
+          "predictedDirection": "neutral",
+          "result": "recommendation-proven",
+          "evidence": "Grandfathered cohort renewed at 94%; non-grandfathered at 81%."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Sarah Johnson",
+          "prediction": "emerging-market churn",
+          "outcome": "+9% churn",
+          "status": "validated"
+        },
+        {
+          "stakeholder": "Priya Nair",
+          "prediction": "grandfathering protects renewals",
+          "outcome": "94% vs 81%",
+          "status": "validated"
+        }
+      ],
+      "risksMaterialized": [
+        {
+          "type": "customer",
+          "severity": "high",
+          "description": "Emerging-market churn spike partially offset revenue gain."
+        },
+        {
+          "type": "financial",
+          "severity": "medium",
+          "description": "Net revenue up 6%, below the 11% target."
+        }
+      ],
+      "outcome": {
+        "summary": "Net revenue rose 6% (below 11% target) due to emerging-market churn; regional pricing adopted in Q2 2024 as a corrective. Net mixed.",
+        "direction": "improvement",
+        "metrics": {
+          "revenueDelta": 0.06,
+          "churnDeltaEmerging": 0.09,
+          "churnDeltaMature": 0.02
+        },
+        "netAssessment": "mixed",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.72,
+        "entityAlignment": 0.64,
+        "temporalConsistency": 0.81,
+        "directionalCorrectness": 1,
+        "sFinal": 0.76,
+        "confidence": 0.97,
+        "rank": 0.73
+      },
+      "tags": [
+        "pricing",
+        "churn",
+        "revenue",
+        "emerging-markets",
+        "elasticity"
+      ]
+    },
+    {
+      "id": "dec-2022-0815-support-outsourcing",
+      "orgId": "contoso",
+      "title": "Tier-1 Support Outsourcing",
+      "proposal": "Outsource tier-1 customer support to an offshore vendor to cut support cost by 22%.",
+      "owner": "Daniel Reyes",
+      "category": "Cost Optimization",
+      "meeting": "Operations Review",
+      "dateProposed": "2022-08-15",
+      "dateDecided": "2022-08-29",
+      "status": "approved",
+      "impactLevel": "High",
+      "evidence": {
+        "meetings": 7,
+        "emails": 16,
+        "documents": 4,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "ops-review-2022-08-15",
+            "quality": 0.77
+          },
+          {
+            "type": "email-thread",
+            "ref": "vendor-rfp-2022",
+            "quality": 0.7
+          },
+          {
+            "type": "document",
+            "ref": "outsourcing-business-case.pdf",
+            "quality": 0.83
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Ravi Patel",
+          "role": "Customer Success",
+          "objection": "Offshore handoff will hurt CSAT for enterprise accounts and increase first-response time.",
+          "predictedDirection": "decrease",
+          "result": "validated",
+          "evidence": "Enterprise CSAT fell 8 points; first-response time rose 35% in first quarter."
+        },
+        {
+          "raisedBy": "Jane Smith",
+          "role": "SRE Lead",
+          "objection": "Keep complex incident tickets in-house or MTTR will climb.",
+          "predictedDirection": "increase",
+          "result": "validated",
+          "evidence": "Incident MTTR rose 19% before in-housing P1s."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Ravi Patel",
+          "prediction": "enterprise CSAT drop",
+          "outcome": "-8 pts",
+          "status": "validated"
+        },
+        {
+          "stakeholder": "Jane Smith",
+          "prediction": "MTTR climbs",
+          "outcome": "+19%",
+          "status": "validated"
+        }
+      ],
+      "risksMaterialized": [
+        {
+          "type": "customer",
+          "severity": "high",
+          "description": "Enterprise satisfaction declined sharply in first quarter."
+        },
+        {
+          "type": "execution",
+          "severity": "medium",
+          "description": "Knowledge-transfer ramp took 2 quarters longer than planned."
+        }
+      ],
+      "outcome": {
+        "summary": "Cost fell 22% but enterprise CSAT dropped 8 points and MTTR rose; P1 incidents in-housed in 2023. Net mixed-to-negative.",
+        "direction": "decline",
+        "metrics": {
+          "costDelta": -0.22,
+          "csatDelta": -0.08,
+          "mttrDelta": 0.19
+        },
+        "netAssessment": "mixed",
+        "reversed": true
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.8,
+        "entityAlignment": 0.66,
+        "temporalConsistency": 0.72,
+        "directionalCorrectness": 0.5,
+        "sFinal": 0.7,
+        "confidence": 0.96,
+        "rank": 0.67
+      },
+      "tags": [
+        "outsourcing",
+        "support",
+        "cost-cutting",
+        "csat",
+        "offshore"
+      ]
+    },
+    {
+      "id": "dec-2022-0510-office-downsize",
+      "orgId": "contoso",
+      "title": "Office Footprint Downsize",
+      "proposal": "Consolidate three regional offices into one and move to hybrid work to cut real-estate cost by 30%.",
+      "owner": "Laura Mitchell",
+      "category": "Real Estate",
+      "meeting": "Facilities Planning",
+      "dateProposed": "2022-05-10",
+      "dateDecided": "2022-05-24",
+      "status": "approved",
+      "impactLevel": "Medium",
+      "evidence": {
+        "meetings": 4,
+        "emails": 8,
+        "documents": 3,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "facilities-2022-05-10",
+            "quality": 0.68
+          },
+          {
+            "type": "document",
+            "ref": "real-estate-model.xlsx",
+            "quality": 0.85
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Michael Lee",
+          "role": "Operations",
+          "objection": "Hybrid transition will hurt onboarding for new hires without a deliberate program.",
+          "predictedDirection": "decrease",
+          "result": "partially-validated",
+          "evidence": "New-hire ramp time rose 12% until a structured onboarding program was added."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Michael Lee",
+          "prediction": "onboarding suffers",
+          "outcome": "+12% ramp time",
+          "status": "partially-validated"
+        }
+      ],
+      "risksMaterialized": [
+        {
+          "type": "execution",
+          "severity": "low",
+          "description": "Temporary onboarding friction, mitigated within two quarters."
+        }
+      ],
+      "outcome": {
+        "summary": "Real-estate cost cut 30% with limited downside after adding an onboarding program. Net positive.",
+        "direction": "improvement",
+        "metrics": {
+          "realEstateDelta": -0.3,
+          "rampTimeDelta": 0.12
+        },
+        "netAssessment": "positive",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.55,
+        "entityAlignment": 0.4,
+        "temporalConsistency": 0.5,
+        "directionalCorrectness": 0.5,
+        "sFinal": 0.49,
+        "confidence": 0.7,
+        "rank": 0.34
+      },
+      "tags": [
+        "real-estate",
+        "hybrid-work",
+        "cost-cutting",
+        "onboarding"
+      ]
+    },
+    {
+      "id": "dec-2023-0607-marketing-budget-cut",
+      "orgId": "contoso",
+      "title": "Marketing Budget Reduction",
+      "proposal": "Cut paid acquisition spend by 25% and shift to organic channels.",
+      "owner": "Priya Nair",
+      "category": "Marketing",
+      "meeting": "Growth Review",
+      "dateProposed": "2023-06-07",
+      "dateDecided": "2023-06-21",
+      "status": "approved",
+      "impactLevel": "Medium",
+      "evidence": {
+        "meetings": 5,
+        "emails": 10,
+        "documents": 3,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "growth-review-2023-06-07",
+            "quality": 0.72
+          },
+          {
+            "type": "document",
+            "ref": "cac-ltv-analysis.pdf",
+            "quality": 0.8
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Sarah Johnson",
+          "role": "Finance",
+          "objection": "Pipeline will contract two quarters out as paid demand dries up.",
+          "predictedDirection": "decrease",
+          "result": "validated",
+          "evidence": "Marketing-sourced pipeline fell 18% in Q4."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Sarah Johnson",
+          "prediction": "pipeline contraction",
+          "outcome": "-18% pipeline",
+          "status": "validated"
+        }
+      ],
+      "risksMaterialized": [
+        {
+          "type": "financial",
+          "severity": "medium",
+          "description": "Pipeline dip required a partial budget restore in Q4."
+        }
+      ],
+      "outcome": {
+        "summary": "Saved 25% of paid spend short-term but pipeline contracted; budget partially restored. Net mixed.",
+        "direction": "decline",
+        "metrics": {
+          "paidSpendDelta": -0.25,
+          "pipelineDelta": -0.18
+        },
+        "netAssessment": "mixed",
+        "reversed": true
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.58,
+        "entityAlignment": 0.45,
+        "temporalConsistency": 0.6,
+        "directionalCorrectness": 0.5,
+        "sFinal": 0.53,
+        "confidence": 0.81,
+        "rank": 0.43
+      },
+      "tags": [
+        "marketing",
+        "budget-cut",
+        "pipeline",
+        "cac",
+        "growth"
+      ]
+    },
+    {
+      "id": "dec-2021-1102-vendor-consolidation",
+      "orgId": "contoso",
+      "title": "SaaS Vendor Consolidation",
+      "proposal": "Consolidate overlapping SaaS tools to a single vendor to reduce software spend by 15%.",
+      "owner": "Michael Lee",
+      "category": "Procurement",
+      "meeting": "IT Governance",
+      "dateProposed": "2021-11-02",
+      "dateDecided": "2021-11-16",
+      "status": "approved",
+      "impactLevel": "Low",
+      "evidence": {
+        "meetings": 3,
+        "emails": 7,
+        "documents": 2,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "it-gov-2021-11-02",
+            "quality": 0.66
+          },
+          {
+            "type": "document",
+            "ref": "saas-spend-audit.xlsx",
+            "quality": 0.82
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Priya Nair",
+          "role": "Product",
+          "objection": "Single-vendor lock-in reduces negotiating leverage at renewal.",
+          "predictedDirection": "increase",
+          "result": "partially-validated",
+          "evidence": "Renewal price rose 8% with limited leverage."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Priya Nair",
+          "prediction": "lock-in raises renewal cost",
+          "outcome": "+8% renewal",
+          "status": "partially-validated"
+        }
+      ],
+      "risksMaterialized": [
+        {
+          "type": "financial",
+          "severity": "low",
+          "description": "Renewal leverage reduced; net savings still positive."
+        }
+      ],
+      "outcome": {
+        "summary": "Reduced software spend 15% in year one; renewal leverage weakened slightly. Net positive.",
+        "direction": "improvement",
+        "metrics": {
+          "softwareSpendDelta": -0.15,
+          "renewalDelta": 0.08
+        },
+        "netAssessment": "positive",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.5,
+        "entityAlignment": 0.38,
+        "temporalConsistency": 0.45,
+        "directionalCorrectness": 1,
+        "sFinal": 0.53,
+        "confidence": 0.76,
+        "rank": 0.4
+      },
+      "tags": [
+        "procurement",
+        "saas",
+        "consolidation",
+        "cost-cutting",
+        "vendor"
+      ]
+    },
+    {
+      "id": "dec-2024-0220-eng-hiring-freeze",
+      "orgId": "contoso",
+      "title": "Engineering Hiring Freeze",
+      "proposal": "Freeze engineering hiring for two quarters to control burn.",
+      "owner": "Daniel Reyes",
+      "category": "Hiring",
+      "meeting": "Leadership Sync",
+      "dateProposed": "2024-02-20",
+      "dateDecided": "2024-03-05",
+      "status": "approved",
+      "impactLevel": "Medium",
+      "evidence": {
+        "meetings": 6,
+        "emails": 13,
+        "documents": 2,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "leadership-sync-2024-02-20",
+            "quality": 0.75
+          },
+          {
+            "type": "document",
+            "ref": "burn-runway-model.xlsx",
+            "quality": 0.87
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Michael Lee",
+          "role": "Operations",
+          "objection": "Roadmap commitments will slip without backfill for attrition.",
+          "predictedDirection": "decrease",
+          "result": "validated",
+          "evidence": "Two roadmap items slipped a quarter after attrition went unbackfilled."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Michael Lee",
+          "prediction": "roadmap slips",
+          "outcome": "2 items slipped 1Q",
+          "status": "validated"
+        }
+      ],
+      "risksMaterialized": [
+        {
+          "type": "execution",
+          "severity": "medium",
+          "description": "Delivery velocity dropped during the freeze."
+        }
+      ],
+      "outcome": {
+        "summary": "Extended runway by one quarter but roadmap velocity dropped; targeted backfills resumed after Q2. Net mixed.",
+        "direction": "stable",
+        "metrics": {
+          "burnDelta": -0.1,
+          "velocityDelta": -0.14
+        },
+        "netAssessment": "mixed",
+        "reversed": true
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.62,
+        "entityAlignment": 0.52,
+        "temporalConsistency": 0.7,
+        "directionalCorrectness": 0.5,
+        "sFinal": 0.59,
+        "confidence": 0.89,
+        "rank": 0.53
+      },
+      "tags": [
+        "hiring",
+        "freeze",
+        "engineering",
+        "burn",
+        "runway"
+      ]
+    },
+    {
+      "id": "dec-2023-0118-onprem-to-cloud",
+      "orgId": "contoso",
+      "title": "On-Prem to Cloud Migration",
+      "proposal": "Migrate remaining on-prem workloads to the cloud to improve scalability.",
+      "owner": "Jane Smith",
+      "category": "Infrastructure",
+      "meeting": "Architecture Review",
+      "dateProposed": "2023-01-18",
+      "dateDecided": "2023-02-01",
+      "status": "approved",
+      "impactLevel": "High",
+      "evidence": {
+        "meetings": 8,
+        "emails": 15,
+        "documents": 6,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "arch-review-2023-01-18",
+            "quality": 0.81
+          },
+          {
+            "type": "document",
+            "ref": "migration-tco-model.xlsx",
+            "quality": 0.88
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Sarah Johnson",
+          "role": "Finance",
+          "objection": "Cloud egress and reserved-capacity costs will exceed the TCO estimate without governance.",
+          "predictedDirection": "increase",
+          "result": "validated",
+          "evidence": "Cloud spend ran 17% over the first-year TCO estimate before FinOps controls."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Sarah Johnson",
+          "prediction": "cloud cost overrun",
+          "outcome": "+17% over TCO",
+          "status": "validated"
+        }
+      ],
+      "risksMaterialized": [
+        {
+          "type": "financial",
+          "severity": "medium",
+          "description": "First-year cloud spend exceeded plan before FinOps controls landed."
+        }
+      ],
+      "outcome": {
+        "summary": "Improved scalability and reliability; first-year cost overran TCO by 17% before FinOps governance. Net positive after controls.",
+        "direction": "improvement",
+        "metrics": {
+          "scalabilityDelta": 0.4,
+          "costOverrun": 0.17
+        },
+        "netAssessment": "positive",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.42,
+        "entityAlignment": 0.3,
+        "temporalConsistency": 0.4,
+        "directionalCorrectness": 1,
+        "sFinal": 0.47,
+        "confidence": 0.6,
+        "rank": 0.28
+      },
+      "tags": [
+        "infrastructure",
+        "cloud",
+        "migration",
+        "tco",
+        "finops"
+      ]
+    },
+    {
+      "id": "dec-2024-0405-fourday-week",
+      "orgId": "contoso",
+      "title": "Four-Day Work Week Trial",
+      "proposal": "Trial a four-day work week for two quarters to improve retention.",
+      "owner": "Priya Nair",
+      "category": "People",
+      "meeting": "People Council",
+      "dateProposed": "2024-04-05",
+      "dateDecided": "2024-04-19",
+      "status": "review",
+      "impactLevel": "Medium",
+      "evidence": {
+        "meetings": 3,
+        "emails": 6,
+        "documents": 1,
+        "sources": [
+          {
+            "type": "transcript",
+            "ref": "people-council-2024-04-05",
+            "quality": 0.64
+          }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Michael Lee",
+          "role": "Operations",
+          "objection": "Coverage for time-sensitive operations will gap on the off-day.",
+          "predictedDirection": "increase",
+          "result": "mitigated",
+          "evidence": "Staggered schedules preserved coverage during the trial."
+        }
+      ],
+      "whoWasRight": [
+        {
+          "stakeholder": "Michael Lee",
+          "prediction": "coverage gaps",
+          "outcome": "mitigated via staggering",
+          "status": "not-validated"
+        }
+      ],
+      "risksMaterialized": [],
+      "outcome": {
+        "summary": "Trial in progress; early retention signal positive, coverage preserved via staggered schedules. Outcome not yet final.",
+        "direction": "stable",
+        "metrics": {
+          "retentionDelta": 0.05
+        },
+        "netAssessment": "neutral",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.35,
+        "entityAlignment": 0.25,
+        "temporalConsistency": 0.3,
+        "directionalCorrectness": 0,
+        "sFinal": 0.26,
+        "confidence": 0.11,
+        "rank": 0.03
+      },
+      "tags": [
+        "people",
+        "retention",
+        "four-day-week",
+        "policy",
+        "trial"
+      ]
+    }
+  ]
+}

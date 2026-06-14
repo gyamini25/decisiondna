@@ -1,0 +1,310 @@
+{
+  "$schema": "https://decisiondna.ai/schemas/decision-record.v1.json",
+  "description": "Synthetic decision-memory corpus for DecisionDNA. Seed into the SharePoint document library and index into Azure AI Search / Cosmos `decision-memory`. Each record carries proposal, evidence, objections, the 'who was right?' ledger, materialized risks, the actual outcome, and the multi-signal evidence vector used by the Evidence Engine.",
+  "embeddingModel": "text-embedding-3-large",
+  "records": [
+    {
+      "id": "dec-2023-0312-support-staffing",
+      "orgId": "contoso",
+      "title": "Support Staffing Optimization",
+      "proposal": "Reduce weekend customer support staffing by 18% to lower operating cost.",
+      "owner": "Daniel Reyes",
+      "category": "Cost Optimization",
+      "meeting": "Operations Review",
+      "dateProposed": "2023-03-12",
+      "dateDecided": "2023-03-20",
+      "status": "approved",
+      "impactLevel": "High",
+      "evidence": {
+        "meetings": 8,
+        "emails": 14,
+        "documents": 3,
+        "sources": [
+          { "type": "transcript", "ref": "ops-review-2023-03-12", "quality": 0.82 },
+          { "type": "email-thread", "ref": "cost-analysis-q1-2023", "quality": 0.74 },
+          { "type": "document", "ref": "staffing-model-v3.xlsx", "quality": 0.88 }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Jane Smith",
+          "role": "SRE Lead",
+          "objection": "Support wait times will increase, especially during APAC hours.",
+          "predictedDirection": "increase",
+          "result": "validated",
+          "evidence": "Average wait time increased 28% within 6 weeks."
+        },
+        {
+          "raisedBy": "Ravi Patel",
+          "role": "Customer Success",
+          "objection": "CSAT will drop for enterprise accounts.",
+          "predictedDirection": "decrease",
+          "result": "validated",
+          "evidence": "CSAT dropped 6 points among top-tier accounts."
+        }
+      ],
+      "whoWasRight": [
+        { "stakeholder": "Jane Smith", "prediction": "wait times increase", "outcome": "+28%", "status": "validated" },
+        { "stakeholder": "Ravi Patel", "prediction": "CSAT decline", "outcome": "-6 pts", "status": "validated" }
+      ],
+      "risksMaterialized": [
+        { "type": "customer", "severity": "high", "description": "Enterprise APAC incident response slowed." },
+        { "type": "operational", "severity": "medium", "description": "Weekend backlog grew 40%." }
+      ],
+      "outcome": {
+        "summary": "Cost reduced 12% but customer satisfaction dropped 6% and APAC response slowed. Net negative; staffing partially restored in Q3 2023.",
+        "direction": "decline",
+        "metrics": { "costDelta": -0.12, "csatDelta": -0.06, "waitTimeDelta": 0.28 },
+        "netAssessment": "negative",
+        "reversed": true
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.91,
+        "entityAlignment": 0.78,
+        "temporalConsistency": 0.86,
+        "directionalCorrectness": 1.0,
+        "sFinal": 0.86,
+        "confidence": 0.83,
+        "rank": 0.71
+      },
+      "tags": ["staffing", "support", "cost-cutting", "csat", "apac"]
+    },
+    {
+      "id": "dec-2022-1118-support-restructure",
+      "orgId": "contoso",
+      "title": "Support Team Restructure",
+      "proposal": "Consolidate regional support teams and reduce total headcount by 9%.",
+      "owner": "Michael Lee",
+      "category": "Reorganization",
+      "meeting": "Quarterly Planning",
+      "dateProposed": "2022-11-18",
+      "dateDecided": "2022-12-02",
+      "status": "approved",
+      "impactLevel": "Medium",
+      "evidence": {
+        "meetings": 6,
+        "emails": 12,
+        "documents": 2,
+        "sources": [
+          { "type": "transcript", "ref": "qplanning-2022-11-18", "quality": 0.79 },
+          { "type": "document", "ref": "regional-coverage-map.pdf", "quality": 0.81 }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Michael Lee",
+          "role": "Operations",
+          "objection": "Run a pilot before full rollout to surface region-specific risk.",
+          "predictedDirection": "neutral",
+          "result": "recommendation-proven",
+          "evidence": "Pilot identified APAC coverage gap that would have caused SLA breaches."
+        }
+      ],
+      "whoWasRight": [
+        { "stakeholder": "Michael Lee", "prediction": "pilot reveals APAC risk", "outcome": "gap found pre-rollout", "status": "validated" }
+      ],
+      "risksMaterialized": [
+        { "type": "operational", "severity": "medium", "description": "Temporary coverage gap during transition, mitigated by pilot learnings." }
+      ],
+      "outcome": {
+        "summary": "Phased rollout informed by pilot. Headcount reduced 9% with no SLA breach. Net neutral-to-positive.",
+        "direction": "stable",
+        "metrics": { "headcountDelta": -0.09, "slaBreaches": 0 },
+        "netAssessment": "positive",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.85,
+        "entityAlignment": 0.71,
+        "temporalConsistency": 0.74,
+        "directionalCorrectness": 1.0,
+        "sFinal": 0.79,
+        "confidence": 0.77,
+        "rank": 0.61
+      },
+      "tags": ["restructure", "support", "headcount", "pilot", "apac"]
+    },
+    {
+      "id": "dec-2021-0802-cost-optimization",
+      "orgId": "contoso",
+      "title": "Cost Optimization Initiative",
+      "proposal": "Multi-department cost reduction program targeting 7% opex savings.",
+      "owner": "Laura Mitchell",
+      "category": "Cost Optimization",
+      "meeting": "Leadership Sync",
+      "dateProposed": "2021-08-02",
+      "dateDecided": "2021-08-16",
+      "status": "approved",
+      "impactLevel": "Low",
+      "evidence": {
+        "meetings": 5,
+        "emails": 9,
+        "documents": 4,
+        "sources": [
+          { "type": "transcript", "ref": "leadership-sync-2021-08-02", "quality": 0.7 },
+          { "type": "document", "ref": "opex-baseline-2021.xlsx", "quality": 0.9 }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Sarah Johnson",
+          "role": "Finance",
+          "objection": "Across-the-board cuts risk under-funding revenue-generating teams.",
+          "predictedDirection": "decrease",
+          "result": "partially-validated",
+          "evidence": "Sales tooling budget cut slowed pipeline tooling rollout by one quarter."
+        }
+      ],
+      "whoWasRight": [
+        { "stakeholder": "Sarah Johnson", "prediction": "revenue teams under-funded", "outcome": "pipeline tooling delayed 1Q", "status": "partially-validated" }
+      ],
+      "risksMaterialized": [
+        { "type": "financial", "severity": "low", "description": "Minor delay in sales tooling; no measurable revenue impact." }
+      ],
+      "outcome": {
+        "summary": "Achieved 7% opex savings with limited side effects after targeting cuts away from revenue teams. Net positive.",
+        "direction": "improvement",
+        "metrics": { "opexDelta": -0.07, "revenueDelta": 0.0 },
+        "netAssessment": "positive",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.78,
+        "entityAlignment": 0.6,
+        "temporalConsistency": 0.55,
+        "directionalCorrectness": 0.5,
+        "sFinal": 0.66,
+        "confidence": 0.58,
+        "rank": 0.38
+      },
+      "tags": ["cost-cutting", "opex", "finance", "multi-department"]
+    },
+    {
+      "id": "dec-2023-0921-chatbot-deflection",
+      "orgId": "contoso",
+      "title": "Customer Support Chatbot Deflection",
+      "proposal": "Deploy an AI chatbot to deflect 30% of tier-1 support tickets before reducing staffing.",
+      "owner": "Priya Nair",
+      "category": "Automation",
+      "meeting": "Support Strategy Review",
+      "dateProposed": "2023-09-21",
+      "dateDecided": "2023-10-05",
+      "status": "approved",
+      "impactLevel": "High",
+      "evidence": {
+        "meetings": 7,
+        "emails": 11,
+        "documents": 5,
+        "sources": [
+          { "type": "transcript", "ref": "support-strategy-2023-09-21", "quality": 0.84 },
+          { "type": "document", "ref": "chatbot-pilot-results.pdf", "quality": 0.92 }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Jane Smith",
+          "role": "SRE Lead",
+          "objection": "Chatbot must have a clean human-handoff path or escalations will spike.",
+          "predictedDirection": "increase",
+          "result": "mitigated",
+          "evidence": "Handoff path built; escalation rate held flat at 4%."
+        },
+        {
+          "raisedBy": "Ravi Patel",
+          "role": "Customer Success",
+          "objection": "Enterprise customers will reject a bot-first experience.",
+          "predictedDirection": "decrease",
+          "result": "not-validated",
+          "evidence": "Enterprise CSAT unchanged; bot scoped to tier-1 only."
+        }
+      ],
+      "whoWasRight": [
+        { "stakeholder": "Jane Smith", "prediction": "handoff needed", "outcome": "mitigation worked", "status": "validated" },
+        { "stakeholder": "Ravi Patel", "prediction": "enterprise rejection", "outcome": "no change", "status": "not-validated" }
+      ],
+      "risksMaterialized": [],
+      "outcome": {
+        "summary": "Chatbot deflected 31% of tier-1 tickets, enabling later staffing changes without CSAT loss. Net positive.",
+        "direction": "improvement",
+        "metrics": { "deflectionRate": 0.31, "csatDelta": 0.0, "escalationRate": 0.04 },
+        "netAssessment": "positive",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.88,
+        "entityAlignment": 0.83,
+        "temporalConsistency": 0.9,
+        "directionalCorrectness": 1.0,
+        "sFinal": 0.87,
+        "confidence": 0.85,
+        "rank": 0.74
+      },
+      "tags": ["chatbot", "automation", "deflection", "support", "csat"]
+    },
+    {
+      "id": "dec-2024-0114-pricing-increase",
+      "orgId": "contoso",
+      "title": "SaaS Pricing Increase",
+      "proposal": "Raise standard-tier subscription price by 12% across all regions.",
+      "owner": "Daniel Reyes",
+      "category": "Pricing",
+      "meeting": "Revenue Strategy",
+      "dateProposed": "2024-01-14",
+      "dateDecided": "2024-01-28",
+      "status": "approved",
+      "impactLevel": "High",
+      "evidence": {
+        "meetings": 9,
+        "emails": 18,
+        "documents": 6,
+        "sources": [
+          { "type": "transcript", "ref": "revenue-strategy-2024-01-14", "quality": 0.8 },
+          { "type": "document", "ref": "price-elasticity-study.pdf", "quality": 0.86 }
+        ]
+      },
+      "objections": [
+        {
+          "raisedBy": "Sarah Johnson",
+          "role": "Finance",
+          "objection": "Uniform 12% ignores price sensitivity in emerging markets; churn will rise there.",
+          "predictedDirection": "increase",
+          "result": "validated",
+          "evidence": "Emerging-market churn rose 9% vs 2% in mature markets."
+        },
+        {
+          "raisedBy": "Priya Nair",
+          "role": "Product",
+          "objection": "Grandfather existing annual customers to protect renewals.",
+          "predictedDirection": "neutral",
+          "result": "recommendation-proven",
+          "evidence": "Grandfathered cohort renewed at 94%; non-grandfathered at 81%."
+        }
+      ],
+      "whoWasRight": [
+        { "stakeholder": "Sarah Johnson", "prediction": "emerging-market churn", "outcome": "+9% churn", "status": "validated" },
+        { "stakeholder": "Priya Nair", "prediction": "grandfathering protects renewals", "outcome": "94% vs 81%", "status": "validated" }
+      ],
+      "risksMaterialized": [
+        { "type": "customer", "severity": "high", "description": "Emerging-market churn spike partially offset revenue gain." },
+        { "type": "financial", "severity": "medium", "description": "Net revenue up 6%, below the 11% target." }
+      ],
+      "outcome": {
+        "summary": "Net revenue rose 6% (below 11% target) due to emerging-market churn; regional pricing adopted in Q2 2024 as a corrective. Net mixed.",
+        "direction": "improvement",
+        "metrics": { "revenueDelta": 0.06, "churnDeltaEmerging": 0.09, "churnDeltaMature": 0.02 },
+        "netAssessment": "mixed",
+        "reversed": false
+      },
+      "evidenceSignals": {
+        "semanticSimilarity": 0.72,
+        "entityAlignment": 0.64,
+        "temporalConsistency": 0.81,
+        "directionalCorrectness": 1.0,
+        "sFinal": 0.74,
+        "confidence": 0.69,
+        "rank": 0.51
+      },
+      "tags": ["pricing", "churn", "revenue", "emerging-markets", "elasticity"]
+    }
+  ]
+}

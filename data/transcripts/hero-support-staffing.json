@@ -1,0 +1,19 @@
+{
+  "id": "meeting-leadership-sync-support-coverage",
+  "title": "Leadership Sync — Support Coverage Proposal",
+  "date": "2026-06-13",
+  "participants": [
+    { "name": "Laura Mitchell", "role": "Senior Product Manager" },
+    { "name": "Ravi Patel", "role": "Customer Success" },
+    { "name": "Jane Smith", "role": "SRE Lead" },
+    { "name": "Michael Lee", "role": "Operations" }
+  ],
+  "scenario": "hero",
+  "lines": [
+    { "speaker": "Laura Mitchell", "role": "Senior Product Manager", "time": "00:12", "text": "Let's reduce customer support staffing by 20% to optimize costs heading into next quarter." },
+    { "speaker": "Ravi Patel", "role": "Customer Success", "time": "00:18", "text": "This could impact our APAC customers. We saw issues last time we touched weekend coverage." },
+    { "speaker": "Jane Smith", "role": "SRE Lead", "time": "00:24", "text": "Agree with Ravi. Incident response capacity might be affected, especially during APAC hours." },
+    { "speaker": "Michael Lee", "role": "Operations", "time": "00:30", "text": "What about running a pilot for 4 weeks before a full rollout?" }
+  ],
+  "transcript": "Laura Mitchell (00:12): Let's reduce customer support staffing by 20% to optimize costs heading into next quarter. Ravi Patel (00:18): This could impact our APAC customers. We saw issues last time we touched weekend coverage. Jane Smith (00:24): Agree with Ravi. Incident response capacity might be affected, especially during APAC hours. Michael Lee (00:30): What about running a pilot for 4 weeks before a full rollout?"
+}

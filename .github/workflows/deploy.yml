@@ -1,0 +1,49 @@
+name: Deploy (Azure App Service)
+
+# Builds the app and deploys to Azure App Service. The deploy step only runs when
+# an AZURE_WEBAPP_PUBLISH_PROFILE secret is configured — otherwise it builds and
+# safely skips deploy (so the workflow stays green without cloud credentials).
+#
+# To enable:
+#   1. Create an Azure Web App (Node 20). See bicep/main.bicep for full IaC.
+#   2. Repo → Settings → Secrets → Actions: add AZURE_WEBAPP_PUBLISH_PROFILE
+#      (download from the Web App's "Get publish profile").
+#   3. Optionally set repo variable AZURE_WEBAPP_NAME (defaults to "decisiondna").
+#   4. Add Azure OpenAI app settings (MOCK_LLM=0 + AZURE_OPENAI_*) in the Web App.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      MOCK_LLM: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+      - name: Check for publish profile
+        id: guard
+        run: |
+          if [ -n "${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::No AZURE_WEBAPP_PUBLISH_PROFILE secret set — building only, skipping deploy."
+          fi
+
+      - name: Deploy to Azure Web App
+        if: steps.guard.outputs.ready == 'true'
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ vars.AZURE_WEBAPP_NAME || 'decisiondna' }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .

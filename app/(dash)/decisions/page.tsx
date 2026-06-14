@@ -1,0 +1,256 @@
+"use client";
+
+import { useEffect, useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { Search, X } from "lucide-react";
+import { Card, ConfidenceBar, RiskBadge, Badge, Skeleton } from "@/components/ui/primitives";
+import { formatDate } from "@/lib/ui";
+import type { DecisionListItem } from "@/lib/decisions-view";
+import type { DecisionRecord, StoredDecision } from "@/lib/types";
+
+const FILTERS = [
+  { key: "", label: "All" },
+  { key: "high-risk", label: "High Risk" },
+  { key: "pending", label: "Pending" },
+  { key: "high-confidence", label: "High Confidence" },
+  { key: "low-confidence", label: "Low Confidence" },
+];
+
+function DecisionsInner() {
+  const params = useSearchParams();
+  const [filter, setFilter] = useState("");
+  const [q, setQ] = useState("");
+  const [items, setItems] = useState<DecisionListItem[] | null>(null);
+  const [selected, setSelected] = useState<string | null>(params.get("id"));
+
+  useEffect(() => {
+    const url = `/api/decisions?filter=${filter}&q=${encodeURIComponent(q)}`;
+    setItems(null);
+    fetch(url)
+      .then((r) => r.json())
+      .then((d) => setItems(d.decisions));
+  }, [filter, q]);
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <h1 className="text-lg font-bold text-ink">Decisions</h1>
+        <p className="text-xs text-ink-soft">
+          Track, analyze, and learn from organizational decisions.
+        </p>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-3">
+        <div className="relative w-72">
+          <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-faint" />
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Search decisions…"
+            className="w-full rounded-lg border border-line bg-surface py-2 pl-9 pr-3 text-sm outline-none focus:border-brand-400"
+          />
+        </div>
+        <div className="flex gap-1.5">
+          {FILTERS.map((f) => (
+            <button
+              key={f.key}
+              onClick={() => setFilter(f.key)}
+              className={`rounded-full border px-3 py-1 text-xs ${
+                filter === f.key
+                  ? "border-brand-600 bg-brand-50 text-brand-700"
+                  : "border-line bg-surface text-ink-soft hover:bg-surface-2"
+              }`}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <Card>
+        <div className="grid grid-cols-[1fr_120px_110px_120px_100px] gap-3 border-b border-line px-4 py-2 text-[11px] font-semibold uppercase tracking-wide text-ink-faint">
+          <span>Decision</span>
+          <span>Risk</span>
+          <span>Confidence</span>
+          <span>Status</span>
+          <span>Date</span>
+        </div>
+        <div className="divide-y divide-line">
+          {!items
+            ? Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="p-3">
+                  <Skeleton className="h-8" />
+                </div>
+              ))
+            : items.map((d) => (
+                <button
+                  key={d.id}
+                  onClick={() => setSelected(d.id)}
+                  className="grid w-full grid-cols-[1fr_120px_110px_120px_100px] items-center gap-3 px-4 py-3 text-left hover:bg-surface-2"
+                >
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-medium text-ink">{d.proposal}</p>
+                    <p className="text-[11px] text-ink-soft">
+                      {d.proposer} · {d.category}
+                    </p>
+                  </div>
+                  <RiskBadge level={d.risk} />
+                  <ConfidenceBar value={d.confidence} />
+                  <Badge tone={d.status === "approved" ? "good" : d.status === "pending" ? "warn" : "neutral"}>
+                    {d.status}
+                  </Badge>
+                  <span className="text-xs text-ink-soft">{formatDate(d.date)}</span>
+                </button>
+              ))}
+        </div>
+      </Card>
+
+      {selected && (
+        <DetailDrawer id={selected} onClose={() => setSelected(null)} />
+      )}
+    </div>
+  );
+}
+
+function DetailDrawer({ id, onClose }: { id: string; onClose: () => void }) {
+  const [detail, setDetail] = useState<
+    | { kind: "memory"; record: DecisionRecord }
+    | { kind: "new"; decision: StoredDecision }
+    | null
+  >(null);
+
+  useEffect(() => {
+    setDetail(null);
+    fetch(`/api/decisions/${id}`)
+      .then((r) => r.json())
+      .then(setDetail);
+  }, [id]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex justify-end bg-black/30" onClick={onClose}>
+      <div
+        className="scroll-thin h-full w-[480px] overflow-y-auto bg-surface p-5 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-start justify-between">
+          <h2 className="text-base font-bold text-ink">Decision Detail</h2>
+          <button onClick={onClose} className="text-ink-soft hover:text-ink">
+            <X size={18} />
+          </button>
+        </div>
+
+        {!detail ? (
+          <Skeleton className="mt-4 h-64" />
+        ) : detail.kind === "memory" ? (
+          <MemoryDetail record={detail.record} />
+        ) : (
+          <NewDetail decision={detail.decision} />
+        )}
+      </div>
+    </div>
+  );
+}
+
+function MemoryDetail({ record }: { record: DecisionRecord }) {
+  const es = record.evidenceSignals;
+  const signals = [
+    { label: "Semantic", v: es.semanticSimilarity, w: "0.35" },
+    { label: "Entity", v: es.entityAlignment, w: "0.30" },
+    { label: "Temporal", v: es.temporalConsistency, w: "0.20" },
+    { label: "Directional", v: es.directionalCorrectness, w: "0.15" },
+  ];
+  return (
+    <div className="mt-4 space-y-4">
+      <div>
+        <p className="text-sm font-semibold text-ink">{record.title}</p>
+        <p className="mt-1 text-xs text-ink-soft">{record.proposal}</p>
+        <div className="mt-2 flex items-center gap-2">
+          <RiskBadge level={record.impactLevel === "High" ? "High" : record.impactLevel === "Medium" ? "Medium" : "Low"} />
+          <Badge tone="neutral">{record.category}</Badge>
+          <Badge tone="neutral">{formatDate(record.dateProposed)}</Badge>
+        </div>
+      </div>
+
+      <Card className="p-3">
+        <p className="mb-2 text-xs font-semibold text-ink">Four-Signal Evidence Breakdown</p>
+        <div className="space-y-1.5">
+          {signals.map((s) => (
+            <div key={s.label} className="flex items-center gap-2">
+              <span className="w-20 text-[11px] text-ink-soft">{s.label}</span>
+              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-line">
+                <div className="h-full rounded-full bg-brand-500" style={{ width: `${s.v * 100}%` }} />
+              </div>
+              <span className="w-9 text-right text-[11px] font-medium">{Math.round(s.v * 100)}%</span>
+              <span className="w-8 text-right text-[10px] text-ink-faint">×{s.w}</span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-2 flex justify-between border-t border-line pt-2 text-[11px]">
+          <span className="text-ink-soft">S<sub>final</sub> {Math.round(es.sFinal * 100)}% · rank {es.rank}</span>
+          <span className="font-semibold">Confidence {Math.round(es.confidence * 100)}%</span>
+        </div>
+      </Card>
+
+      <div>
+        <p className="mb-2 text-xs font-semibold text-ink">Who Was Right?</p>
+        <div className="space-y-2">
+          {record.objections.map((o, i) => (
+            <div key={i} className="rounded-md border border-line p-2.5">
+              <div className="flex items-center justify-between">
+                <p className="text-xs font-semibold text-ink">{o.raisedBy} · {o.role}</p>
+                <Badge tone={o.result === "validated" ? "warn" : o.result === "recommendation-proven" ? "good" : o.result === "not-validated" ? "bad" : "brand"}>
+                  {o.result}
+                </Badge>
+              </div>
+              <p className="mt-1 text-[11px] italic text-ink-soft">“{o.objection}”</p>
+              <p className="mt-1 text-[11px] text-ink">{o.evidence}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p className="mb-1 text-xs font-semibold text-ink">Outcome</p>
+        <p className="text-xs text-ink-soft">{record.outcome.summary}</p>
+      </div>
+    </div>
+  );
+}
+
+function NewDetail({ decision }: { decision: StoredDecision }) {
+  return (
+    <div className="mt-4 space-y-4">
+      <div>
+        <p className="text-sm font-semibold text-ink">{decision.proposal}</p>
+        <p className="mt-1 text-xs text-ink-soft">
+          {decision.proposer} · {formatDate(decision.createdAt)}
+        </p>
+        <div className="mt-2 flex items-center gap-2">
+          <RiskBadge level={decision.risk?.overall ?? "Low"} />
+          <Badge tone={decision.approvalStatus === "approved" ? "good" : "warn"}>
+            {decision.approvalStatus}
+          </Badge>
+        </div>
+      </div>
+      {decision.rationale && (
+        <Card className="p-3">
+          <p className="text-xs font-semibold text-ink">Approval Rationale</p>
+          <p className="mt-1 text-xs text-ink-soft">{decision.rationale}</p>
+        </Card>
+      )}
+      <div>
+        <p className="mb-1 text-xs font-semibold text-ink">Confidence</p>
+        <ConfidenceBar value={decision.confidence.confidence} />
+        <p className="mt-1 text-[11px] text-ink-soft">{decision.confidence.explanation}</p>
+      </div>
+    </div>
+  );
+}
+
+export default function DecisionsPage() {
+  return (
+    <Suspense fallback={<Skeleton className="h-64" />}>
+      <DecisionsInner />
+    </Suspense>
+  );
+}

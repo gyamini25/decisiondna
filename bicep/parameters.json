@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namePrefix": {
+      "value": "decisiondna"
+    },
+    "location": {
+      "value": "eastus2"
+    },
+    "openAiLocation": {
+      "value": "eastus2"
+    },
+    "operatorObjectId": {
+      "value": ""
+    },
+    "chatModelName": {
+      "value": "gpt-5"
+    },
+    "chatModelVersion": {
+      "value": "2025-08-07"
+    },
+    "chatCapacity": {
+      "value": 50
+    },
+    "embeddingModelName": {
+      "value": "text-embedding-3-large"
+    },
+    "embeddingModelVersion": {
+      "value": "1"
+    },
+    "embeddingCapacity": {
+      "value": 120
+    },
+    "cosmosDatabaseName": {
+      "value": "decisiondna"
+    },
+    "cosmosContainerName": {
+      "value": "decision-memory"
+    },
+    "appServicePlanSku": {
+      "value": "P1v3"
+    },
+    "tags": {
+      "value": {
+        "application": "DecisionDNA",
+        "workload": "decision-intelligence",
+        "environment": "demo",
+        "managedBy": "bicep"
+      }
+    }
+  }
+}
